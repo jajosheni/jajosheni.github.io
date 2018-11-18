@@ -10,5 +10,11 @@
 
 ### Projects:
  
-**instaBot** : <a href="https://jajosheni.github.io/instaBot" title="python InstaBot"><img src="https://img.shields.io/badge/python-instaBot-green.svg"></a>
-`Smartly selects who to follow, likes and comments on their posts, and much more.`
+<a href="https://jajosheni.github.io/instaBot" title="python InstaBot"><img src="https://img.shields.io/badge/python-instaBot-green.svg"></a> **:** <br>
+`    Smartly selects who to follow, likes and comments on their posts, and much more.`
+
+**sudokuSolver** : <a href="https://github.com/jajosheni/Sudoku-Solver" title="sudoku Solver"><img src="https://img.shields.io/badge/sudoku-solver-lightgrey.svg"></a><br>
+`    This is a sudoku solver written in c# (uses special input format)`
+ 
+
+ 
