@@ -39,4 +39,4 @@
 `⦿    multi-threaded reverse Shell, coded in python (albanian language)`
 
 _________________________<br>
-_You win or you learn!_
+<i> You win or you learn!<i>
