@@ -1,6 +1,3 @@
-
-# _Hello World_
-
 <a href="https://instagram.com/detajist" title="instapage"><img src="https://img.shields.io/badge/follow-instagram-orange.svg"></a>
 <a href="mailto:shen.i@live.com" title="e-mail"><img src="https://img.shields.io/badge/email-me-blue.svg"></a>
 <a href="https://github.com/jajosheni" title="github Page"><img src="https://img.shields.io/badge/explore-mygithub-red.svg"></a>
