@@ -38,5 +38,5 @@
 <a href="https://github.com/jajosheni/Breshka" title="multi-threaded reverse shell"><img src="https://img.shields.io/badge/Breshka-reverseshell-yellowgreen.svg"></a> **:** <br>
 `⦿    multi-threaded reverse Shell, coded in python (albanian language)`
 
-*===================================*<br>
-`MPL LICENSEs`
+=======================<br>
+_You win or you learn!_
