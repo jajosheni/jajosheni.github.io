@@ -3,9 +3,10 @@
 
 <a href="https://instagram.com/detajist" title="instapage"><img src="https://img.shields.io/badge/follow-instagram-orange.svg"></a>
 <a href="mailto:shen.i@live.com" title="e-mail"><img src="https://img.shields.io/badge/email-me-blue.svg"></a>
+<a href="https://github.com/jajosheni" title="github Page"><img src="https://img.shields.io/badge/explore-mygithub-red.svg"></a>
 
 
-<img width="175" height="175" class="avatar rounded-2" alt="@jajosheni" src="https://avatars2.githubusercontent.com/u/23244572?s=400&amp;u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&amp;v=4">
+<img width="300" height="300" class="avatar rounded-2" alt="@jajosheni" src="https://avatars2.githubusercontent.com/u/23244572?s=400&amp;u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&amp;v=4">
 
 
 ### Projects:
@@ -27,3 +28,15 @@
 
 <a href="https://github.com/jajosheni/dijkstraNavigation" title="shortest path finder"><img src="https://img.shields.io/badge/short-Path-3D5CCD.svg"></a> **:** <br>
 `⦿    Shortest path algorithm for simple navigation application`
+
+<a href="https://github.com/jajosheni/simpleNotepad" title="simple C Notepad"><img src="https://img.shields.io/badge/simple-Notepad-36C136.svg"></a> **:** <br>
+`⦿    Notepad using just the console in C `
+
+<a href="https://github.com/jajosheni/simplePaint" title="simple C Paint"><img src="https://img.shields.io/badge/simple-Paint-36EE36.svg"></a> **:** <br>
+`⦿    simple Paint app using just the console in C `
+
+<a href="https://github.com/jajosheni/Breshka" title="multi-threaded reverse shell"><img src="https://img.shields.io/badge/Breshka-reverseshell-yellowgreen.svg"></a> **:** <br>
+`⦿    multi-threaded reverse Shell, coded in python (albanian language)`
+
+*===================================*
+_**MPL LICENSEs**_
