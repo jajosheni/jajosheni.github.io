@@ -27,7 +27,7 @@
 `》    Notepad using just the console in C `
 
 <a href="https://github.com/jajosheni/simplePaint" title="simple C Paint"><img src="https://img.shields.io/badge/simple-Paint-36EE36.svg"></a> **:** <br>
-`》    simple Paint app using just the console in C `
+`》    simple Paint app using C language`
 
 <a href="https://github.com/jajosheni/stellarisLCD16x2" title="stellaris LCD16x2"><img src="https://img.shields.io/badge/LCD16x2-Stellaris-yellowgreen.svg"></a> **:** <br>
 `》    Source code for LCD 16x2 Stellaris (lm4f120) without libraries`
