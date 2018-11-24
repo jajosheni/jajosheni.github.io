@@ -12,7 +12,7 @@
 `》    Smartly selects who to follow, likes and comments on their posts, and much more.`
 
 <a href="https://jajosheni.github.io/quickTurtle/" title="python Downloader"><img src="https://img.shields.io/badge/quick-Turtle-brightgreen.svg"></a> **:** <br>
-`》    Multi-threaded downloader.`
+`》    Beta multi-threaded file downloader.`
 
 <a href="https://github.com/jajosheni/airlinesMySQL" title="airLine ticket sale"><img src="https://img.shields.io/badge/airline-ticketSale-ff69b4.svg"></a> **:** <br>
 `》    Ticket buying-selling C program associated with MySQL `
