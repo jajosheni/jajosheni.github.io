@@ -1,4 +1,4 @@
-<link rel="icon" href="https://github.com/jajosheni/jajosheni.github.io/blob/master/s.ico">
+<link rel="icon" href="https://raw.githubusercontent.com/jajosheni/jajosheni.github.io/master/s.ico">
 <a href="https://instagram.com/shenihamitaj" title="instapage"><img src="https://img.shields.io/badge/follow-instagram-orange.svg"></a>
 <a href="mailto:shen.i@live.com" title="e-mail"><img src="https://img.shields.io/badge/email-me-blue.svg"></a>
 <a href="https://github.com/jajosheni" title="github Page"><img src="https://img.shields.io/badge/explore-mygithub-red.svg"></a>
