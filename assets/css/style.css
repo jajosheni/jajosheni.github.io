@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Staatliches');
+﻿@import url('https://fonts.googleapis.com/css?family=Staatliches');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 html, body {
@@ -24,7 +24,7 @@ header {
 .main-content{
     max-width: 100%;
     font-size: 100%;
-    width: 60em;
+    width: 50em;
     text-align: justify;
     margin: 2em auto 3em auto;
     line-height: 1.5em;
@@ -47,8 +47,8 @@ header {
 .gitbutton{
     max-width: 100%;
     margin: auto;
-    width: 7em;
-    height: 2em;
+    width: 13.5%;
+    height: 2.2em;
     background-color: #155997;
     color: white;
     border: none;
@@ -59,6 +59,7 @@ header {
     max-width: 100%;
     font-size: 1em;
     font-family: 'Staatliches', serif;
+    letter-spacing: 0.15em;
 }
 
 .horizontal-line{
@@ -74,9 +75,10 @@ header {
 }
 
 .socialbtns{
+    box-sizing: content-box;
     border: none;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
     background-color: transparent;
     padding: 0.4em;
     margin-left: 0.5em;
@@ -87,8 +89,8 @@ header {
 
 .socialbtns:hover{
     max-width: 100%;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .socialbtns:active {
@@ -135,17 +137,18 @@ header {
 
 .projects-list img{
     max-width: 100%;
-    height: 1.4em;
+    height: 1.7em;
     width: auto;
 }
 
 .add-shadow {
     background-color: rgba(230, 230, 230, 0.43);
-    padding: 0.25em;
+    padding: 0.1em 0.25em 0.1em 0.25em;
+    line-height: 2em;
 }
 
 .add-shadow::before{
-    content:"》 ";
+    content:" • ";
 }
 
 .site-footer{
@@ -155,9 +158,9 @@ header {
 }
 
 .site-footer-credits {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5%;
     padding-right : 5px;
     font-family: Staatliches, serif;
+    font-size: 100%;
 }
 
