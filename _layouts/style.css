@@ -4,31 +4,14 @@ html, body {
     height: 100%;
     vertical-align: central;
     background-color: white;
-    font: 13.5px helvetica, arial, clean, sans-serif;
-    text-align: center;
 }
 
 header {
     background: #466368;
     background: linear-gradient(to right bottom, #155997, #159858);
     height: 35%;
+    max-width: 100%;
 }
-
-.header-img{
-    display: inline-block;
-    height: auto;
-    float: inside;
-
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-.contact-header{
-    text-align: left;
-}
-
 
 main{
     font-size: 100%;
@@ -36,6 +19,39 @@ main{
     width: 40em;
     margin: 3em auto 2em auto;
     line-height: 1.5em;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+}
+
+.header-img{
+    max-height:100%;
+    display:block;
+    margin:auto;
+}
+
+.contact-header{
+    text-align: center;
+}
+
+
+.gitbutton{
+    width: 150px;
+    height: 50px;
+    background-color: #155997;
+    color: white;
+    border-radius: 25%;
+}
+
+li{
+    list-style: none;
+}
+
+.projects-list{
+    line-height: 2em;
+    font: 15px "Times New Roman";
 }
 
 .site-footer{

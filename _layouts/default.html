@@ -14,73 +14,90 @@
         gtag('js', new Date());
         gtag('config', '{{ site.google_analytics }}');
     </script>
-    {% endif %} 
+    {% endif %}
 
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/jajosheni/jajosheni.github.io/master/_layouts/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-        <img width=275px length=auto alt="think" class="header-img"
-             src="https://raw.githubusercontent.com/jajosheni/jajosheni.github.io/master/_layouts/newlogo.png"></a>
+    <div class="container">
+    <img alt="think" class="header-img"
+         src="https://raw.githubusercontent.com/jajosheni/jajosheni.github.io/master/_layouts/newlogo.png">
+    </div>
 </header>
 
 <main id="content" class="main-content" role="main">
-    <div class="contact-header">
-        <a href="https://instagram.com/shenihamitaj" title="instapage" rel="nofollow"><img
-                src="https://img.shields.io/badge/follow-instagram-orange.svg" style="max-width:100%;"></a>
-        <a href="mailto:shen.i@live.com" title="e-mail"><img src="https://img.shields.io/badge/email-me-blue.svg"
-                                                             style="max-width:100%;"></a>
-        <a href="https://github.com/jajosheni" title="github Page"><img
-                src="https://img.shields.io/badge/explore-mygithub-red.svg" style="max-width:100%;"></a>
-    </div>
-    <img width="300" height="300" class="avatar rounded-2" alt="@jajosheni" src="https://avatars2.githubusercontent.com/u/23244572?s=400&amp;u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&amp;v=4">
-    <h3>
-        <a id="user-content-projects" class="anchor" href="#projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Projects:
-    </h3>
-    <p><a href="https://jajosheni.github.io/instaBot" title="python InstaBot" rel="nofollow"><img
-            src="https://img.shields.io/badge/python-instaBot-green.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Smartly selects who to follow, likes and comments on their posts, and much more.</code></p>
-    <p><a href="https://jajosheni.github.io/quickTurtle/" title="python Downloader" rel="nofollow"><img
-            src="https://img.shields.io/badge/quick-Turtle-brightgreen.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Beta multi-threaded file downloader.</code></p>
-    <p><a href="https://github.com/jajosheni/airlinesMySQL" title="airLine ticket sale"><img
-            src="https://img.shields.io/badge/airline-ticketSale-ff69b4.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Ticket buying-selling C program associated with MySQL </code></p>
-    <p><a href="https://github.com/jajosheni/Sudoku-Solver" title="sudoku Solver"><img
-            src="https://img.shields.io/badge/sudoku-solver-lightgrey.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 This is a sudoku solver written in c# (uses special input format)</code></p>
-    <p><a href="https://github.com/jajosheni/miniPhotoshop" title="mini Photoshop"><img
-            src="https://img.shields.io/badge/mini-Photoshop-blue.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 This is a simple image editing software</code></p>
-    <p><a href="https://github.com/jajosheni/dijkstraNavigation" title="shortest path finder"><img
-            src="https://img.shields.io/badge/short-Path-3D5CCD.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Shortest path algorithm for simple navigation application</code></p>
-    <p><a href="https://github.com/jajosheni/simpleNotepad" title="simple C Notepad"><img
-            src="https://img.shields.io/badge/simple-Notepad-36C136.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Notepad using just the console in C </code></p>
-    <p><a href="https://github.com/jajosheni/simplePaint" title="simple C Paint"><img
-            src="https://img.shields.io/badge/simple-Paint-36EE36.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 simple Paint app using C language</code></p>
-    <p><a href="https://github.com/jajosheni/stellarisLCD16x2" title="stellaris LCD16x2"><img
-            src="https://img.shields.io/badge/LCD16x2-Stellaris-yellowgreen.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Source code for LCD 16x2 Stellaris (lm4f120) without libraries</code></p>
-    <p><a href="https://github.com/jajosheni/Breshka" title="multi-threaded reverse shell"><img
-            src="https://img.shields.io/badge/Breshka-reverseshell-yellowgreen.svg" style="max-width:100%;"></a>
-        <strong>:</strong> <br>
-        <code>》 Multi-threaded reverse Shell, coded in python (Albanian language)</code></p>
 
+    <div class="contact-header">
+        <img width="150" height="150" class="avatar rounded-2" alt="jajosheni@github"
+             src="https://avatars2.githubusercontent.com/u/23244572?s=400&amp;u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&amp;v=4">
+        <h2>SHENI HAMITAJ</h2>
+        <span>Student @ Kocaeli University</span>
+        <span>Department: Computer Engineering</span>
+        <span>Graduating in 2019</span>
+        <button id="gitbtn" class="gitbutton">GITHUB</button>
+    </div>
+
+    <h3>
+        <span aria-hidden="true" class="projects">Projects:</span>
+    </h3>
+    <div class="projects-list">
+        <li><a href="https://jajosheni.github.io/instaBot" rel="nofollow"><img
+                src="https://img.shields.io/badge/python-instaBot-green.svg" alt="instaBot"></a>
+            <br>
+            <code>Smartly selects who to follow, likes and comments on their posts, and much more.</code>
+        </li>
+        <li><a href="https://jajosheni.github.io/quickTurtle/" rel="nofollow"><img
+                src="https://img.shields.io/badge/quick-Turtle-brightgreen.svg" alt="Downloader"></a>
+            <br>
+            <code>Beta multi-threaded file downloader.</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/airlinesMySQL"><img
+                src="https://img.shields.io/badge/airline-ticketSale-ff69b4.svg"
+                alt="Airline Ticket Sales Software"></a>
+            <br>
+            <code>Ticket buying-selling C program associated with MySQL</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/Sudoku-Solver"><img
+                src="https://img.shields.io/badge/sudoku-solver-lightgrey.svg" alt="Solve sudoku"></a>
+            <br>
+            <code>This is a sudoku solver written in c# (uses special input format)</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/miniPhotoshop"><img
+                src="https://img.shields.io/badge/mini-Photoshop-blue.svg" alt="Image Editor"></a>
+            <br>
+            <code>This is a simple image editing software</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/dijkstraNavigation"><img
+                src="https://img.shields.io/badge/short-Path-3D5CCD.svg" alt="shortest path finder"></a>
+            <br>
+            <code>Shortest path algorithm for simple navigation application</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/simpleNotepad"><img
+                src="https://img.shields.io/badge/simple-Notepad-36C136.svg" alt="simple C Notepad"></a>
+            <br>
+            <code>Notepad using just the console in C</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/simplePaint"><img
+                src="https://img.shields.io/badge/simple-Paint-36EE36.svg" alt="simple C Paint"></a>
+            <br>
+            <code>simple Paint app using C language</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/stellarisLCD16x2"><img
+                src="https://img.shields.io/badge/LCD16x2-Stellaris-yellowgreen.svg" alt="stellaris LCD16x2"></a>
+            <br>
+            <code>Source code for LCD 16x2 Stellaris (lm4f120) without libraries</code>
+        </li>
+        <li><a href="https://github.com/jajosheni/Breshka"><img
+                src="https://img.shields.io/badge/Breshka-reverseshell-yellowgreen.svg"
+                alt="Multi-threaded reverse shell"></a>
+            <br>
+            <code>Multi-threaded reverse Shell, coded in python (Albanian language)</code>
+        </li>
+    </div>
     <footer class="site-footer">
         <span class="site-footer-credits"><i>You win or you learn! © 2019</i></span>
     </footer>
