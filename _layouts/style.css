@@ -1,0 +1,53 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    vertical-align: central;
+    background-color: white;
+    font: 13.5px helvetica, arial, clean, sans-serif;
+    text-align: center;
+}
+
+header {
+    background: #466368;
+    background: linear-gradient(to right bottom, #155997, #159858);
+    height: 35%;
+}
+
+.header-img{
+    display: inline-block;
+    height: auto;
+    float: inside;
+
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.contact-header{
+    text-align: left;
+}
+
+
+main{
+    font-size: 100%;
+    text-align: justify;
+    width: 40em;
+    margin: 3em auto 2em auto;
+    line-height: 1.5em;
+}
+
+.site-footer{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+}
+
+.site-footer-credits {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html>
 <head>
 
     {% if site.google_analytics %}
@@ -15,31 +15,30 @@
         gtag('config', '{{ site.google_analytics }}');
     </script>
     {% endif %}
-    <meta charset="UTF-8">
 
-    {% seo %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<header>
+        <img width=275px length=auto alt="think" class="header-img"
+             src="https://raw.githubusercontent.com/jajosheni/jajosheni.github.io/master/_layouts/newlogo.png"></a>
+</header>
 
 <main id="content" class="main-content" role="main">
-
-    <a href="https://instagram.com/shenihamitaj" title="instapage" rel="nofollow"><img
-            src="https://img.shields.io/badge/follow-instagram-orange.svg" style="max-width:100%;"></a>
-    <a href="mailto:shen.i@live.com" title="e-mail"><img src="https://img.shields.io/badge/email-me-blue.svg"
-                                                         style="max-width:100%;"></a>
-    <a href="https://github.com/jajosheni" title="github Page"><img
-            src="https://img.shields.io/badge/explore-mygithub-red.svg" style="max-width:100%;"></a>
-    <p>
-        <img width=300px length=300px alt="think" src="cover.jpg" style="max-width:100%;"></a></p>
+    <div class="contact-header">
+        <a href="https://instagram.com/shenihamitaj" title="instapage" rel="nofollow"><img
+                src="https://img.shields.io/badge/follow-instagram-orange.svg" style="max-width:100%;"></a>
+        <a href="mailto:shen.i@live.com" title="e-mail"><img src="https://img.shields.io/badge/email-me-blue.svg"
+                                                             style="max-width:100%;"></a>
+        <a href="https://github.com/jajosheni" title="github Page"><img
+                src="https://img.shields.io/badge/explore-mygithub-red.svg" style="max-width:100%;"></a>
+    </div>
+    <img width="300" height="300" class="avatar rounded-2" alt="@jajosheni" src="https://avatars2.githubusercontent.com/u/23244572?s=400&amp;u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&amp;v=4">
     <h3>
-        <a id="user-content-projects" class="anchor" href="#projects" aria-hidden="true"><span aria-hidden="true"
-                                                                                               class="octicon octicon-link"></span></a>Projects:
+        <a id="user-content-projects" class="anchor" href="#projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Projects:
     </h3>
     <p><a href="https://jajosheni.github.io/instaBot" title="python InstaBot" rel="nofollow"><img
             src="https://img.shields.io/badge/python-instaBot-green.svg" style="max-width:100%;"></a>
@@ -80,13 +79,12 @@
     <p><a href="https://github.com/jajosheni/Breshka" title="multi-threaded reverse shell"><img
             src="https://img.shields.io/badge/Breshka-reverseshell-yellowgreen.svg" style="max-width:100%;"></a>
         <strong>:</strong> <br>
-        <code>》 multi-threaded reverse Shell, coded in python (albanian language)</code></p>
-    <p>___________________________<br>
-        <i> You win or you learn!<i></i></i></p>
+        <code>》 Multi-threaded reverse Shell, coded in python (Albanian language)</code></p>
 
     <footer class="site-footer">
-        <span class="site-footer-credits"> © 2019 </span>
+        <span class="site-footer-credits"><i>You win or you learn! © 2019</i></span>
     </footer>
 </main>
+
 </body>
 </html>
