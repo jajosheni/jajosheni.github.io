@@ -16,7 +16,7 @@ header {
     text-align: center;
 }
 
-.container{
+.header-container{
     height: 100%;
     width: 100%;
 }
@@ -25,10 +25,8 @@ header {
     max-width: 100%;
     font-size: 100%;
     text-align: justify;
-    width: 40em;
     margin: 2em auto 3em auto;
     line-height: 1.5em;
-
 }
 
 .header-img{
@@ -112,22 +110,13 @@ header {
     background-image: url("../socialmediaicons/linkedin.png");
 }
 
-.projects-list{
-    margin-left: 5px;
-    margin-right: 5px;
-    font: 15px "Quicksand", serif;
+.projects-container{
+    width:40em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.add-shadow {
-    background-color: rgba(230, 230, 230, 0.43);
-    padding: 4px;
-}
-
-.add-shadow::before{
-    content:"》 ";
-}
-
-.projects{
+.projects-headline{
     padding-left: 5px;
     font-family: "Staatliches", serif;
     letter-spacing: 1px;
@@ -139,8 +128,27 @@ header {
     font-size: 25px;
 }
 
+.projects-list{
+    margin-left: 5px;
+    margin-right: 5px;
+    font: 15px "Quicksand", serif;
+}
+
+.projects-list img{
+    max-width: 100%;
+}
+
+.add-shadow {
+    background-color: rgba(230, 230, 230, 0.43);
+    padding: 4px;
+}
+
+.add-shadow::before{
+    content:"》 ";
+}
+
 .site-footer{
-    text-align: right;
+    text-align: center;
     height: 1px;
     border-top: 1px solid #ccc;
 }
@@ -149,5 +157,7 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right : 5px;
+    font-family: Staatliches, Serif;
+    letter-spacing: 2px;
 }
 
