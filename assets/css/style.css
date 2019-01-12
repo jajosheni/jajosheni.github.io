@@ -58,7 +58,7 @@ a:active {
 }
 .contact-header{
     text-align: center;
-    font-size: 14px;
+    font-size: 1em;
     font-family: 'Quicksand', serif;
 }
 
@@ -68,7 +68,7 @@ a:active {
 }
 
 .social-media-container{
-    width: 180px;
+    width: 15em;
     margin-right: auto;
     margin-left: auto;
 }
@@ -82,8 +82,8 @@ a:active {
     background-color: #159858;
     color: white;
     border: none;
-    border-radius: 14px;
-    min-height: 28px;
+    border-radius: 1em;
+    min-height: 2em;
 }
 
 .gitbutton:hover{
@@ -160,8 +160,8 @@ a:active {
 .projects-headline{
     padding-left: 0.5em;
     font-family: "Staatliches", serif;
-    letter-spacing: 1px;
-    font-size: 20px;
+    letter-spacing: 0.1em;
+    font-size: 1.2em;
     color: #2087e5;
 }
 
@@ -194,18 +194,19 @@ a:active {
 }
 
 .footer-horizontal-line{
-    color: rgba(131, 130, 135, 0.52);
     height: 1px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #eaeaea;
 }
 
 .site-footer-credits {
+    margin-top: -0.1em;
     text-align: center;
-    width: 230px;
-    color: #2086e4;
+    width: 12em;
+    color: gray;
+    background-color: #eaeaea;
     margin-left: auto;
     margin-right: auto;
     font-family: Staatliches, serif;
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
