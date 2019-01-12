@@ -67,17 +67,31 @@ a:active {
     color: #212121;
 }
 
+.social-media-container{
+    width: 180px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .gitbutton{
     display: block;
     max-width: 100%;
     margin: auto;
     width: 9.0em;
     height: 2.2em;
-    background-color: #155997;
+    background-color: #159858;
     color: white;
     border: none;
     border-radius: 14px;
     min-height: 28px;
+}
+
+.gitbutton:hover{
+    background-color: #2087e5;
+}
+
+.gitbutton:active{
+    background-color: #155997;
 }
 
 .button-text{
@@ -95,6 +109,7 @@ a:active {
 }
 
 .social-media-icons{
+    display: inline-block;
     max-width: 100%;
     margin: auto;
 }
@@ -147,7 +162,7 @@ a:active {
     font-family: "Staatliches", serif;
     letter-spacing: 1px;
     font-size: 20px;
-    color: #155997;
+    color: #2087e5;
 }
 
 .big-p{
@@ -165,7 +180,7 @@ a:active {
     max-width: 100%;
     height: 1.5em;
     width: auto;
-    min-height: 25px;
+    min-height: 1.5em;
 }
 
 .add-shadow {
@@ -178,16 +193,19 @@ a:active {
     content:" • ";
 }
 
-.site-footer{
-    text-align: center;
+.footer-horizontal-line{
+    color: rgba(131, 130, 135, 0.52);
     height: 1px;
     border-top: 1px solid #ccc;
 }
 
 .site-footer-credits {
-    padding-top: 5%;
-    padding-right : 5px;
+    text-align: center;
+    width: 230px;
+    color: #2086e4;
+    margin-left: auto;
+    margin-right: auto;
     font-family: Staatliches, serif;
-    font-size: 100%;
+    font-size: 1.25em;
 }
 
