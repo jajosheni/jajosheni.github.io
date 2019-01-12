@@ -71,15 +71,16 @@ a:active {
     width: 15em;
     margin-right: auto;
     margin-left: auto;
+    margin: 0em auto 1em auto;
 }
 
 .gitbutton{
     display: block;
     max-width: 100%;
     margin: auto;
-    width: 9.0em;
+    width: 8.0em;
     height: 2.2em;
-    background-color: #159858;
+    background-color: #2087e5;
     color: white;
     border: none;
     border-radius: 1em;
@@ -87,7 +88,7 @@ a:active {
 }
 
 .gitbutton:hover{
-    background-color: #2087e5;
+    background-color: #159858;
 }
 
 .gitbutton:active{
@@ -102,7 +103,7 @@ a:active {
 }
 
 .horizontal-line{
-    margin: 1em auto 1em auto;
+    margin: 1em auto 0.2em auto;
     border-bottom: 1px solid #ccc;
     width: 9em;
     text-align: center;
@@ -111,14 +112,13 @@ a:active {
 .social-media-icons{
     display: inline-block;
     max-width: 100%;
-    margin: auto;
 }
 
 .socialbtns{
     box-sizing: content-box;
     border: none;
-    width: 1em;
-    height: 1em;
+    width: 0.6em;
+    height: 0.6em;
     background-color: transparent;
     padding: 0.4em;
     margin-left: 0.5em;
@@ -129,8 +129,8 @@ a:active {
 
 .socialbtns:hover{
     max-width: 100%;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
 }
 
 .socialbtns:active {
