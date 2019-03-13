@@ -10,16 +10,22 @@ html, body {
 
 header {
     background: #466368;
-    background: linear-gradient(to right bottom, #155997, #159858);
-    height: 22%;
+    background: linear-gradient(to right bottom, rgba(0, 255, 243, 0.3), #21c045);
+    height: 3px;
     max-width: 100%;
-    min-height: 11em;
     text-align: center;
 }
 
 .header-container{
     height: 100%;
     width: 100%;
+    display:none;
+}
+
+.avatar.rounded-2{
+    border: none;
+    border-radius: 100%;
+    width: 150px;
 }
 
 a{
@@ -58,6 +64,7 @@ a:active {
     max-height:90%;
 }
 .contact-header{
+    padding-bottom: 3em;
     text-align: center;
     font-size: 1em;
     font-family: 'Quicksand', serif;
@@ -72,7 +79,6 @@ a:active {
     width: 15em;
     margin-right: auto;
     margin-left: auto;
-    margin: 0em auto 1em auto;
 }
 
 .gitbutton{
@@ -90,6 +96,7 @@ a:active {
 
 .gitbutton:hover{
     background-color: #159858;
+    transition: all 1s;
 }
 
 .gitbutton:active{
@@ -113,6 +120,9 @@ a:active {
 .social-media-icons{
     display: inline-block;
     max-width: 100%;
+    position: absolute;
+    left:0;
+    right:0;
 }
 
 .socialbtns{
@@ -132,6 +142,7 @@ a:active {
     max-width: 100%;
     width: 1em;
     height: 1em;
+    transition: all .15s;
 }
 
 .socialbtns:active {
@@ -171,8 +182,7 @@ a:active {
 }
 
 .projects-list{
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin: 1em 0.5em auto 0.5em;
     font: 1em "Quicksand", serif;
 }
 
