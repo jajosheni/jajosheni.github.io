@@ -1,133 +1,84 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132431356-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-132431356-1');
     </script>
 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.00, user-scalable=noZ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.00, user-scalable=no">
     <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
-    <meta name="KEYWORDS" content="sheni,hamitaj,personal,site,developer,python,c,freelance,photographer,designer,tirana,albania,istanbul,turkey,github,pages">
+    <meta name="KEYWORDS"
+          content="sheni,hamitaj,personal,site,developer,python,c,photographer,designer,tirana,albania,istanbul,turkey,github,pages">
     <meta name="DESCRIPTION" content="Student of Computer Engineering @ Kocaeli University">
     <link href="" rel="shortcut icon" type="favicon.ico">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/grid.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="../assets/js/script.js"></script>
 
     <title>Sheni&#39;s | A story of struggling to be better</title>
+
 </head>
-
 <body>
+<header></header>
 
-<header>
-    <div class="header-container">
-        <img alt="think" class="header-img"
-             src="../assets/newlogo.png">
-    </div>
-</header>
+<main role="main">
 
-<main id="content" class="main-content" role="main">
+    <div class="row">
+        <div class="col-12">
+            <div class="contact-header">
+                <img class="avatar rounded-2" alt="jajosheni@github"
+                     src="https://avatars2.githubusercontent.com/u/23244572?s=400&u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&v=4">
+                <span class="myname"><h1>SHENI HAMITAJ</h1></span>
+                <p>Student @ Kocaeli University</p>
+                <p>Department: Computer Engineering</p>
+                <p>Graduating in 2019</p>
 
-    <div class="contact-header">
-        <img class="avatar rounded-2" alt="jajosheni@github"
-             src="https://avatars2.githubusercontent.com/u/23244572?s=400&u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&v=4">
-        <span class="myname"><h1>SHENI HAMITAJ</h1></span>
-        <p>Student @ Kocaeli University</p>
-        <p>Department: Computer Engineering</p>
-        <p>Graduating in 2019</p>
+                <div class="social-media-container">
+                    <a href="http://github.com/jajosheni" target="_blank">
+                        <button id="gitbtn" class="gitbutton"><span class="button-text">GITHUB PAGE</span></button>
+                    </a>
+                    <div class="horizontal-line"></div>
 
-        <div class="social-media-container">
-            <a href="http://github.com/jajosheni" target="_blank">
-                <button id="gitbtn" class="gitbutton"><span class="button-text">GITHUB PAGE</span></button>
-            </a>
-            <div class="horizontal-line"></div>
-
-            <div class="social-media-icons">
-                <a href="https://www.instagram.com/detajist" target="_blank">
-                    <button id="instabtn" class="socialbtns"></button>
-                </a>
-                <a href="https://www.facebook.com/SeRiaLzZ" target="_blank">
-                    <button id="facebtn" class="socialbtns"></button>
-                </a>
-                <a href="https://500px.com/shenihamitaj" target="_blank">
-                    <button id="pxbtn" class="socialbtns"></button>
-                </a>
-                <a href="https://www.linkedin.com/in/shenihamitaj/" target="_blank">
-                    <button id="inbtn" class="socialbtns"></button>
-                </a>
+                    <div class="social-media-icons">
+                        <a href="https://www.instagram.com/detajist" target="_blank">
+                            <button id="instabtn" class="socialbtns"></button>
+                        </a>
+                        <a href="https://www.facebook.com/SeRiaLzZ" target="_blank">
+                            <button id="facebtn" class="socialbtns"></button>
+                        </a>
+                        <a href="https://500px.com/shenihamitaj" target="_blank">
+                            <button id="pxbtn" class="socialbtns"></button>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shenihamitaj/" target="_blank">
+                            <button id="inbtn" class="socialbtns"></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="headproject-container">
+                <span class="headproject">PROJECTS</span>
             </div>
         </div>
     </div>
 
-    <span aria-hidden="true" class="projects-headline"><span class="big-p">P</span>ROJECTS:</span>
-
-    <div class="projects-list">
-        <p><a href="https://jajosheni.github.io/instaBot"><img
-                src="https://img.shields.io/badge/python-instaBot-green.svg" alt="instaBot">
-
-            <span class="add-shadow">Smartly selects who to follow, likes and comments on their posts, and much more.</span></a>
-        </p>
-        <p><a href="https://jajosheni.github.io/quickTurtle/"><img
-                src="https://img.shields.io/badge/quick-Turtle-brightgreen.svg" alt="Downloader">
-
-            <span class="add-shadow">Beta multi-threaded file downloader.</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/airlinesMySQL" target="_blank"><img
-                src="https://img.shields.io/badge/airline-ticketSale-ff69b4.svg"
-                alt="Airline Ticket Sales Software">
-
-            <span class="add-shadow">Ticket buying-selling C program associated with MySQL</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/Sudoku-Solver" target="_blank"><img
-                src="https://img.shields.io/badge/sudoku-solver-lightgrey.svg" alt="Solve sudoku">
-
-            <span class="add-shadow">This is a sudoku solver written in c# (uses special input format)</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/miniPhotoshop" target="_blank"><img
-                src="https://img.shields.io/badge/mini-Photoshop-blue.svg" alt="Image Editor">
-
-            <span class="add-shadow">This is a simple image editing software</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/dijkstraNavigation" target="_blank"><img
-                src="https://img.shields.io/badge/short-Path-3D5CCD.svg" alt="shortest path finder">
-
-            <span class="add-shadow">Shortest path algorithm for simple navigation application</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/simpleNotepad" target="_blank"><img
-                src="https://img.shields.io/badge/simple-Notepad-36C136.svg" alt="simple C Notepad">
-
-            <span class="add-shadow">Notepad using just the console in C</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/simplePaint" target="_blank"><img
-                src="https://img.shields.io/badge/simple-Paint-36EE36.svg" alt="simple C Paint">
-
-            <span class="add-shadow">simple Paint app using C language</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/stellarisLCD16x2" target="_blank"><img
-                src="https://img.shields.io/badge/LCD16x2-Stellaris-yellowgreen.svg" alt="stellaris LCD16x2">
-
-            <span class="add-shadow">Source code for LCD 16x2 Stellaris (lm4f120) without libraries</span></a>
-        </p>
-        <p><a href="https://github.com/jajosheni/Breshka" target="_blank"><img
-                src="https://img.shields.io/badge/Breshka-reverseshell-yellowgreen.svg"
-                alt="Multi-threaded reverse shell">
-
-            <span class="add-shadow">Multi-threaded reverse Shell, coded in python (Albanian language)</span></a>
-        </p>
-    </div>
-
-    <footer>
-        <div class="footer-horizontal-line"></div>
-        <div class="site-footer-credits">You win or you learn! © 2019</div>
-    </footer>
-
 </main>
 
+<footer>
+    <div class="footer-horizontal-line"></div>
+    <div class="site-footer-credits">You win or you learn! © 2019</div>
+</footer>
 </body>
 </html>
