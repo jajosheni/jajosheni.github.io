@@ -1,5 +1,12 @@
 {
   "items": [
+	{
+      "name": "Coming soon...",
+      "url": "#",
+      "img": "../assets/sitepics/newsletter.png",
+      "img_alt": "Iliria Newsletter Server",
+      "desc": "Digital Newsletter, node&expressJS + MongoDB server"
+    },
     {
       "name": "instaBot",
       "url": "https://jajosheni.github.io/instaBot",
