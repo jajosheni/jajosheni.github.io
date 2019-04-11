@@ -8,6 +8,10 @@ html, body {
     min-width: 315px;
 }
 
+.hidden{
+    display: none;
+}
+
 header {
     background: #466368;
     background: linear-gradient(to right bottom, rgba(0, 255, 243, 0.3), #21c045);
