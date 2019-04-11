@@ -236,6 +236,21 @@ a:active {
     border-top: 1px solid #eaeaea;
 }
 
+.footer-links{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.files-link{
+    margin: -0.1em auto 0.2em auto ;
+    text-align: center;
+    width: 12em;
+    color: gray;
+    background-color: #eaeaea;
+    font-family: Staatliches, serif;;
+}
+
 .site-footer-credits {
     margin: -0.1em auto 0.2em auto ;
     text-align: center;
