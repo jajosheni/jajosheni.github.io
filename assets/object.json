@@ -1,8 +1,15 @@
 {
   "items": [
 	{
-      "name": "Coming soon...",
-      "url": "#",
+      "name": "Iliria Mobile App",
+      "url": "https://github.com/jajosheni/iliria-mobile/",
+      "img": "../assets/sitepics/mobileapp.png",
+      "img_alt": "Iliria Newsletter Mobile App",
+      "desc": "Cross Platform Digital newsletter mobile app"
+    },
+	{
+      "name": "Iliria Server",
+      "url": "https://github.com/jajosheni/newsletter-server",
       "img": "../assets/sitepics/newsletter.png",
       "img_alt": "Iliria Newsletter Server",
       "desc": "Digital Newsletter, node&expressJS + MongoDB server"
