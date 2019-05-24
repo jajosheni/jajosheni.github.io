@@ -198,7 +198,7 @@ a:active {
 .name{
     color: white;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding: 10px;
     font-family: Staatliches, serif;
     position: absolute;
@@ -267,14 +267,14 @@ a:active {
 @media only screen and (max-width: 640px) {
     .card-info {
         position: absolute;
-        top: 70%;
+        top: 60%;
+        height: 40%;
         left: 0;
         right: 0;
         background: rgba(0, 0, 0, 0.5);
         overflow: hidden;
         font-size: 16px;
         width: 100%;
-        height: 30%;
     }
 
     .project:hover .card-info{
@@ -290,22 +290,17 @@ a:active {
 
     .description{
         font-family: Quicksand, serif;
-        opacity: 0;
+        opacity: 1;
         position: absolute;
         bottom:1%;
         padding-bottom: 0;
-    }
-
-    .project:hover .description{
-        opacity: 1;
-        transition: 0.5s ease-in;
     }
 }
 
 @media only screen and (min-width: 400px) and (max-width: 640px) {
     .description{
         font-family: Quicksand, serif;
-        opacity: 0;
+        opacity: 1;
         position: absolute;
         bottom:20%;
         padding-bottom: 0;
