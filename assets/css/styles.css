@@ -198,7 +198,7 @@ a:active {
 .name{
     color: white;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.2em;
     padding: 10px;
     font-family: Staatliches, serif;
     position: absolute;
@@ -283,6 +283,7 @@ a:active {
     }
 
     .name{
+        font-size: 1.1em;
         top: 20%;
         left: 50%;
         transform: translate(-50%,-50%);
