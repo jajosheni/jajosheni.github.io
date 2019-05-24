@@ -1,5 +1,19 @@
 {
   "items": [
+    {
+      "name": "Lily The Explorer",
+      "url": "https://github.com/jajosheni/LilyTheExplorer",
+      "img": "../assets/sitepics/lilytheexplorer.png",
+      "img_alt": "Mobile app linked with Cloud Lily",
+      "desc": "Mobile app for showing campaigns nearby"
+    },
+    {
+    "name": "Cloud Lily",
+    "url": "https://github.com/jajosheni/cloudLily",
+    "img": "../assets/sitepics/cloudlily.png",
+    "img_alt": "Image: Cloud girl by Dánika Vasquez Solsol",
+    "desc": "Simple cloud server, node&expressJS + MongoDB server"
+    },
 	{
       "name": "Iliria Mobile App",
       "url": "https://github.com/jajosheni/iliria-mobile/",
