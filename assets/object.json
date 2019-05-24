@@ -14,6 +14,20 @@
     "img_alt": "Image: Cloud girl by Dánika Vasquez Solsol",
     "desc": "Simple cloud server, node&expressJS + MongoDB server"
     },
+    {
+      "name": "Handwritten Character Recognition",
+      "url": "https://github.com/jajosheni/handwritten-character-recognition",
+      "img": "../assets/sitepics/ocr.png",
+      "img_alt": "Handwritten character recognition in matlab",
+      "desc": "Handwritten character recognition in Matlab"
+    },
+    {
+      "name": "4Bit SBox - Cryptography",
+      "url": "https://github.com/jajosheni/4bit-sbox-LAT-DDT",
+      "img": "../assets/sitepics/sbox.png",
+      "img_alt": "Cryptography AES",
+      "desc": "Sbox is the core of AES"
+    },
 	{
       "name": "Iliria Mobile App",
       "url": "https://github.com/jajosheni/iliria-mobile/",
