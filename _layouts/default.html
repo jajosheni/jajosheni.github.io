@@ -1,86 +1,392 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132431356-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-132431356-1');
-    </script>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.00, user-scalable=no">
-    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="KEYWORDS"
           content="sheni,hamitaj,personal,site,developer,python,c,photographer,designer,tirana,albania,istanbul,turkey,github,pages">
-    <meta name="DESCRIPTION" content="Student of Computer Engineering @ Kocaeli University">
-    <meta name="expires" content="mon, 23 Mar 2020">
-    <meta http-equiv="expires" content="mon, 23 Mar 2020">
+    <meta name="DESCRIPTION" content="Personal Site of Sheni Hamitaj">
+    <title>Sheni Hamitaj | GitFolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="icon" href="https://avatars2.githubusercontent.com/u/23244572?v=4" type="image/png"></head>
 
-    <link href="" rel="shortcut icon" type="favicon.ico">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/css/grid.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-
-    <title>Sheni Hamitaj | Personal Site</title>
-
-</head>
 <body>
-<header></header>
-<main role="main">
-
-    <div class="row">
-        <div class="col-12">
-            <div class="contact-header">
-                <img class="avatar rounded-2" alt="jajosheni@github"
-                     src="https://avatars2.githubusercontent.com/u/23244572?s=160&u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&v=4">
-                <span class="myname"><h1>SHENI HAMITAJ</h1></span>
-                <p>Robotics Developer @ AI Lab</p>
-                <p>Kocaeli University</p>
-
-                <div class="social-media-container">
-                    <a href="http://github.com/jajosheni" target="_blank">
-                        <button id="gitbtn" class="gitbutton"><span class="button-text">GITHUB PAGE</span></button>
-                    </a>
-
-                    <div class="horizontal-line"></div>
-
-
-                    <div class="social-media-icons">
-                        <a href="https://www.instagram.com/detajist" target="_blank">
-                            <button id="instabtn" class="socialbtns"></button>
-                        </a>
-                        <a href="https://www.facebook.com/SeRiaLzZ" target="_blank">
-                            <button id="facebtn" class="socialbtns"></button>
-                        </a>
-                        <a href="https://500px.com/shenihamitaj" target="_blank">
-                            <button id="pxbtn" class="socialbtns"></button>
-                        </a>
-                        <a href="https://www.linkedin.com/in/shenihamitaj/" target="_blank">
-                            <button id="inbtn" class="socialbtns"></button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="headproject-container">
-                <span class="headproject">PROJECTS</span>
-            </div>
+<div id="loading">
+    <div id="spinner"></div>
+</div>
+<div id="profile">
+    <div id="profile_img" style="background: url(https://avatars2.githubusercontent.com/u/23244572?v=4) center;"></div>
+    <div id="username"><span style="display:block;">Sheni Hamitaj</span><a href="https://github.com/jajosheni">@jajosheni</a></div>
+    <div id="userbio" style="display: block;">Currently into Robotics</div>
+    <div id="about">
+        <span style="display:none;"><i class="fas fa-users"></i> &nbsp; null</span>
+        <span style="display:none;"><i class="fas fa-envelope"></i> &nbsp; null</span>
+        <span style="display:block;"><i class="fas fa-link"></i> &nbsp; <a href="http://shenihamitaj.me">http://shenihamitaj.me</a></span>
+        <span style="display:block;"><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp; Matrix</span>
+        <span style="display:block;"><i class="fas fa-user-tie"></i> &nbsp;&nbsp; Available for hire</span>
+        <div class="socials">
+            <span style="display:none !important;"><a href="https://www.twitter.com/null" target="_blank" class="socials"><i class="fab fa-twitter"></i></a></span>
+            <span style="display:none !important;"><a href="https://www.dribbble.com/null" target="_blank" class="socials"><i class="fab fa-dribbble"></i></a></span>
+            <span style="display:none !important;"><a href="https://www.linkedin.com/in/null/" target="_blank" class="socials"><i class="fab fa-linkedin-in"></i></a></span>
+            <span style="display:none !important;"><a href="https://www.medium.com/@null/" target="_blank" class="socials"><i class="fab fa-medium-m"></i></a></span>
         </div>
     </div>
-</main>
-<!-- Scripts -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/script.js"></script>
-<footer>
-    <div class="footer-horizontal-line"></div>
-    <div class="site-footer-credits">You win or you learn! © 2019</div>
-</footer>
+</div>
+<div id="display">
+    <div id="work">
+        <h1>Work.</h1>
+        <div class="projects" id="work_section">
+            <a href="https://github.com/jajosheni/jajosheni.github.io" target="_blank">
+                <section>
+                    <div class="section_title">jajosheni.github.io</div>
+                    <div class="about_section">
+                        <span style="display:block;">Daydreamin'</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; CSS</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/miniPhotoshop" target="_blank">
+                <section>
+                    <div class="section_title">miniPhotoshop</div>
+                    <div class="about_section">
+                        <span style="display:block;">Simple photo editor</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C#</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/instaBot" target="_blank">
+                <section>
+                    <div class="section_title">instaBot</div>
+                    <div class="about_section">
+                        <span style="display:block;">InstaBot written in python. Smartly selects who to follow, likes and comments on their posts, and much more. </span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 1</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/rl-birdie" target="_blank">
+                <section>
+                    <div class="section_title">rl-birdie</div>
+                    <div class="about_section">
+                        <span style="display:block;">React JS, flappy bird reinforcement learning play</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/cloudLily" target="_blank">
+                <section>
+                    <div class="section_title">cloudLily</div>
+                    <div class="about_section">
+                        <span style="display:block;">{Node, Express}JS cloud server for saving adverts and creating/authenticating users.</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/LilyTheExplorer" target="_blank">
+                <section>
+                    <div class="section_title">LilyTheExplorer</div>
+                    <div class="about_section">
+                        <span style="display:block;">A cloud app to show campaigns based on user's preferences.</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Java</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/4bit-sbox-LAT-DDT" target="_blank">
+                <section>
+                    <div class="section_title">4bit-sbox-LAT-DDT</div>
+                    <div class="about_section">
+                        <span style="display:block;">Homework</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/newsletter-server" target="_blank">
+                <section>
+                    <div class="section_title">newsletter-server</div>
+                    <div class="about_section">
+                        <span style="display:block;">{Node, Express}JS server for saving/changing/deleting articles to the mongoDB database.</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/handwritten-character-recognition" target="_blank">
+                <section>
+                    <div class="section_title">handwritten-character-recognition</div>
+                    <div class="about_section">
+                        <span style="display:block;">A piece of software to recognize handwritten capital characters.</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; MATLAB</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/airlinesMySQL" target="_blank">
+                <section>
+                    <div class="section_title">airlinesMySQL</div>
+                    <div class="about_section">
+                        <span style="display:block;">Ticket buying-selling C program associated with MySQL</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/thinkful_frontend" target="_blank">
+                <section>
+                    <div class="section_title">thinkful_frontend</div>
+                    <div class="about_section">
+                        <span style="display:block;">thinkful course files</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/iliria-mobile" target="_blank">
+                <section>
+                    <div class="section_title">iliria-mobile</div>
+                    <div class="about_section">
+                        <span style="display:block;">Cross Platform Digital newsletter mobile application</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/simpleNotepad" target="_blank">
+                <section>
+                    <div class="section_title">simpleNotepad</div>
+                    <div class="about_section">
+                        <span style="display:block;">Notepad using linked Lists</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/encryption-gist" target="_blank">
+                <section>
+                    <div class="section_title">encryption-gist</div>
+                    <div class="about_section">
+                        <span style="display:none;">undefined</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 2</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/puzzleGame" target="_blank">
+                <section>
+                    <div class="section_title">puzzleGame</div>
+                    <div class="about_section">
+                        <span style="display:block;">Puzzle game on javascript, expressjs based server</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 1</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/Sudoku-Solver" target="_blank">
+                <section>
+                    <div class="section_title">Sudoku-Solver</div>
+                    <div class="about_section">
+                        <span style="display:block;">This is a sudoku solver written in c#</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C#</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/quickTurtle" target="_blank">
+                <section>
+                    <div class="section_title">quickTurtle</div>
+                    <div class="about_section">
+                        <span style="display:block;">Multi-threaded Downloader</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/stellarisLCD16x2" target="_blank">
+                <section>
+                    <div class="section_title">stellarisLCD16x2</div>
+                    <div class="about_section">
+                        <span style="display:block;">Source code for LCD 16x2 Stellaris (lm4f120) without libraries</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/dijkstraNavigation" target="_blank">
+                <section>
+                    <div class="section_title">dijkstraNavigation</div>
+                    <div class="about_section">
+                        <span style="display:block;">Dijkstra's Algorithm on a simple navigation application</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C++</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/simplePaint" target="_blank">
+                <section>
+                    <div class="section_title">simplePaint</div>
+                    <div class="about_section">
+                        <span style="display:block;">Paint application using graphics.h in C Programming</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C++</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a>
+            <a href="https://github.com/jajosheni/Breshka" target="_blank">
+                <section>
+                    <div class="section_title">Breshka</div>
+                    <div class="about_section">
+                        <span style="display:block;">Reverse Shell</span>
+                    </div>
+                    <div class="bottom_section">
+                        <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
+                        <span><i class="fas fa-star"></i>&nbsp; 0</span>
+                        <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
+                    </div>
+                </section>
+            </a></div>
+    </div>
+    <div id="forks" style="display:none;">
+        <h1>Forks.</h1>
+        <div class="projects" id="forks_section"></div>
+    </div>
+    <div id="blog_section">
+        <h1>Blog.</h1>
+        <div id="blogs"></div>
+    </div>
+    <div id="footer">
+        <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
+    </div>
+</div>
+<script type="text/javascript">
+    setTimeout(function() {
+        document.getElementById("loading").classList.add("animated");
+        document.getElementById("loading").classList.add("fadeOut");
+        setTimeout(function() {
+            document.getElementById("loading").classList.remove("animated");
+            document.getElementById("loading").classList.remove("fadeOut");
+            document.getElementById("loading").style.display = "none";
+        }, 800);
+    }, 1500);
+    $.getJSON("blog.json", function(blog) {
+        blog = blog || [];
+        if (blog.length == 0) {
+            return (document.getElementById("blog_section").style.display =
+                "none");
+        }
+        for (var i = 0; i < blog.length; i++) {
+            $("#blogs").append(`
+            <a href="./blog/${blog[i].url_title}/" target="_blank">
+                <section>
+                    <img src="./blog/${blog[i].url_title}/${blog[i].top_image}">
+                    <div class="blog_container">
+                        <div class="section_title">${blog[i].title}</div>
+                        <div class="about_section">
+                            ${blog[i].sub_title}
+                        </div>
+                    </div>
+                </section>
+            </a>
+            `);
+        }
+    }).fail(function() {
+        return (document.getElementById("blog_section").style.display = "none");
+    });
+</script>
 
-</body>
-</html>
+<script>
+    const magicProjectsGrid = new MagicGrid({
+        container: "#work_section",
+        animate: false,
+        gutter: 30, // default gutter size
+        static: true,
+        useMin: false,
+        maxColumns: 2,
+        useTransform: true
+    });
+
+    const magicForksGrid = new MagicGrid({
+        container: "#forks_section",
+        animate: false,
+        gutter: 30, // default gutter size
+        static: true,
+        useMin: false,
+        maxColumns: 2,
+        useTransform: true
+    });
+
+    $("document").ready(() => {
+        magicProjectsGrid.listen();
+        magicForksGrid.listen();
+    });
+</script>
+
+
+</body></html>

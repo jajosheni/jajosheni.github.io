@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132431356-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-132431356-1');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.00, user-scalable=no">
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta name="KEYWORDS"
+          content="sheni,hamitaj,personal,site,developer,python,c,photographer,designer,tirana,albania,istanbul,turkey,github,pages">
+    <meta name="DESCRIPTION" content="Student of Computer Engineering @ Kocaeli University">
+    <meta name="expires" content="mon, 23 Mar 2020">
+    <meta http-equiv="expires" content="mon, 23 Mar 2020">
+
+    <link href="" rel="shortcut icon" type="favicon.ico">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/grid.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <title>Sheni Hamitaj | Personal Site</title>
+
+</head>
+<body>
+<header></header>
+<main role="main">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="contact-header">
+                <img class="avatar rounded-2" alt="jajosheni@github"
+                     src="https://avatars2.githubusercontent.com/u/23244572?s=160&u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&v=4">
+                <span class="myname"><h1>SHENI HAMITAJ</h1></span>
+                <p>Robotics Developer @ AI Lab</p>
+                <p>Kocaeli University</p>
+
+                <div class="social-media-container">
+                    <a href="http://github.com/jajosheni" target="_blank">
+                        <button id="gitbtn" class="gitbutton"><span class="button-text">GITHUB PAGE</span></button>
+                    </a>
+
+                    <div class="horizontal-line"></div>
+
+
+                    <div class="social-media-icons">
+                        <a href="https://www.instagram.com/detajist" target="_blank">
+                            <button id="instabtn" class="socialbtns"></button>
+                        </a>
+                        <a href="https://www.facebook.com/SeRiaLzZ" target="_blank">
+                            <button id="facebtn" class="socialbtns"></button>
+                        </a>
+                        <a href="https://500px.com/shenihamitaj" target="_blank">
+                            <button id="pxbtn" class="socialbtns"></button>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shenihamitaj/" target="_blank">
+                            <button id="inbtn" class="socialbtns"></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="headproject-container">
+                <span class="headproject">PROJECTS</span>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Scripts -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/script.js"></script>
+<footer>
+    <div class="footer-horizontal-line"></div>
+    <div class="site-footer-credits">You win or you learn! © 2019</div>
+</footer>
+
+</body>
+</html>
