@@ -1,86 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132431356-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-132431356-1');
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.00, user-scalable=no">
     <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
-    <meta name="KEYWORDS"
-          content="sheni,hamitaj,personal,site,developer,python,c,photographer,designer,tirana,albania,istanbul,turkey,github,pages">
-    <meta name="DESCRIPTION" content="Sheni Hamitaj Personal Site">
-    <meta name="expires" content="mon, 23 Mar 2021">
+    <meta name="KEYWORDS" content="sheme,hamitaj,personal,site,developer,
+                                   web,desktop,mobile,fast,reliable,resume,
+                                   tirana,albania,github,pages,shqiperi,
+                                   faqe,personale,tirane,zhvillues,programues,
+                                   programe,profesional,sherbim,software">
+    <meta name="DESCRIPTION" content="Sheme Hamitaj's Personal Site">
 
     <link href="" rel="shortcut icon" type="favicon.ico">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/css/grid.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/stylesheet.css">
+    <link rel="stylesheet" href="../assets/css/animation.css">
+    <link rel="stylesheet" href="../assets/css/media.css">
 
-    <title>Sheni Hamitaj | Personal Site</title>
-
+    <title>Sheme Hamitaj - Personal Page</title>
 </head>
 <body>
-<header></header>
+
+<header>
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</header>
+
 <main role="main">
-
-    <div class="row">
-        <div class="col-12">
-            <div class="contact-header">
-                <img class="avatar rounded-2" alt="jajosheni@github"
-                     src="https://avatars2.githubusercontent.com/u/23244572?s=160&u=60f2a8d4719ae67c747a58eb4ef8b6ee2ee16ee5&v=4">
-                <span class="myname"><h1>SHENI HAMITAJ</h1></span>
-                <p>Computer Engineer 💻</p>
-
-                <div class="social-media-container">
-                    <a href="https://play.google.com/store/apps/details?id=com.blur.captainfollower" target="_blank">
-                        <button id="appbtn" class="appbutton"><span class="button-text">Download my App</span></button>
-                    </a>
-
-                    <div class="horizontal-line"></div>
-
-
-                    <div class="social-media-icons">
-                        <a href="https://www.instagram.com/shenihamitaj" target="_blank">
-                            <button id="instabtn" class="socialbtns"></button>
-                        </a>
-                        <a href="https://www.facebook.com/SeRiaLzZ" target="_blank">
-                            <button id="facebtn" class="socialbtns"></button>
-                        </a>
-                        <a href="https://github.com/jajosheni" target="_blank">
-                            <button id="gitbtn" class="socialbtns"></button>
-                        </a>
-                        <a href="https://www.linkedin.com/in/shenihamitaj/" target="_blank">
-                            <button id="inbtn" class="socialbtns"></button>
-                        </a>
-                    </div>
+    <div class="main-container">
+        <div class="grid-item head">
+            <ul class="header-buttons">
+                <li id="about" class="about">about</li>
+                <li id="resume" class="resume">resume</li>
+                <li id="social" class="social">social</li>
+                <li id="contact" class="contact">contact</li>
+            </ul>
+        </div>
+        <div class="grid-item profile">
+            <div class="profile-content">
+                <div class="banner-cover"></div>
+                <div class="profile-pic"></div>
+                <div class="full-name">
+                    <span id="full-name">Sheme Hamitaj</span>
+                </div>
+                <div class="subtitle">
+                    <span id="subs">Computer Engineer</span>
+                </div>
+                <div class="bottom-buttons">
+                    <button class="btn download-cv">Download CV<span class="icon"> </span></button>
+                    <button class="btn contact-me">Contact<span class="icon"> </span></button>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="desc" class="headproject-container">
-        <span class="headproject">Hi There 👋</span>
-        <p>I’m a fresh Computer Engineering graduate living in Turkey.</p>
-        <p>Currently into Robotics at <a href="https://github.com/jajosheni" target="_blank">YapBenzet</a></p>
-        <p>I like sports and chess.</p>
-        <p>Email me <a href="mailto:shen.i@live.com?Subject=Hello%20Sheni" target="_top">here</a></p>
+        <div class="grid-item info">
+            <div class="info-content"></div>
+        </div>
     </div>
 </main>
 
-<footer>
-    <div class="footer-horizontal-line"></div>
-    <div class="site-footer-credits">You win or you learn! © 2020</div>
-</footer>
-
+<script type="text/javascript" src="../assets/javascript/index.js"></script>
 </body>
 </html>
