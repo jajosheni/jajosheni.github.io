@@ -32,6 +32,8 @@ function toggleButton(_id) {
         state.isActive = true;
         loadPage(_id);
     }
+
+    document.getElementById('info-section').scrollIntoView();
 }
 
 
