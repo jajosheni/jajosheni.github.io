@@ -25,6 +25,11 @@ function sendMail(){
     window.location.href = "mailto:shen.i@live.com" + "?subject=" + encodeURIComponent("hello");
 }
 
+function downloadCV(){
+    window.location.assign('../assets/RESUME_Hamitaj.pdf');
+    return false;
+}
+
 function toggleButton(_id) {
     if (state.isActive) {
         if (state.activeID !== _id) {
