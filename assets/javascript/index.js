@@ -12,8 +12,8 @@ let buttonFuncs = {
         console.log('resume');
     },
 
-    social: function () {
-        console.log('social');
+    services: function () {
+        console.log('services');
     },
 
     contact: function () {
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
         buttonFuncs.resume();
     });
 
-    document.getElementById('social').addEventListener('click', function (event) {
-        toggleButton('social');
-        buttonFuncs.social();
+    document.getElementById('services').addEventListener('click', function (event) {
+        toggleButton('services');
+        buttonFuncs.services();
     });
 
     document.getElementById('contact').addEventListener('click', function (event) {
