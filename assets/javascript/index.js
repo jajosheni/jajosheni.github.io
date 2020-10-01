@@ -35,6 +35,7 @@ function toggleButton(_id) {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
+    screen.orientation.lock("portrait");
     toggleButton('about');
 
     document.getElementById('about').addEventListener('click', function (event) {
