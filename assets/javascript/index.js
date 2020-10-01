@@ -3,24 +3,6 @@ let state = {
     isActive: false
 }
 
-let buttonFuncs = {
-    about: function () {
-        console.log('about');
-    },
-
-    resume: function () {
-        console.log('resume');
-    },
-
-    services: function () {
-        console.log('services');
-    },
-
-    contact: function () {
-        console.log('contact');
-    }
-};
-
 function sendMail() {
     window.location.href = "mailto:shen.i@live.com" + "?subject=" + encodeURIComponent("hello");
 }
@@ -30,45 +12,45 @@ function downloadCV() {
     return false;
 }
 
+function loadPage(pageName) {
+    let infoContent = $('#info-content');
+    infoContent.innerHTML = "";
+    infoContent.load("../assets/pages/" + pageName.substring(1) + ".html")
+}
+
 function toggleButton(_id) {
     if (state.isActive) {
         if (state.activeID !== _id) {
-            document.getElementById(state.activeID).classList.toggle('active-header');
-            document.getElementById(_id).classList.toggle('active-header');
+            $(state.activeID).toggleClass('active-header');
+            $(_id).toggleClass('active-header');
             state.activeID = _id;
+            loadPage(_id);
         }
     } else {
-        document.getElementById(_id).classList.toggle('active-header');
+        $(_id).toggleClass('active-header');
+        state.activeID = _id;
         state.isActive = true;
+        loadPage(_id);
     }
 }
 
-function loadPage(pageName) {
-    document.getElementById("info-content").innerHTML =
-        '<object type="text/html" data="../assets/pages/' + pageName +'.html"></object>';
-}
 
-document.addEventListener('DOMContentLoaded', function (event) {
-    toggleButton('about');
-    loadPage('about');
+$("#about").on('click', function () {
+    toggleButton('#about');
+});
 
-    document.getElementById('about').addEventListener('click', function (event) {
-        toggleButton('about');
-        buttonFuncs.about();
-    });
+$("#resume").on('click', function () {
+    toggleButton('#resume');
+});
 
-    document.getElementById('resume').addEventListener('click', function (event) {
-        toggleButton('resume');
-        buttonFuncs.resume();
-    });
+$("#services").on('click', function () {
+    toggleButton('#services');
+});
 
-    document.getElementById('services').addEventListener('click', function (event) {
-        toggleButton('services');
-        buttonFuncs.services();
-    });
+$("#contact").on('click', function () {
+    toggleButton('#contact');
+});
 
-    document.getElementById('contact').addEventListener('click', function (event) {
-        toggleButton('contact');
-        buttonFuncs.contact();
-    });
+$(() => {
+    toggleButton('#about');
 });

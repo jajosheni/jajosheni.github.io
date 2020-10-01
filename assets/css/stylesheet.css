@@ -5,10 +5,11 @@
     margin: 0;
     padding: 0;
     transition: all 0.6s ease;
+    color: white;
 }
 
 body {
-    font-family: Tahoma, sans-serif;
+    font-family: Poppins, sans-serif;
     min-width: 360px;
 }
 
@@ -50,6 +51,11 @@ main {
     box-shadow: 6px 0 8px rgba(0, 0, 0, 0.2) inset;
     margin-top: 20px;
     border-radius: 0 5px 5px 0;
+    overflow-y: scroll;
+}
+
+#info-content {
+    padding: 20px 30px;
 }
 
 .main-container {
@@ -166,13 +172,13 @@ main {
 }
 
 .socialmedia {
-    margin: 20px 0 0;
-    padding: 10px 0;
+    margin: 0;
+    padding: 5px 0 0;
     text-align: center;
 }
 
 .socialmedia > li {
-    margin: 0 10px;
+    margin: 0 4px;
     list-style: none;
     display: inline-block;
     height: 36px;

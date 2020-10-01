@@ -17,7 +17,7 @@
     background-color: #1c1c21;
 }
 
-@media screen and (max-width: 1130px) {
+@media only screen and (max-width: 1130px) {
     /* tablet */
     main {
         margin: 0 auto;
@@ -41,9 +41,11 @@
 
     .info {
         grid-area: inf;
+        height: fit-content;
+        height: -moz-fit-content;
         box-shadow: none;
         margin-top: 20px;
-        height: 50vh;
+        overflow-y: unset;
     }
 
     .main-container {
@@ -59,13 +61,13 @@
         border-radius: 5px;
     }
 
-    .banner-cover{
+    .banner-cover {
         height: 28vh;
     }
 
 }
 
-@media screen and (max-width: 650px) {
+@media only screen and (max-width: 650px) {
     /* phone */
     main {
         margin: 0 auto;
@@ -98,12 +100,14 @@
 
     .info {
         grid-area: inf;
-        height: 200px;
+        height: fit-content;
+        height: -moz-fit-content;
         width: 85vw;
         box-shadow: none;
         margin-top: 0;
         border-radius: 10px;
         max-width: 425px;
+        overflow-y: unset;
     }
 
     .main-container {
