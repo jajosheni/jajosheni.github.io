@@ -21,11 +21,11 @@ let buttonFuncs = {
     }
 };
 
-function sendMail(){
+function sendMail() {
     window.location.href = "mailto:shen.i@live.com" + "?subject=" + encodeURIComponent("hello");
 }
 
-function downloadCV(){
+function downloadCV() {
     window.location.assign('../assets/RESUME_Hamitaj.pdf');
     return false;
 }
@@ -43,8 +43,14 @@ function toggleButton(_id) {
     }
 }
 
+function loadPage(pageName) {
+    document.getElementById("info-content").innerHTML =
+        '<object type="text/html" data="../_layouts/' + pageName +'.html"></object>';
+}
+
 document.addEventListener('DOMContentLoaded', function (event) {
     toggleButton('about');
+    loadPage('about');
 
     document.getElementById('about').addEventListener('click', function (event) {
         toggleButton('about');
