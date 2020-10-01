@@ -155,4 +155,9 @@
     .banner-cover {
         border-radius: 0 0 5px 5px;
     }
+
+    .btn {
+        font-size: 0.8em;
+    }
+
 }
