@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
 
 * {
     box-sizing: border-box;
@@ -90,20 +90,20 @@ main {
 .header-buttons > li:hover {
     color: #3083ff;
     background-color: #1c1c21;
-    background-blend-mode: difference;
+    background-blend-mode: screen;
 }
 
 .active-header {
     color: #3083ff;
     background-color: #1c1c21;
-    background-blend-mode: difference;
+    background-blend-mode: screen;
 }
 
 .header-buttons > li::after {
     display: block;
     content: " ";
     height: 1px;
-    background: linear-gradient(to left, white, transparent);
+    background: linear-gradient(to left, white, white, transparent);
 }
 
 .about {
@@ -114,8 +114,8 @@ main {
     background-image: url('../images/resume.png');
 }
 
-.social {
-    background-image: url('../images/socialmedia.png');
+.services {
+    background-image: url('../images/services.png');
 }
 
 .contact {
@@ -148,18 +148,58 @@ main {
     color: white;
     text-align: center;
     font-size: 30px;
-    margin: 0 0 5px;
+    margin: 0;
     font-family: Poppins, sans-serif;
 }
 
 .subtitle {
-    color: #3083ff;
     text-align: center;
-    font-size: 0.9em;
-    margin: 0 0 10px;
+    font-size: 0.95em;
+    margin: 0;
     font-family: Poppins, sans-serif;
-    font-style: italic;
 }
+
+.subtitle > span {
+    display: block;
+    color: #3083ff;
+}
+
+.socialmedia {
+    margin: 20px 0 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.socialmedia > li {
+    margin: 0 10px;
+    list-style: none;
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    padding: 8px 0;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+}
+
+.socialmedia  > li:hover {
+    background-color: #3083ff;
+    background-blend-mode: screen;
+    border-radius: 10px;
+}
+
+.insta {
+    background-image: url('../images/insta.png');
+}
+
+.linkedin {
+    background-image: url('../images/linkedin.png');
+}
+
+.github {
+    background-image: url('../images/github.png');
+}
+
 
 .bottom-buttons {
     border-top: solid 1px rgba(255, 255, 255, 0.5);
@@ -169,7 +209,7 @@ main {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .btn {
@@ -185,16 +225,16 @@ main {
     color: white;
     font-family: Poppins, sans-serif;
     font-size: 0.95em;
-    width: fit-content;
+    width: inherit;
 }
 
 .splitter {
     display: inline-block;
     margin: 0;
-    padding: 0;
-    height:available;
+    padding: 0 1px;
+    height: available;
     width: 1px;
-    background: linear-gradient(to bottom, white, white, transparent);
+    background: linear-gradient(to bottom right, white, transparent, transparent);
 }
 
 .contact-me > .icon {

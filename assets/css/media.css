@@ -85,7 +85,7 @@
 
     .profile {
         grid-area: prf;
-        height: 85vh;
+        height: 80vh;
         box-shadow: none;
         width: 85vw;
         margin: 0 0 10px;
@@ -142,7 +142,7 @@
         height: 70px;
         width: 1px;
         margin-top: -68px;
-        background: linear-gradient(to left, white, transparent);
+        background: linear-gradient(to top, white, white, transparent);
     }
 
     .header-buttons > li::before {
