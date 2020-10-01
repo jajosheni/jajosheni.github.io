@@ -33,7 +33,10 @@ function toggleButton(_id) {
         loadPage(_id);
     }
 
-    document.getElementById('info-section').scrollIntoView();
+    document.getElementById('info-anchor').scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
 
 
