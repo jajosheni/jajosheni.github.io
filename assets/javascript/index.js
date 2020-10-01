@@ -21,6 +21,14 @@ let buttonFuncs = {
     }
 };
 
+function sendMail(){
+    window.location.href = "mailto:shen.i@live.com" + "?subject=" + encodeURIComponent("hello");
+}
+
+function downloadCV(){
+    window.open('../assets/RESUME_Hamitaj.pdf');
+}
+
 function toggleButton(_id) {
     if (state.isActive) {
         if (state.activeID !== _id) {
@@ -35,7 +43,6 @@ function toggleButton(_id) {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
-    screen.orientation.lock("portrait");
     toggleButton('about');
 
     document.getElementById('about').addEventListener('click', function (event) {

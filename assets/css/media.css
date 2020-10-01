@@ -76,6 +76,9 @@
     }
 
     .head {
+        position: sticky;
+        top: -45px;
+        z-index: 1;
         grid-area: hdr;
         margin: 0;
         height: fit-content;

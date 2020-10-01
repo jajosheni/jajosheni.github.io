@@ -238,7 +238,7 @@ main {
     border-radius: 0 0 0 5px;
 }
 
-.contact-me {
+.email-me {
     border-radius: 0 0 5px 0;
 }
 
@@ -251,8 +251,8 @@ main {
     background: linear-gradient(to bottom right, white, transparent, transparent);
 }
 
-.contact-me > .icon {
-    background: url('../images/contact.png') no-repeat left center;
+.email-me > .icon {
+    background: url('../images/email.png') no-repeat left center;
     background-size: contain;
     padding-left: 1.45em;
     margin-left: 5px;
