@@ -45,7 +45,7 @@ function toggleButton(_id) {
 
 function loadPage(pageName) {
     document.getElementById("info-content").innerHTML =
-        '<object type="text/html" data="../_layouts/' + pageName +'.html"></object>';
+        '<object type="text/html" data="../pages/' + pageName +'.html"></object>';
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
