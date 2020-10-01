@@ -182,7 +182,7 @@ main {
     background-position: center;
 }
 
-.socialmedia  > li:hover {
+.socialmedia > li:hover {
     background-color: #3083ff;
     background-blend-mode: screen;
     border-radius: 10px;
@@ -226,6 +226,11 @@ main {
     font-family: Poppins, sans-serif;
     font-size: 0.95em;
     width: inherit;
+}
+
+.btn:hover {
+    background-color: rgba(255,255,255,0.3);
+    background-blend-mode: screen;
 }
 
 .splitter {
