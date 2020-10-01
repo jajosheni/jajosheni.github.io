@@ -32,6 +32,7 @@ main {
     margin-left: -10px;
     grid-area: hdr;
     height: fit-content;
+    height: -moz-fit-content;
     border-radius: 5px;
 }
 
@@ -229,8 +230,16 @@ main {
 }
 
 .btn:hover {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     background-blend-mode: screen;
+}
+
+.download-cv {
+    border-radius: 0 0 0 5px;
+}
+
+.contact-me {
+    border-radius: 0 0 5px 0;
 }
 
 .splitter {
