@@ -25,6 +25,11 @@ function toggleButton(_id) {
             $(_id).toggleClass('active-header');
             state.activeID = _id;
             loadPage(_id);
+
+            document.getElementById('info-anchor').scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
         }
     } else {
         $(_id).toggleClass('active-header');
@@ -32,11 +37,6 @@ function toggleButton(_id) {
         state.isActive = true;
         loadPage(_id);
     }
-
-    document.getElementById('info-anchor').scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
 }
 
 
