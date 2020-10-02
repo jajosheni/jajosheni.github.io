@@ -65,6 +65,14 @@
         height: 28vh;
     }
 
+    #about-container #empty-space{
+        min-width: 8%;
+    }
+
+    #about-container .fields  {
+        border: none;
+    }
+
 }
 
 @media only screen and (max-width: 650px) {
@@ -165,6 +173,15 @@
 
     .btn {
         font-size: 0.8em;
+    }
+
+    #about-container .fields > div {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #about-container #empty-space{
+        display: none;
     }
 
 }

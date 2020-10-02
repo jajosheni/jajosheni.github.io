@@ -1,2 +1,45 @@
+#about-container > * {
+    color: #EFEFEF;
+}
 
+#about-container .morecontent{
+    margin: 30px;
+}
 
+#about-container .hello {
+    color: #cacaca;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+}
+
+#about-container .description {
+    color: #cacaca;
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
+    font-size: 0.95em;
+    margin-bottom: 30px;
+}
+
+#about-container .fields  {
+    width: 100%;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: solid 1px whitesmoke;
+    border-top: none;
+    border-left: none;
+    padding-bottom: 10px;
+}
+
+#about-container .fields > div {
+    display: inline-block;
+    min-width: 32%;
+}
+
+#about-container #empty-space{
+    width: 20%;
+}
+
+#about-container .additional {
+    float: right;
+}
