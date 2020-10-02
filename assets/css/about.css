@@ -88,3 +88,31 @@
     background-size: 50px;
     margin: 10px 20px 10px 5px;
 }
+
+
+@media only screen and (max-width: 1130px) {
+    /* tablet */
+
+    #about-container #empty-space{
+        min-width: 8%;
+    }
+
+    #about-container .fields  {
+        border: none;
+    }
+
+}
+
+@media only screen and (max-width: 650px) {
+    /* phone */
+
+    #about-container .fields > div {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #about-container #empty-space{
+        display: none;
+    }
+
+}
