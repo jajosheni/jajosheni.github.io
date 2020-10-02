@@ -28,7 +28,7 @@ function toggleButton(_id) {
 
             document.getElementById('info-anchor').scrollIntoView({
                 behavior: "smooth",
-                block: "end"
+                block: "start"
             });
         }
     } else {
