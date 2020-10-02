@@ -2,7 +2,7 @@
     color: #EFEFEF;
 }
 
-#about-container .morecontent{
+#about-container .morecontent, #about-container .hobbies {
     margin: 30px;
 }
 
@@ -20,7 +20,7 @@
     margin-bottom: 30px;
 }
 
-#about-container .fields  {
+#about-container .fields {
     width: 100%;
     text-align: left;
     text-transform: uppercase;
@@ -36,7 +36,7 @@
     min-width: 32%;
 }
 
-#about-container #empty-space{
+#about-container #empty-space {
     width: 20%;
 }
 
@@ -64,4 +64,33 @@
     font-size: 4em;
     font-style: italic;
     line-height: 0;
+}
+
+#about-container .hobby {
+    display: block;
+    padding-left: 60px;
+    margin: 10px 20px 10px 0;
+}
+
+#about-container .guitar {
+    background: url('../images/guitar.png') no-repeat left center;
+    background-size: contain;
+    margin-left: 5px;
+}
+
+#about-container .chess {
+    background: url('../images/chess.png') no-repeat left center;
+    background-size: contain;
+}
+
+#about-container .table-tennis {
+    background: url('../images/tennis.png') no-repeat left center;
+    background-size: contain;
+    margin-left: 5px;
+}
+
+#about-container .football {
+    background: url('../images/football.png') no-repeat left center;
+    background-size: contain;
+    margin-left: 5px;
 }
