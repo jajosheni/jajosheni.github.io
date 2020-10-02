@@ -15,6 +15,7 @@ function downloadCV() {
 function loadPage(pageName) {
     let infoContent = $('#info-content');
     infoContent.innerHTML = "";
+    $('.info').css("width", "10% !important");
     infoContent.load("../assets/pages/" + pageName.substring(1) + ".html")
 }
 
