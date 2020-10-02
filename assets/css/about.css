@@ -66,31 +66,25 @@
     line-height: 0;
 }
 
-#about-container .hobby {
-    display: block;
-    padding-left: 60px;
-    margin: 10px 20px 10px 0;
-}
-
 #about-container .guitar {
     background: url('../images/guitar.png') no-repeat left center;
-    background-size: contain;
-    margin-left: 5px;
 }
 
 #about-container .chess {
     background: url('../images/chess.png') no-repeat left center;
-    background-size: contain;
 }
 
 #about-container .table-tennis {
     background: url('../images/tennis.png') no-repeat left center;
-    background-size: contain;
-    margin-left: 5px;
 }
 
 #about-container .football {
     background: url('../images/football.png') no-repeat left center;
-    background-size: contain;
-    margin-left: 5px;
+}
+
+#about-container .hobby {
+    display: block;
+    padding-left: 70px;
+    background-size: 50px;
+    margin: 10px 20px 10px 5px;
 }
