@@ -142,6 +142,13 @@ main {
     border-radius: 5px;
 }
 
+.banner-transparent {
+    background-color: rgba(44, 44, 53, 1);
+    margin-top: -2px;
+    width: 100%;
+    height: 3px;
+}
+
 .profile-pic {
     width: 140px;
     height: 140px;
