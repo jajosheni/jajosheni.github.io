@@ -492,6 +492,7 @@ h1 {
     vertical-align: top;
     width: 50%;
     height: fit-content;
+    height: -moz-fit-content;
     margin: 0;
     border-bottom: solid 1px rgba(162, 162, 162, 0.55);
     background-position-x: 30px;
@@ -516,6 +517,7 @@ h1 {
     display: block;
     width: 100%;
     height: fit-content;
+    height: -moz-fit-content;
     list-style-type: none;
 }
 
@@ -609,3 +611,61 @@ h1 {
 }
 
 /* services */
+
+#services-container .square .category {
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    text-transform: uppercase;
+    padding-left: 70px;
+}
+
+#services-container .content {
+    font-size: 0;
+}
+
+#services-container .mobileappdev {
+    background: url('../images/mobileapp.svg');
+}
+
+#services-container .desktopappdev {
+    background: url('../images/desktopapp.svg');
+}
+
+#services-container .webappdev {
+    background: url('../images/webapp.svg');
+}
+
+#services-container .graphicdesign {
+    background: url('../images/graphicdesign.svg');
+}
+
+#services-container .square {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    height: fit-content;
+    height: -moz-fit-content;
+    border-bottom: solid 1px rgba(162, 162, 162, 0.55);
+    margin: 0;
+    background-position-x: 30px;
+    background-position-y: 15px;
+    background-size: 50px;
+    padding: 30px;
+    background-repeat: no-repeat;
+    min-height: 200px;
+}
+
+#services-container .square .desc {
+    font-size: 15px;
+    margin: 20px 0;
+    color: #a7a5a5;
+}
+
+#services-container h2 {
+    color: #efefef;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 1.0em;
+    margin: 20px auto 5px auto;
+    text-align: center;
+}
