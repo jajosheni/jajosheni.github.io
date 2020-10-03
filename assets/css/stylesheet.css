@@ -188,7 +188,7 @@ main {
 }
 
 .socialmedia > li {
-    margin: 0 4px;
+    margin: 0 1px;
     list-style: none;
     display: inline-block;
     height: 36px;
@@ -217,6 +217,9 @@ main {
     background-image: url('../images/github.svg');
 }
 
+.apps {
+    background-image: url('../images/apps.svg');
+}
 
 .bottom-buttons {
     border-top: solid 1px rgba(255, 255, 255, 0.5);
