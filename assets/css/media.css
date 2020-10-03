@@ -73,9 +73,17 @@
         border: none;
     }
 
+    #contact-container #empty-space {
+         min-width: 8%;
+     }
+
+    #contact-container .fields {
+        border: none;
+    }
+
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 800px) {
     /* phone */
     main {
         margin: 0 auto;
@@ -182,6 +190,21 @@
 
     #about-container #empty-space{
         display: none;
+    }
+
+    #contact-container .fields > div {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #contact-container #empty-space {
+        display: none;
+    }
+
+
+    #resume-container .square {
+        display: block;
+        width: 100%;
     }
 
 }
