@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: shemehamitaj.com
+Token: 310b575d46e130d1f3c0bdb9fbd364914e0bb0b4e3d441ea1d2ce1b2f61b0a0e
