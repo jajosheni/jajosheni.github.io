@@ -1,5 +1,5 @@
 html, body {
-    font-family: var(--font-family);
+    font-family: var(--font-family), serif;
     font-weight: 500;
     position: relative;
     width: 100%;
