@@ -48,7 +48,7 @@
             border: none; /* Remove border */
             border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add elevation */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .card img {
@@ -82,6 +82,22 @@
             margin-bottom: 10px;
         }
 
+        .floor-plan {
+            width: 100%;
+            max-width: 760px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: white;
+            padding: 5px 20px 20px;
+        }
+
+        .floor-plan img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
         /* For screens smaller than 768px (e.g., phones) */
         @media (max-width: 767.98px) {
             .photo-cards {
@@ -106,7 +122,12 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <h2 style="text-align: center">ÇMIMI: 98.000 €</h2>
+    <div class="floor-plan">
+        <h2 style="text-align: center">ÇMIMI: 98.000 €</h2>
+
+        <img src="apt-pics/floor-plan.webp" alt="Planimetria">
+    </div>
+
     <div class="photos-container">
         <div class="photo-cards">
             <div class="card">
