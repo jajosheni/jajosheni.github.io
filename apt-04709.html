@@ -18,6 +18,40 @@
             padding: 20px;
         }
 
+        .video-container {
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .vertical-video-container {
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.78%; /* 9:16 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .vertical-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         .cover-container {
             width: 100%;
             margin-bottom: 20px;
@@ -112,6 +146,12 @@
 <body>
 <div class="container">
     <h1>Apartament 2+1 për Shitje - Kaimi, Ali Demi, Tiranë</h1>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/AhTkVfIJleM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="vertical-video-container">
+        <iframe src="https://www.youtube.com/embed/DRJosg01GFc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <div class="cover-container">
         <img src="apt-pics/apt-1.jpg" alt="Cover Image">
     </div>
