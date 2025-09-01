@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="utf-8"/>
+    <title>Apartament 1+1 & Vend Parkimi me qera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description"
+          content="Apartament 1+1 me vend parkimi privat me qera në Tiranë. Foto, detaje dhe kontakt."/>
+    <style>
+        :root {
+            --container: 980px;
+            --radius: 16px;
+            --line: #e5e7eb;
+            --text: #111111;
+            --muted: #6b7280;
+            --brand: #111111;
+            --bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            min-width: 360px; /* enforce minimum width */
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .site-title {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .button {
+            appearance: none;
+            border: 1px solid var(--brand);
+            background: var(--brand);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            opacity: 0.95;
+        }
+
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        .button-outline {
+            background: transparent;
+            color: var(--brand);
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .price-wrap {
+            display: grid;
+            justify-items: end;
+            gap: 8px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            margin-top: 16px;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: white;
+        }
+
+        .card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .details {
+            margin-top: 20px;
+        }
+
+        .kv {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 6px 12px;
+            padding-top: 6px;
+        }
+
+        .description {
+            margin-top: 10px;
+        }
+
+        .contact {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header container">
+    <h1 class="site-title">Apartament 1+1 & Vend Parkimi me qera</h1>
+    <a class="button button-outline" href="tel:+355684683347">Telefono</a>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div>
+            <h2 style="margin: 8px 0 4px;">Mangalem 21, Ali Demi</h2>
+            <p class="muted">Tiranë</p>
+        </div>
+        <div class="price-wrap">
+            <div class="price">480 € / muaj</div>
+        </div>
+    </section>
+
+    <p class="description">
+        Apartament i rregullt, i ndriçuar mirë, me ballkon dhe kuzhinë të kompletuar. Jepet së bashku me një vend parkimi privat.
+    </p>
+
+    <section class="grid">
+        <div class="card"><img src="./assets/images/2367-1.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-2.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-3.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-4.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-5.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-6.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-7.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-8.jpeg" alt="Foto apartament"></div>
+        <div class="card"><img src="./assets/images/2367-9.jpeg" alt="Foto apartament"></div>
+    </section>
+
+    <section class="details">
+        <h3>Detaje</h3>
+        <div class="kv">
+            <div>Tipologjia</div>
+            <div>1 dhomë gjumi + 1 dhomë ndenjeje</div>
+            <div>Kati</div>
+            <div>Kati 6</div>
+            <div>Parkim</div>
+            <div>Po, vend parkimi privat i përfshirë</div>
+        </div>
+        <p><a class="button button-outline" href="https://maps.app.goo.gl/UcpfV69uD5HZTJhu5"
+              target="_blank" rel="noopener">Hape në Hartë</a></p>
+    </section>
+
+    <section class="contact">
+        <h3>Kontakt</h3>
+        <p>Telefoni: <a href="tel:+355684683347">+355 68 468 3347</a></p>
+    </section>
+</main>
+</body>
+</html>
