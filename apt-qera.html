@@ -15,35 +15,24 @@
             --muted: #6b7280;
             --brand: #111111;
             --bg: #ffffff;
+            --ok: #065f46;
+            --ok-bg: #ecfdf5;
+            --warn: #92400e;
+            --warn-bg: #fffbeb;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
+        html, body { margin: 0; padding: 0; }
 
         body {
             font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             color: var(--text);
             background: var(--bg);
-            min-width: 360px; /* enforce minimum width */
+            min-width: 360px;
         }
 
-        .color-magenta {
-            margin-left: 20px;
-            font-style: italic;
-            color: lightseagreen;
-        }
-
-        .container {
-            max-width: var(--container);
-            margin: 0 auto;
-            padding: 16px;
-        }
+        .container { max-width: var(--container); margin: 0 auto; padding: 16px; }
 
         .site-header {
             display: flex;
@@ -53,10 +42,7 @@
             flex-wrap: wrap;
         }
 
-        .site-title {
-            margin: 0;
-            font-size: 22px;
-        }
+        .site-title { margin: 0; font-size: 22px; }
 
         .button {
             appearance: none;
@@ -69,41 +55,76 @@
             text-decoration: none;
             display: inline-block;
         }
+        .button:hover { opacity: 0.95; }
+        .button:active { transform: translateY(1px); }
+        .button-outline { background: transparent; color: var(--brand); }
 
-        .button:hover {
-            opacity: 0.95;
+        .muted { color: var(--muted); }
+
+        /* Status bar */
+        .status-bar {
+            background: var(--warn-bg);
+            border-bottom: 1px solid #f3f4f6;
+            color: var(--warn);
         }
-
-        .button:active {
-            transform: translateY(1px);
+        .status-bar .inner {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 12px 16px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-weight: 600;
         }
-
-        .button-outline {
-            background: transparent;
-            color: var(--brand);
-        }
-
-        .muted {
-            color: var(--muted);
+        .status-bar .note {
+            font-weight: 500;
+            color: var(--text);
         }
 
         .hero {
+            position: relative;
             display: grid;
             grid-template-columns: 1fr auto;
             gap: 16px;
             align-items: center;
             margin-top: 8px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 12px;
         }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid currentColor;
+            white-space: nowrap;
+        }
+        .badge-rented { color: #b91c1c; background: #fef2f2; border-color: #fecaca; }
+        .badge-available { color: var(--ok); background: var(--ok-bg); border-color: #a7f3d0; }
 
         .price-wrap {
             display: grid;
             justify-items: end;
             gap: 8px;
         }
-
         .price {
             font-size: 28px;
             font-weight: 800;
+            color: var(--muted);
+            text-decoration: line-through; /* rented */
+            text-decoration-thickness: 2px;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: var(--muted);
         }
 
         .grid {
@@ -114,66 +135,128 @@
         }
 
         .card {
+            position: relative;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             overflow: hidden;
             background: white;
         }
-
         .card img {
             display: block;
             width: 100%;
             height: auto;
             max-height: 600px;
             object-fit: contain;
+            background: #f9fafb;
         }
 
-        .details {
-            margin-top: 20px;
+        /* Overlay ribbon on first image to reinforce rented */
+        .ribbon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            transform: rotate(-3deg);
+            z-index: 2;
         }
 
+        .details { margin-top: 20px; }
         .kv {
             display: grid;
             grid-template-columns: 160px 1fr;
             gap: 6px 12px;
             padding-top: 6px;
         }
+        .description { margin-top: 10px; }
+        .contact { margin-top: 20px; }
 
-        .description {
-            margin-top: 10px;
+        /* Other options emphasis */
+        .options {
+            margin-top: 12px;
+            border: 2px dashed #c7d2fe;
+            background: #eef2ff;
+            border-radius: var(--radius);
+            padding: 16px;
         }
-
-        .contact {
-            margin-top: 20px;
+        .options h2 {
+            margin: 0 0 6px 0;
+        }
+        .option-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 8px;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 10px 12px;
+        }
+        .option-item strong { font-size: 16px; }
+        .option-price { font-weight: 800; }
+        .option-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .color-magenta {
+            margin-left: 0;
+            font-style: normal;
+            color: #3730a3;
         }
     </style>
 </head>
 <body>
+
+<!-- CLEAR STATUS THAT APT IS RENTED, PARKING AVAILABLE -->
+<div class="status-bar" role="status" aria-live="polite">
+    <div class="inner">
+        <div>Ky apartament është <strong>E dhënë</strong>.</div>
+        <div class="note">Vend parkimi <strong>ENDE I LIRË</strong> për qira veçmas.</div>
+    </div>
+</div>
+
 <header class="site-header container">
     <h1 class="site-title">Apartament 1+1 & Vend Parkimi me qera</h1>
     <a class="button button-outline" href="tel:+355684683347">Telefono</a>
 </header>
 
-<h2 class="color-magenta">Opsione të tjera</h2>
-<h3 class="color-magenta">Apartament 1+1 te Kadiu 400Eur/Muaj</h3>
+<!-- EMPHASIZED OTHER OPTIONS -->
+<section class="container options" id="opsione">
+    <h2 class="color-magenta">Opsione të tjera</h2>
+    <div class="option-item">
+        <div>
+            <strong>Apartament 1+1 te Kadiu</strong>
+            <div class="subtitle">Tiranë</div>
+        </div>
+        <div class="option-actions">
+            <div class="option-price">400 € / muaj</div>
+            <a class="button button-outline" href="tel:+355684683347">Pyet për këtë</a>
+        </div>
+    </div>
+</section>
 
-<main class="container">
-    <section class="hero">
+<main class="container" aria-describedby="listing-status">
+    <section class="hero" id="listing-status">
         <div>
             <h2 style="margin: 8px 0 4px;">Mangalem 21, Ali Demi</h2>
             <p class="muted">Tiranë</p>
+            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:6px;">
+                <span class="badge badge-rented" aria-label="E dhënë me qera">E dhënë</span>
+                <span class="badge badge-available" aria-label="Parkimi ende i lirë">Parkim ende i lirë</span>
+            </div>
         </div>
         <div class="price-wrap">
-            <div class="price">480 € / muaj</div>
+            <div class="price" aria-hidden="true">480 € / muaj</div>
+            <div class="subtitle">Apartamenti është dhënë. Parkimi jepet veçmas.</div>
         </div>
     </section>
 
     <p class="description">
-        Apartament i rregullt, i ndriçuar mirë, me ballkon dhe kuzhinë të kompletuar. Jepet së bashku me një vend parkimi privat. Jepet dhe pa parkim 420€ / Muaj.
+        Apartament i rregullt, i ndriçuar mirë, me ballkon dhe kuzhinë të kompletuar.
+        <strong>STATUSI:</strong> Apartamenti është <em>dhënë me qera</em>.
+        <strong>Parkimi:</strong> Vend parkimi privat <em>ende i lirë</em> dhe jepet veçmas.
     </p>
 
-    <section class="grid">
-        <div class="card"><img src="./assets/images/2367-1.jpeg" alt="Foto apartament"></div>
+    <section class="grid" aria-label="Galeria e fotos">
+        <div class="card">
+            <div class="ribbon"><span class="badge badge-rented">E dhënë</span></div>
+            <img src="./assets/images/2367-1.jpeg" alt="Foto apartament">
+        </div>
         <div class="card"><img src="./assets/images/2367-2.jpeg" alt="Foto apartament"></div>
         <div class="card"><img src="./assets/images/2367-3.jpeg" alt="Foto apartament"></div>
         <div class="card"><img src="./assets/images/2367-4.jpeg" alt="Foto apartament"></div>
@@ -192,10 +275,14 @@
             <div>Kati</div>
             <div>Kati 6</div>
             <div>Parkim</div>
-            <div>Po, vend parkimi privat i përfshirë</div>
+            <div><strong>Vend parkimi privat i lirë (qira veçmas)</strong></div>
         </div>
-        <p><a class="button button-outline" href="https://maps.app.goo.gl/UcpfV69uD5HZTJhu5"
-              target="_blank" rel="noopener">Hape në Hartë</a></p>
+        <p style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px;">
+            <a class="button button-outline" href="https://maps.app.goo.gl/UcpfV69uD5HZTJhu5"
+               target="_blank" rel="noopener">Hape në Hartë</a>
+            <a class="button" href="tel:+355684683347">Rezervo Parkimin</a>
+            <a class="button button-outline" href="#opsione" aria-label="Shiko opsione të tjera">Shiko opsione të tjera</a>
+        </p>
     </section>
 
     <section class="contact">
