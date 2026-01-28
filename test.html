@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elite Plate Pattern Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --fg: #e5e7eb;
+            --card: #1e293b;
+            --border: #334155;
+            --muted: #94a3b8;
+        }
+
+        .light {
+            --bg: #f8fafc;
+            --fg: #020617;
+            --card: #ffffff;
+            --border: #cbd5e1;
+            --muted: #64748b;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: background .2s, color .2s;
+            line-height: 1.5;
+        }
+
+        h1 { text-align: center; margin-bottom: 6px; }
+
+        .stats-bar {
+            text-align: center;
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            padding: 10px;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .controls input, .controls select, .controls button {
+            background: var(--card);
+            color: var(--fg);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Category Styling */
+        .category-section {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .category-title { margin: 0; font-size: 20px; }
+        .category-count { background: var(--bg); padding: 2px 10px; border-radius: 20px; font-size: 12px; color: var(--muted); }
+        .category-description { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+        .subcategory { margin-bottom: 20px; padding-left: 10px; border-left: 2px solid var(--border); }
+        .subcategory-title { font-size: 14px; color: var(--muted); margin-bottom: 10px; font-weight: 600; text-transform: uppercase; }
+
+        /* Plate Styling */
+        .group { display: flex; flex-wrap: wrap; gap: 10px; }
+
+        .plate {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'SF Mono', Consolas, monospace;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .plate:hover { transform: scale(1.05); z-index: 10; }
+
+        .number-highlight { font-weight: 800; letter-spacing: 1px; }
+
+        /* Tier Colors */
+        .tier-elite { background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; }
+        .tier-premium { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #1e293b; }
+        .tier-classic { background: linear-gradient(135deg, #0ea5e9, #38bdf8); color: #fff; }
+        .tier-round { background: linear-gradient(135deg, #10b981, #34d399); color: #fff; }
+        .tier-low { background: var(--bg); color: var(--fg); border: 1px solid var(--border); }
+        .tier-undesirable { background: #451a1a; color: #fca5a5; opacity: 0.7; }
+
+        /* Badges & Tooltips */
+        .badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+        .badge-price { background: rgba(0,0,0,0.2); color: inherit; border: 1px solid rgba(255,255,255,0.2); }
+        
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #020617;
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 11px;
+            border-radius: 6px;
+            width: 200px;
+            z-index: 100;
+            pointer-events: none;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5);
+        }
+        .plate:hover .tooltip { display: block; }
+
+        /* Suffix Grid */
+        .suffix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        .suffix-card { background: var(--bg); padding: 12px; border-radius: 8px; border: 1px solid var(--border); }
+        .suffix-label { font-size: 11px; color: var(--muted); margin-bottom: 8px; font-weight: 700; }
+
+    </style>
+</head>
+<body>
+
+<h1>License Plate Analyzer</h1>
+<div class="stats-bar" id="stats">Waking up the server...</div>
+
+<div class="controls">
+    <input id="searchBox" type="text" placeholder="Search (e.g. 707 or SH)..." />
+    <select id="sortBy">
+        <option value="rarity-desc">Rarity High to Low</option>
+        <option value="rarity-asc">Rarity Low to High</option>
+        <option value="number">Number Sequence</option>
+    </select>
+    <button id="themeToggle">🌓 Mode</button>
+</div>
+
+<div id="app"></div>
+
+<script>
+    let allPlates = [];
+    const plateDataMap = {};
+    const suffixCount = {};
+
+    const getNumber = p => p.slice(2,5);
+    const getSuffix = p => p.slice(5,7);
+
+    // Scoring Logic
+    function getRarityScore(p) {
+        let score = 0;
+        const num = getNumber(p);
+        const suffix = getSuffix(p);
+
+        // Pattern points
+        if (["909", "707", "606"].includes(num)) score += 60;
+        else if (["505", "404"].includes(num)) score += 45;
+        else if (["303", "202"].includes(num)) score += 35;
+        else if (["400", "300", "200"].includes(num)) score += 30;
+        else if (num === "004") score += 50;
+        else if (/0\d0/.test(num)) score += 20;
+
+        // Suffix points
+        if (suffix === 'SH') score += 40;
+        if (suffix === 'VK') score -= 50;
+        
+        // Supply-based scarcity (rare suffixes get up to +20)
+        const scarcity = Math.max(0, 20 - (suffixCount[suffix] || 0));
+        return score + scarcity;
+    }
+
+    async function fetchData() {
+        const digits = [0,1,2,3,4,5,6,7,8,9];
+        const seen = new Set();
+        
+        const requests = digits.map(d => 
+            fetch(`http://134.0.63.67:8090/api/Search/search-license-plates?licensePlate=${d}&vehicleTypeCategoryCode=M&pageNumber=1&pageSize=999`)
+            .then(r => r.json())
+            .catch(() => null)
+        );
+
+        const results = await Promise.all(requests);
+        
+        results.forEach(data => {
+            data?.PaginatedList?.Items?.forEach(item => {
+                const lp = item.LicensePlate?.trim();
+                if (!lp || seen.has(lp)) return;
+                
+                // Filter by the specific prices you are interested in
+                if (![10000, 20000, 30000, 40000].includes(item.CategoryPrice)) return;
+
+                seen.add(lp);
+                allPlates.push(lp);
+                plateDataMap[lp] = item.CategoryPrice;
+                
+                const s = getSuffix(lp);
+                suffixCount[s] = (suffixCount[s] || 0) + 1;
+            });
+        });
+    }
+
+    function createPlateUI(lp, tierClass) {
+        const score = getRarityScore(lp);
+        const price = plateDataMap[lp];
+        const el = document.createElement("div");
+        el.className = `plate ${tierClass}`;
+        el.innerHTML = `
+            AB<span class="number-highlight">${getNumber(lp)}</span>${getSuffix(lp)}
+            <span class="badge badge-price">${price/1000}k</span>
+            <div class="tooltip">
+                <strong>Rarity Score: ${score}</strong><br>
+                Pattern: ${getNumber(lp)}<br>
+                Suffix: ${getSuffix(lp)} (${suffixCount[getSuffix(lp)]} total)<br>
+                Official Price: ${price.toLocaleString()}
+            </div>
+        `;
+        return el;
+    }
+
+    function render() {
+        const app = document.getElementById("app");
+        const query = searchBox.value.toUpperCase();
+        const sort = sortBy.value;
+        app.innerHTML = "";
+
+        // Filter and Sort
+        let filtered = allPlates.filter(p => p.includes(query));
+        
+        filtered.sort((a, b) => {
+            if (sort === "rarity-desc") return getRarityScore(b) - getRarityScore(a);
+            if (sort === "rarity-asc") return getRarityScore(a) - getRarityScore(b);
+            return a.localeCompare(b);
+        });
+
+        // Define View Structure
+        const structure = [
+            { 
+                id: 'sh', title: "Special SH Suffix", icon: "🏆", tier: "tier-elite", 
+                desc: "Highest desirability series.", 
+                filter: p => getSuffix(p) === 'SH' 
+            },
+            { 
+                id: 'elite-pal', title: "Elite Palindromes", icon: "👑", tier: "tier-elite", 
+                desc: "909, 707, 606 - Master tier mirrors.",
+                filter: p => ["909", "707", "606"].includes(getNumber(p)) && getSuffix(p) !== 'SH'
+            },
+            { 
+                id: 'premium-pal', title: "Premium Palindromes", icon: "⭐", tier: "tier-premium", 
+                desc: "505, 404 series.",
+                filter: p => ["505", "404"].includes(getNumber(p))
+            },
+            { 
+                id: 'rounds', title: "Round Hundreds", icon: "💯", tier: "tier-round", 
+                desc: "X00 prestigious whole numbers.",
+                filter: p => ["200", "300", "400"].includes(getNumber(p))
+            },
+            { 
+                id: 'lows', title: "Low Sequences", icon: "🔢", tier: "tier-low", 
+                desc: "0X0 sequences and 004.",
+                filter: p => (/0\d0/.test(getNumber(p)) || getNumber(p) === "004") && !["200","300","400"].includes(getNumber(p))
+            },
+            { 
+                id: 'vk', title: "VK Suffix", icon: "🚫", tier: "tier-undesirable", 
+                desc: "Less desirable suffix series.",
+                filter: p => getSuffix(p) === 'VK'
+            }
+        ];
+
+        structure.forEach(conf => {
+            const items = filtered.filter(conf.filter);
+            if (items.length === 0) return;
+
+            const section = document.createElement("section");
+            section.className = "category-section";
+            section.innerHTML = `
+                <div class="category-header">
+                    <span class="category-title">${conf.icon} ${conf.title}</span>
+                    <span class="category-count">${items.length}</span>
+                </div>
+                <p class="category-description">${conf.desc}</p>
+                <div class="group"></div>
+            `;
+            
+            const group = section.querySelector(".group");
+            items.forEach(lp => group.appendChild(createPlateUI(lp, conf.tier)));
+            app.appendChild(section);
+        });
+
+        // Suffix Breakdown
+        if (!query) {
+            const suffixSection = document.createElement("section");
+            suffixSection.className = "category-section";
+            suffixSection.innerHTML = `<div class="category-header"><span class="category-title">🔤 By Suffix Series</span></div><div class="suffix-grid"></div>`;
+            const sGrid = suffixSection.querySelector(".suffix-grid");
+            
+            const letters = [...new Set(allPlates.map(p => getSuffix(p)[0]))].sort();
+            letters.forEach(l => {
+                const sItems = filtered.filter(p => getSuffix(p).startsWith(l) && getSuffix(p) !== 'VK');
+                if (sItems.length === 0) return;
+                
+                const card = document.createElement("div");
+                card.className = "suffix-card";
+                card.innerHTML = `<div class="suffix-label">${l} SERIES</div><div class="group"></div>`;
+                const g = card.querySelector(".group");
+                sItems.slice(0, 15).forEach(lp => g.appendChild(createPlateUI(lp, "tier-low"))); // limit preview
+                sGrid.appendChild(card);
+            });
+            app.appendChild(suffixSection);
+        }
+
+        document.getElementById('stats').textContent = `Tracking ${allPlates.length} Premium Plates | ${Object.keys(suffixCount).length} Active Suffixes`;
+    }
+
+    // Init
+    searchBox.oninput = render;
+    sortBy.onchange = render;
+    themeToggle.onclick = () => {
+        document.body.classList.toggle("light");
+        localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    };
+
+    (async () => {
+        if (localStorage.getItem("theme") === "light") document.body.classList.add("light");
+        await fetchData();
+        render();
+    })();
+</script>
+
+</body>
+</html>
