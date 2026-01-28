@@ -154,7 +154,7 @@
 <body>
 
 <h1>License Plate Analyzer</h1>
-<div class="stats-bar" id="stats">Waking up the server...</div>
+<div class="stats-bar" id="stats">Waking up the server (via Proxy)...</div>
 
 <div class="controls">
     <input id="searchBox" type="text" placeholder="Search (e.g. 707 or SH)..." />
@@ -182,7 +182,6 @@
         const num = getNumber(p);
         const suffix = getSuffix(p);
 
-        // Pattern points
         if (["909", "707", "606"].includes(num)) score += 60;
         else if (["505", "404"].includes(num)) score += 45;
         else if (["303", "202"].includes(num)) score += 35;
@@ -190,24 +189,34 @@
         else if (num === "004") score += 50;
         else if (/0\d0/.test(num)) score += 20;
 
-        // Suffix points
         if (suffix === 'SH') score += 40;
         if (suffix === 'VK') score -= 50;
         
-        // Supply-based scarcity (rare suffixes get up to +20)
         const scarcity = Math.max(0, 20 - (suffixCount[suffix] || 0));
         return score + scarcity;
     }
 
     async function fetchData() {
+        const statsEl = document.getElementById('stats');
         const digits = [0,1,2,3,4,5,6,7,8,9];
         const seen = new Set();
         
-        const requests = digits.map(d => 
-            fetch(`http://134.0.63.67:8090/api/Search/search-license-plates?licensePlate=${d}&vehicleTypeCategoryCode=M&pageNumber=1&pageSize=999`)
-            .then(r => r.json())
-            .catch(() => null)
-        );
+        // Using a CORS proxy to allow HTTPS -> HTTP communication
+        const proxy = "https://corsproxy.io/?";
+
+        const requests = digits.map(d => {
+            const apiUrl = `http://134.0.63.67:8090/api/Search/search-license-plates?licensePlate=${d}&vehicleTypeCategoryCode=M&pageNumber=1&pageSize=999`;
+            
+            return fetch(proxy + encodeURIComponent(apiUrl))
+                .then(r => {
+                    if(!r.ok) throw new Error("API Limit or Error");
+                    return r.json();
+                })
+                .catch(err => {
+                    console.error("Fetch failed for digit " + d, err);
+                    return null;
+                });
+        });
 
         const results = await Promise.all(requests);
         
@@ -215,8 +224,6 @@
             data?.PaginatedList?.Items?.forEach(item => {
                 const lp = item.LicensePlate?.trim();
                 if (!lp || seen.has(lp)) return;
-                
-                // Filter by the specific prices you are interested in
                 if (![10000, 20000, 30000, 40000].includes(item.CategoryPrice)) return;
 
                 seen.add(lp);
@@ -227,6 +234,11 @@
                 suffixCount[s] = (suffixCount[s] || 0) + 1;
             });
         });
+
+        if (allPlates.length === 0) {
+            statsEl.textContent = "⚠️ No data found. Ensure the API server is online.";
+            statsEl.style.color = "#f87171";
+        }
     }
 
     function createPlateUI(lp, tierClass) {
@@ -249,11 +261,10 @@
 
     function render() {
         const app = document.getElementById("app");
-        const query = searchBox.value.toUpperCase();
-        const sort = sortBy.value;
+        const query = (document.getElementById("searchBox").value || "").toUpperCase();
+        const sort = document.getElementById("sortBy").value;
         app.innerHTML = "";
 
-        // Filter and Sort
         let filtered = allPlates.filter(p => p.includes(query));
         
         filtered.sort((a, b) => {
@@ -262,38 +273,13 @@
             return a.localeCompare(b);
         });
 
-        // Define View Structure
         const structure = [
-            { 
-                id: 'sh', title: "Special SH Suffix", icon: "🏆", tier: "tier-elite", 
-                desc: "Highest desirability series.", 
-                filter: p => getSuffix(p) === 'SH' 
-            },
-            { 
-                id: 'elite-pal', title: "Elite Palindromes", icon: "👑", tier: "tier-elite", 
-                desc: "909, 707, 606 - Master tier mirrors.",
-                filter: p => ["909", "707", "606"].includes(getNumber(p)) && getSuffix(p) !== 'SH'
-            },
-            { 
-                id: 'premium-pal', title: "Premium Palindromes", icon: "⭐", tier: "tier-premium", 
-                desc: "505, 404 series.",
-                filter: p => ["505", "404"].includes(getNumber(p))
-            },
-            { 
-                id: 'rounds', title: "Round Hundreds", icon: "💯", tier: "tier-round", 
-                desc: "X00 prestigious whole numbers.",
-                filter: p => ["200", "300", "400"].includes(getNumber(p))
-            },
-            { 
-                id: 'lows', title: "Low Sequences", icon: "🔢", tier: "tier-low", 
-                desc: "0X0 sequences and 004.",
-                filter: p => (/0\d0/.test(getNumber(p)) || getNumber(p) === "004") && !["200","300","400"].includes(getNumber(p))
-            },
-            { 
-                id: 'vk', title: "VK Suffix", icon: "🚫", tier: "tier-undesirable", 
-                desc: "Less desirable suffix series.",
-                filter: p => getSuffix(p) === 'VK'
-            }
+            { id: 'sh', title: "Special SH Suffix", icon: "🏆", tier: "tier-elite", desc: "Highest desirability series.", filter: p => getSuffix(p) === 'SH' },
+            { id: 'elite-pal', title: "Elite Palindromes", icon: "👑", tier: "tier-elite", desc: "909, 707, 606 - Master tier mirrors.", filter: p => ["909", "707", "606"].includes(getNumber(p)) && getSuffix(p) !== 'SH' },
+            { id: 'premium-pal', title: "Premium Palindromes", icon: "⭐", tier: "tier-premium", desc: "505, 404 series.", filter: p => ["505", "404"].includes(getNumber(p)) },
+            { id: 'rounds', title: "Round Hundreds", icon: "💯", tier: "tier-round", desc: "X00 prestigious whole numbers.", filter: p => ["200", "300", "400"].includes(getNumber(p)) },
+            { id: 'lows', title: "Low Sequences", icon: "🔢", tier: "tier-low", desc: "0X0 sequences and 004.", filter: p => (/0\d0/.test(getNumber(p)) || getNumber(p) === "004") && !["200","300","400"].includes(getNumber(p)) },
+            { id: 'vk', title: "VK Suffix", icon: "🚫", tier: "tier-undesirable", desc: "Less desirable suffix series.", filter: p => getSuffix(p) === 'VK' }
         ];
 
         structure.forEach(conf => {
@@ -316,7 +302,6 @@
             app.appendChild(section);
         });
 
-        // Suffix Breakdown
         if (!query) {
             const suffixSection = document.createElement("section");
             suffixSection.className = "category-section";
@@ -332,19 +317,21 @@
                 card.className = "suffix-card";
                 card.innerHTML = `<div class="suffix-label">${l} SERIES</div><div class="group"></div>`;
                 const g = card.querySelector(".group");
-                sItems.slice(0, 15).forEach(lp => g.appendChild(createPlateUI(lp, "tier-low"))); // limit preview
+                sItems.slice(0, 15).forEach(lp => g.appendChild(createPlateUI(lp, "tier-low")));
                 sGrid.appendChild(card);
             });
             app.appendChild(suffixSection);
         }
 
-        document.getElementById('stats').textContent = `Tracking ${allPlates.length} Premium Plates | ${Object.keys(suffixCount).length} Active Suffixes`;
+        if (allPlates.length > 0) {
+            document.getElementById('stats').textContent = `Tracking ${allPlates.length} Premium Plates | ${Object.keys(suffixCount).length} Active Suffixes`;
+        }
     }
 
     // Init
-    searchBox.oninput = render;
-    sortBy.onchange = render;
-    themeToggle.onclick = () => {
+    document.getElementById('searchBox').oninput = render;
+    document.getElementById('sortBy').onchange = render;
+    document.getElementById('themeToggle').onclick = () => {
         document.body.classList.toggle("light");
         localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
     };
