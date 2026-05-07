@@ -394,6 +394,56 @@
   .dots .d { width: 8px; height: 8px; border-radius: 50%; background: var(--surface-3); }
   .dots .d.on { background: var(--accent); }
 
+  /* resume top strip */
+  .resume-top {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: center;
+    padding: 0 0 18px;
+    margin: -4px 0 18px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .dl-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+    border: 0.5px solid color-mix(in oklab, var(--accent) 35%, transparent);
+    color: var(--accent-2);
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    text-decoration: none;
+    transition: all .2s ease;
+    white-space: nowrap;
+  }
+  .dl-cv:hover {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
+    border-color: var(--accent);
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+  .dl-cv svg { width: 14px; height: 14px; }
+  .resume-highlights .kicker {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .resume-highlights .chips { margin: 0; }
+  @media (max-width: 720px) {
+    .resume-top {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+    }
+    .dl-cv { justify-content: center; padding: 10px 14px; }
+  }
+
   /* services / cards */
   .grid2 {
     display: grid;
@@ -718,13 +768,13 @@
         <blockquote class="line">Computer Engineer · Tirana, Albania · <span style="color:var(--green)">●</span> Frontend Lead @ Ritech Solutions</blockquote>
 
         <h2 class="section"><span class="hash">##</span>hello</h2>
-        <p style="margin:0 0 8px; color: var(--dim);">Frontend Lead at <span class="key">Ritech Solutions</span> in Tirana — Vue / Nuxt, scalable systems, and the rituals that make a team actually ship. Previously backend lead at <span class="key">circuly GmbH</span>; quietly building with LLMs these days.</p>
+        <p style="margin:0 0 8px; color: var(--dim);">Leading frontend at <span class="key">Ritech Solutions</span> in Tirana. Vue / Nuxt, scalable component systems, API integration, and automated testing as part of the workflow.</p>
 
         <h2 class="section"><span class="hash">##</span>now</h2>
         <ul class="tree">
-          <li><span class="arrow">→</span><span><b>Frontend Lead Developer</b> <span class="dim">— Ritech Solutions, since 12/2024</span></span></li>
+          <li><span class="arrow">→</span><span><b>Frontend Lead Developer</b> <span class="dim">— Ritech Solutions, Tirana, since 09/2023</span></span></li>
           <li><span class="arrow">→</span><span>Aligning teams, scoping work, and shipping Vue.js at scale</span></li>
-          <li><span class="arrow">→</span><span>Tinkering with <span style="color:var(--ai)">agents</span> and AI-augmented dev workflows</span></li>
+          <li><span class="arrow">→</span><span>Working with <span style="color:var(--ai)">LLMs</span> on day-to-day development</span></li>
         </ul>
 
         <h2 class="section"><span class="hash">##</span>stack</h2>
@@ -742,6 +792,26 @@
 
       <!-- ============== RESUME ============== -->
       <article id="tab-resume" class="tab-content">
+
+        <div class="resume-top">
+          <a class="dl-cv" href="assets/RESUME_Hamitaj.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 4v12m0 0-4-4m4 4 4-4M5 20h14"/>
+            </svg>
+            Download resume.pdf
+          </a>
+
+          <div class="resume-highlights">
+            <p class="kicker">Highlights</p>
+            <div class="chips">
+              <span class="chip">Strategic planning</span>
+              <span class="chip">Problem solving</span>
+              <span class="chip">Quick learning</span>
+              <span class="chip">Communication</span>
+            </div>
+          </div>
+        </div>
+
 <pre class="json"><span class="punct">{</span>
   <span class="key">"experience"</span><span class="punct">:</span> <span class="punct">[</span>
     <span class="punct">{</span>
@@ -824,15 +894,7 @@
         <h2 class="section" style="margin-top: 28px"><span class="hash">##</span>skills <span style="color: var(--com); font-weight: 400; font-size: 11px;">// rendered from resume.json</span></h2>
 
         <div style="margin-top: 8px;">
-          <p style="color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin: 12px 0 6px;">Highlights</p>
-          <div class="chips">
-            <span class="chip">Strategic planning</span>
-            <span class="chip">Problem solving</span>
-            <span class="chip">Quick learning</span>
-            <span class="chip">Communication</span>
-          </div>
-
-          <p style="color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin: 22px 0 6px;">Coding</p>
+          <p style="color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin: 12px 0 6px;">Coding</p>
           <div class="skill"><span class="label">Vue / Nuxt</span><span class="bar"><i style="--w:95%"></i></span><span class="pct">95</span></div>
           <div class="skill"><span class="label">JavaScript / TS</span><span class="bar"><i style="--w:92%"></i></span><span class="pct">92</span></div>
           <div class="skill"><span class="label">PHP / Laravel</span><span class="bar"><i style="--w:87%"></i></span><span class="pct">87</span></div>
@@ -846,7 +908,6 @@
           <div class="skill"><span class="label">Italian</span><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="pct">good</span></div>
         </div>
 
-        <p style="margin-top: 26px;"><a href="assets/RESUME_Hamitaj.pdf" download>↓ download resume.pdf</a></p>
       </article>
 
       <!-- ============== SERVICES ============== -->
@@ -978,7 +1039,7 @@
 
 <div class="pagefoot">
   <span>© <span id="year">2026</span> Sheme Hamitaj · built in Tirana</span>
-  <span><a href="https://github.com/jajosheni/" target="_blank" rel="noopener">view source ↗</a></span>
+  <span><a href="https://github.com/jajosheni/jajosheni.github.io" target="_blank" rel="noopener">view source ↗</a></span>
 </div>
 
 <script>
@@ -1096,7 +1157,7 @@ The taste-and-spec part is still the human's job. That's the fun part.`,
     chess: () =>
 `My dad taught me at 4. I've been playing ever since.
 If you also play, queue up a game — I'm @shemehamitaj on chess.com (probably).`,
-    ritech: () => "Frontend Lead Developer at Ritech Solutions in Tirana, since December 2024.",
+    ritech: () => "Frontend Lead Developer at Ritech Solutions in Tirana — at Ritech since September 2023.",
     circuly: () =>
 `Three roles at circuly GmbH (Bielefeld, Germany), 2021 – 2023:
 Frontend Dev → Full Stack → Backend Lead.
