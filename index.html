@@ -473,6 +473,92 @@
   .card .t { color: var(--text); font-weight: 500; margin-bottom: 4px; font-size: 13px; }
   .card .d { color: var(--muted); font-size: 12px; line-height: 1.5; }
 
+  /* git log — projects */
+  .gitlog {
+    margin: 6px 0 4px;
+    border-left: 1px dashed var(--border-2);
+    padding-left: 0;
+    font-family: var(--mono);
+  }
+  .commit {
+    display: grid;
+    grid-template-columns: 14px 64px 1fr auto;
+    gap: 10px;
+    align-items: baseline;
+    padding: 7px 8px 7px 0;
+    margin-left: -8px;
+    border-radius: 6px;
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 13px;
+    transition: background .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .commit:hover {
+    background: var(--surface-4);
+    text-decoration: none;
+    transform: translateX(2px);
+  }
+  .commit .node {
+    color: var(--accent);
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+    transform: translateX(-7px);
+  }
+  .commit .node::before {
+    content: "●";
+  }
+  .commit.past .node { color: var(--muted); }
+  .commit.past .node::before { content: "○"; }
+  .commit .hash {
+    color: var(--str);
+    font-size: 12px;
+  }
+  .commit .msg {
+    color: var(--dim);
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .commit .msg b {
+    color: var(--text);
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .commit .msg .tag-ref {
+    color: var(--ai);
+    font-size: 11px;
+    padding: 1px 7px;
+    border: 0.5px solid color-mix(in oklab, var(--ai) 30%, transparent);
+    background: color-mix(in oklab, var(--ai) 8%, transparent);
+    border-radius: 99px;
+    margin-right: 8px;
+    font-family: var(--mono);
+  }
+  .commit .msg .tag-ref.live {
+    color: var(--green);
+    border-color: color-mix(in oklab, var(--green) 30%, transparent);
+    background: color-mix(in oklab, var(--green) 8%, transparent);
+  }
+  .commit .when {
+    color: var(--muted);
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .commit:hover .when { color: var(--accent-2); }
+  .commit:hover .when::after { content: " ↗"; }
+  @media (max-width: 720px) {
+    .commit {
+      grid-template-columns: 12px 1fr;
+      gap: 8px;
+      padding: 8px 6px;
+    }
+    .commit .hash, .commit .when { display: none; }
+    .commit .msg { white-space: normal; }
+  }
+
   /* contact links */
   .links {
     display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
@@ -777,14 +863,30 @@
           <li><span class="arrow">→</span><span>Working with <span style="color:var(--ai)">LLMs</span> on day-to-day development</span></li>
         </ul>
 
+        <h2 class="section"><span class="hash">##</span><span style="color: var(--com); font-weight: 400;">$</span> git log <span style="color: var(--com); font-weight: 400; font-size: 12px;">--pinned</span></h2>
+        <div class="gitlog">
+          <a class="commit" href="https://hipzbrit.com" target="_blank" rel="noopener">
+            <span class="node" aria-hidden="true"></span>
+            <span class="hash">a1b2c3d</span>
+            <span class="msg"><span class="tag-ref live">shipping</span><b>hipzbrit.com</b> — intercity transport for Albania · 848 routes, 62 cities</span>
+            <span class="when">2026</span>
+          </a>
+          <a class="commit past" href="/hackathon" target="_blank" rel="noopener">
+            <span class="node" aria-hidden="true"></span>
+            <span class="hash">5fa2e0b</span>
+            <span class="msg"><span class="tag-ref live">organized</span><b>MerrBio Hackathon</b> — 20+ teams, €1500 in prizes, a laptop, internships and trainings</span>
+            <span class="when">Apr 2025</span>
+          </a>
+        </div>
+
         <h2 class="section"><span class="hash">##</span>stack</h2>
         <div class="chips">
           <span class="chip">Vue · Nuxt</span>
           <span class="chip">TypeScript</span>
-          <span class="chip">PHP · Laravel</span>
-          <span class="chip">Jest · Cypress</span>
+          <span class="chip">Laravel</span>
+          <span class="chip">Jest · Cypress · Playwright</span>
           <span class="chip">Node</span>
-          <span class="chip">Claude · Cursor</span>
+          <span class="chip">Claude · Cursor · Copilot</span>
         </div>
 
         <p style="margin: 22px 0 4px; color: var(--com); font-style: italic;">// "An ambitious man either wins or learns."</p>
@@ -1029,7 +1131,7 @@
   <section class="ask-wrap" aria-label="Ask anything">
     <div class="ask">
       <span class="label">$ ask</span>
-      <input id="ask-input" type="text" autocomplete="off" placeholder="ask anything — try: experience, stack, contact, ai, hire" aria-label="Ask anything">
+      <input id="ask-input" type="text" autocomplete="off" placeholder="ask anything — try: projects, hipzbrit, hackathon, experience, ai" aria-label="Ask anything">
       <button class="submit" id="ask-submit">↵</button>
     </div>
     <div class="ask-output" id="ask-output"></div>
@@ -1123,11 +1225,11 @@ Full breakdown lives in the resume.json tab.`,
 `→ BSc Computer Engineering · Kocaeli University, Turkey`,
     stack: () =>
 `Languages : JS · TS · PHP · C · C++ · Java · Python
-Frameworks: Vue + Nuxt · PHP + Laravel · Node
-Testing   : Jest · Cypress
+Frameworks: Vue + Nuxt · Laravel · Node
+Testing   : Jest · Cypress · Playwright
 Ops       : Unleash (feature flags) · Linux
 Domains   : Web · APIs · Embedded · Robotics (ROS / SLAM)
-Tools     : Claude · Cursor · Vim`,
+Tools     : Claude · Cursor · Copilot · Vim`,
     skills: () => responses.stack(),
     highlights: () => `Strategic planning · Problem solving · Quick learning · Communication.`,
     contact: () =>
@@ -1157,6 +1259,31 @@ The taste-and-spec part is still the human's job. That's the fun part.`,
     chess: () =>
 `My dad taught me at 4. I've been playing ever since.
 If you also play, queue up a game — I'm @shemehamitaj on chess.com (probably).`,
+    projects: () =>
+`→ Hip Zbrit   · hipzbrit.com         · intercity transport for Albania (building)
+→ MerrBio     · shemehamitaj.com/hackathon · hackathon I organized, April 2025
+
+Full write-ups in the projects.ts tab.`,
+    hipzbrit: () =>
+`Hip Zbrit — intercity transport for Albania, simplified.
+Search a route, book a seat, pay the driver on board.
+
+  848 routes · 62 cities · 232 operators
+  → https://hipzbrit.com`,
+    transport: () => responses.hipzbrit(),
+    hackathon: () =>
+`MerrBio Hackathon — 12–13 April 2025, Tirana.
+I organized it: 20+ teams built the MVP of MerrBio,
+a platform connecting local farmers with consumers.
+
+Started with €500 of my own and a LinkedIn post.
+Wrapped with €1500 in prizes, a laptop, internships
+and trainings — all from people who showed up.
+
+Winners: SDI · Bumeku · Lazanja.
+
+  → https://shemehamitaj.com/hackathon`,
+    merrbio: () => responses.hackathon(),
     ritech: () => "Frontend Lead Developer at Ritech Solutions in Tirana — at Ritech since September 2023.",
     circuly: () =>
 `Three roles at circuly GmbH (Bielefeld, Germany), 2021 – 2023:
@@ -1174,8 +1301,8 @@ Italian    ━━━── good`,
     resume: () => "Available at /assets/RESUME_Hamitaj.pdf — or open the resume.json tab above.",
     cv: () => responses.resume(),
     help: () =>
-`Try one of: experience, education, stack, highlights, contact, hire,
-ai, chess, ritech, circuly, languages, age, resume.
+`Try one of: experience, projects, hipzbrit, hackathon, education,
+stack, contact, hire, ai, chess, ritech, circuly, languages, resume.
 
 Or just write a sentence — I'll match keywords.`,
     "?": () => responses.help(),
@@ -1206,7 +1333,7 @@ Or just write a sentence — I'll match keywords.`,
     return `I don't have a pre-baked answer for "${raw.trim()}".
 
 I'm a small static script — try one of:
-experience · stack · contact · hire · ai · chess · languages
+projects · hipzbrit · hackathon · experience · stack · contact · ai
 
 …or email me@shemehamitaj.com.`;
   }
@@ -1247,7 +1374,7 @@ experience · stack · contact · hire · ai · chess · languages
     if (output.children.length === 2) {
       const chips = document.createElement('div');
       chips.className = 'chips';
-      ['experience','stack','hire','ai','chess'].forEach(k => {
+      ['projects','hipzbrit','hackathon','experience','ai'].forEach(k => {
         const b = document.createElement('button');
         b.className = 'quick';
         b.textContent = k;
