@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0369a1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>90-Day Sea Swim Plan</title>
+<style>
+  :root {
+    --bg: #f0f9ff;
+    --card: #ffffff;
+    --ink: #0c243a;
+    --muted: #5a7184;
+    --line: #d6e6f2;
+    --accent: #0369a1;
+    --accent-2: #0ea5e9;
+    --warm: #f59e0b;
+    --rest: #94a3b8;
+    --done: #16a34a;
+    --p1: #38bdf8;
+    --p2: #06b6d4;
+    --p3: #0891b2;
+    --p4: #0e7490;
+    --shadow: 0 2px 8px rgba(3,105,161,.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #061826;
+      --card: #0d2638;
+      --ink: #e6f1f9;
+      --muted: #8ba8be;
+      --line: #1a3a52;
+      --shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.45;
+    padding-bottom: 80px;
+    padding-top: env(safe-area-inset-top);
+  }
+  header {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #fff;
+    padding: 18px 16px 14px;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  }
+  header h1 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+  .progress-wrap { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .bar { flex: 1; height: 8px; background: rgba(255,255,255,.25); border-radius: 4px; overflow: hidden; }
+  .bar > div { height: 100%; background: #fff; transition: width .3s ease; }
+  nav {
+    display: flex; gap: 4px;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 76px; z-index: 49;
+    padding: 6px 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav button {
+    background: transparent; border: 0; color: var(--muted);
+    padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    cursor: pointer; white-space: nowrap; font-family: inherit;
+  }
+  nav button.active { background: var(--accent); color: #fff; }
+  main { padding: 16px; max-width: 720px; margin: 0 auto; }
+  .phase-banner {
+    border-radius: 12px; padding: 14px 16px; color: #fff;
+    margin-bottom: 14px; box-shadow: var(--shadow);
+  }
+  .phase-banner h2 { margin: 0 0 4px; font-size: 17px; }
+  .phase-banner p { margin: 0; font-size: 13px; opacity: .92; }
+  .phase-1 { background: linear-gradient(135deg,#38bdf8,#0ea5e9); }
+  .phase-2 { background: linear-gradient(135deg,#06b6d4,#0891b2); }
+  .phase-3 { background: linear-gradient(135deg,#0891b2,#0e7490); }
+  .phase-4 { background: linear-gradient(135deg,#0e7490,#155e75); }
+
+  .day-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .day-card.today { border: 2px solid var(--warm); }
+  .day-card.rest .day-head { background: linear-gradient(135deg,#94a3b8,#64748b); color:#fff; }
+  .day-card.done .day-head { opacity: .7; }
+  .day-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; cursor: pointer; user-select: none;
+    gap: 10px;
+  }
+  .day-head-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+  .day-num {
+    background: var(--accent); color: #fff;
+    width: 38px; height: 38px; border-radius: 9px;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .day-card.rest .day-num { background: rgba(255,255,255,.25); }
+  .day-meta { min-width: 0; flex: 1; }
+  .day-title { font-weight: 600; font-size: 15px; margin: 0; line-height: 1.2; }
+  .day-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .day-card.rest .day-sub { color: rgba(255,255,255,.85); }
+  .day-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .check-btn {
+    background: var(--bg); border: 2px solid var(--line);
+    width: 30px; height: 30px; border-radius: 50%;
+    cursor: pointer; display: grid; place-items: center;
+    font-size: 16px; color: var(--muted);
+    transition: all .15s ease;
+  }
+  .check-btn.checked { background: var(--done); border-color: var(--done); color: #fff; }
+  .chevron { color: var(--muted); font-size: 18px; transition: transform .2s; }
+  .day-card.open .chevron { transform: rotate(180deg); }
+  .day-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--line); }
+  .day-card.open .day-body { display: block; }
+  .session { margin-top: 14px; }
+  .session h4 {
+    margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--accent); font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .session h4 .duration { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: none; letter-spacing: 0; }
+  .blocks { display: flex; flex-direction: column; gap: 6px; }
+  .block {
+    background: var(--bg); border-radius: 8px; padding: 9px 12px;
+    font-size: 14px; line-height: 1.4;
+    border-left: 3px solid var(--accent-2);
+  }
+  .block.warm { border-left-color: #f59e0b; }
+  .block.cool { border-left-color: #84cc16; }
+  .block-label {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .04em;
+    margin-right: 6px;
+  }
+  .tip {
+    margin-top: 12px; padding: 10px 12px;
+    background: rgba(245,158,11,.1); border-radius: 8px;
+    font-size: 13px; color: var(--ink);
+    border-left: 3px solid var(--warm);
+  }
+  .tip b { color: var(--warm); }
+  .focus-tag {
+    display: inline-block; font-size: 11px; padding: 2px 8px;
+    background: rgba(3,105,161,.12); color: var(--accent);
+    border-radius: 99px; font-weight: 600; margin-left: 6px;
+  }
+  .day-card.rest .focus-tag { background: rgba(255,255,255,.25); color: #fff; }
+
+  .glossary-item {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 8px;
+  }
+  .glossary-item h4 { margin: 0 0 4px; font-size: 15px; color: var(--accent); }
+  .glossary-item p { margin: 0; font-size: 14px; color: var(--ink); }
+
+  .principles {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px; margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .principles h3 { margin: 0 0 10px; font-size: 16px; color: var(--accent); }
+  .principles ul { margin: 0; padding-left: 18px; }
+  .principles li { margin-bottom: 6px; font-size: 14px; }
+
+  .start-row {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; font-size: 14px;
+  }
+  .start-row input {
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px;
+    background: var(--bg); color: var(--ink); font-size: 14px;
+    font-family: inherit;
+  }
+  .reset-btn {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--muted); padding: 6px 10px; border-radius: 6px;
+    font-size: 12px; cursor: pointer; font-family: inherit;
+  }
+  .filter-row {
+    display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto;
+    scrollbar-width: none; padding-bottom: 4px;
+  }
+  .filter-row::-webkit-scrollbar { display: none; }
+  .filter-row button {
+    background: var(--card); border: 1px solid var(--line); color: var(--ink);
+    padding: 6px 12px; border-radius: 99px; font-size: 13px; font-weight: 600;
+    cursor: pointer; white-space: nowrap; font-family: inherit;
+  }
+  .filter-row button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .stat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+  .stat {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px; text-align: center;
+  }
+  .stat .n { font-size: 22px; font-weight: 700; color: var(--accent); display: block; }
+  .stat .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .empty { text-align: center; padding: 40px 20px; color: var(--muted); }
+  .empty h3 { color: var(--ink); }
+
+  .notes-row { margin-top: 14px; }
+  .notes-row label {
+    display: block; font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .notes-row textarea {
+    width: 100%; min-height: 56px; padding: 8px 10px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--bg); color: var(--ink);
+    font-family: inherit; font-size: 14px; resize: vertical;
+    box-sizing: border-box; line-height: 1.4;
+  }
+  .notes-row textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .saved-tag {
+    display: inline-block; font-size: 11px; color: var(--done); margin-left: 8px;
+    opacity: 0; transition: opacity .25s;
+  }
+  .saved-tag.show { opacity: 1; }
+
+  .easier-row { margin-top: 12px; }
+  .easier-btn {
+    background: transparent; border: 1px dashed var(--warm); color: var(--warm);
+    padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit; width: 100%;
+  }
+  .easier-content {
+    margin-top: 10px; padding: 12px 14px;
+    background: rgba(245,158,11,.1); border-radius: 8px;
+    font-size: 14px; line-height: 1.5;
+    border-left: 3px solid var(--warm); display: none;
+  }
+  .easier-content.show { display: block; }
+  .easier-content h5 {
+    margin: 0 0 6px; color: var(--warm); font-size: 12px;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+  .easier-content p { margin: 4px 0; }
+
+  .safety-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; margin-bottom: 10px; padding: 14px;
+    box-shadow: var(--shadow); border-left: 4px solid #dc2626;
+  }
+  .safety-card h4 {
+    margin: 0 0 8px; color: #dc2626; font-size: 15px;
+  }
+  .safety-card ol { margin: 4px 0 0; padding-left: 20px; }
+  .safety-card li { font-size: 14px; margin-bottom: 4px; line-height: 1.45; }
+  .safety-intro {
+    background: rgba(220,38,38,.08); border-radius: 10px; padding: 12px 14px;
+    font-size: 14px; margin-bottom: 14px; border-left: 3px solid #dc2626;
+  }
+
+  .sync-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .sync-btn {
+    background: var(--accent); color: #fff; border: 0;
+    padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .sync-btn.secondary {
+    background: transparent; color: var(--accent); border: 1px solid var(--accent);
+  }
+  .sync-note {
+    font-size: 12px; color: var(--muted); margin: 8px 0 0;
+  }
+  #file-input { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Sea Swim · 90 Days</h1>
+  <div class="progress-wrap">
+    <span id="progress-text">0 / 90</span>
+    <div class="bar"><div id="progress-bar" style="width:0%"></div></div>
+  </div>
+</header>
+<nav id="nav">
+  <button data-view="today" class="active">Today</button>
+  <button data-view="week">This Week</button>
+  <button data-view="all">All 90</button>
+  <button data-view="phases">Phases</button>
+  <button data-view="glossary">Glossary</button>
+  <button data-view="safety">Safety</button>
+</nav>
+<input type="file" id="file-input" accept="application/json,.json">
+<main id="app"></main>
+
+<script>
+// ============== DATA ==============
+const START_DATE = "2026-06-01"; // Mon Jun 1, 2026
+
+// Session block builders
+const W = (txt) => ({label:'WARM', text:txt, kind:'warm'});
+const M = (txt) => ({label:'MAIN', text:txt, kind:'main'});
+const C = (txt) => ({label:'COOL', text:txt, kind:'cool'});
+const N = (txt) => ({label:'NOTE', text:txt, kind:'main'});
+
+// Helper: build day
+function day(num, title, focus, am, pm, tip) {
+  return { num, title, focus, am, pm, tip };
+}
+function rest(num, tip) {
+  return { num, rest: true, title: 'Rest day', focus: 'Recovery', tip };
+}
+
+// === PHASE 1: FOUNDATION (Days 1–21) ===
+// Goal: get comfortable, build to ~15 min continuous swim
+const SCHEDULE = [
+  // Week 1
+  day(1, 'Easy start', 'Get used to water',
+    { dur: '30 min', blocks: [
+      W('5 min easy breaststroke, focus on slow breathing'),
+      M('4 rounds of: 2 min easy swim (any stroke) · 1 min float or tread to rest'),
+      C('5 min very easy breaststroke'),
+    ]},
+    { dur: '50 min', blocks: [
+      W('5 min easy mixed strokes'),
+      M('8 rounds of: 3 min easy swim, alternating strokes each round · 1 min rest'),
+      C('5 min easy backstroke, float and breathe'),
+    ]},
+    'Today is just about showing up. Do not push pace. If you feel tired, rest longer.'
+  ),
+  day(2, 'Stroke sampler', 'Try each stroke',
+    { dur: '30 min', blocks: [
+      W('5 min easy breaststroke'),
+      M('5 min easy breaststroke · 1 min rest · 5 min easy backstroke · 1 min rest · 5 min easy freestyle'),
+      C('5 min float on back, slow breathing'),
+    ]},
+    { dur: '55 min', blocks: [
+      W('5 min easy breast'),
+      M('6 rounds of: 2 min freestyle · 2 min breaststroke · 1 min rest'),
+      C('5 min easy backstroke + 5 min floating'),
+    ]},
+    'Notice which stroke feels easiest in the sea. That is your "home" stroke for tired moments.'
+  ),
+  day(3, 'Steady building', 'Continuous swim',
+    { dur: '30 min', blocks: [
+      W('5 min easy breast'),
+      M('5 rounds of: 3 min steady freestyle, focus on slow steady breathing · 30 sec rest'),
+      C('5 min easy breaststroke'),
+    ]},
+    { dur: '55 min', blocks: [
+      W('5 min easy mixed'),
+      M('Try 10 min continuous swim (any stroke, very easy) · 3 min rest · 10 min continuous · 3 min rest · 10 min easy mixed'),
+      C('5 min easy back, float'),
+    ]},
+    'If 10 min feels too long, swim 7 min and rest. Honest pacing beats pushing through pain.'
+  ),
+  day(4, 'Light + float', 'Recovery + tone',
+    { dur: '30 min', blocks: [
+      W('5 min easy breast'),
+      M('5 min easy backstroke · 10 min sculling and floating: lie on back, hands at hips making small figure-8 motions to stay afloat'),
+      C('5 min easy swim'),
+    ]},
+    { dur: '40 min', blocks: [
+      W('5 min easy breast'),
+      M('Tone session — 6 rounds of: 1 min vertical treading water with hands out of the water · 2 min easy swim recovery'),
+      C('5 min easy back float'),
+    ]},
+    'Treading with hands out works your legs and core hard. If it feels intense, keep hands at the surface.'
+  ),
+  day(5, 'Interval push', 'Build stamina',
+    { dur: '35 min', blocks: [
+      W('5 min easy breast'),
+      M('6 rounds of: 2 min moderate swim (slightly faster than easy) · 1 min rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '60 min', blocks: [
+      W('5 min easy mixed'),
+      M('4 rounds of: 5 min steady swim, change stroke each round · 2 min rest'),
+      N('5 min sculling on back: small figure-8 hand motions, body relaxed'),
+      C('5 min easy float'),
+    ]},
+    'Moderate means: still able to breathe through your nose between strokes. If you are gasping, slow down.'
+  ),
+  day(6, 'Long-ish swim', 'Endurance test',
+    { dur: '35 min', blocks: [
+      W('5 min easy breast'),
+      M('3 rounds of: 6 min steady swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '70 min', blocks: [
+      W('5 min easy'),
+      M('15 min continuous easy breaststroke · 3 min rest · 10 min continuous easy alternating strokes · 3 min rest · 10 min easy choice'),
+      C('5 min back float + 5 min sculling'),
+    ]},
+    'First test of longer swim. Pick the easiest stroke and stay very relaxed. Float on your back any time you need.'
+  ),
+  rest(7, 'Walk gently, stretch shoulders and back, drink plenty of water. Eat protein with each meal.'),
+
+  // Week 2
+  day(8, 'Smooth strokes', 'Technique focus',
+    { dur: '35 min', blocks: [
+      W('5 min easy breast'),
+      M('5 rounds of: 3 min easy freestyle focused on long reach — stretch your fingertips forward each stroke · 30 sec rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 4 min steady swim, change stroke · 1 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Longer reach = more distance per stroke = less effort. Imagine pulling yourself past a fixed point in the water.'
+  ),
+  day(9, 'Interval ladder', 'Mixed pace',
+    { dur: '35 min', blocks: [
+      W('5 min easy'),
+      M('2 min swim · 1 min rest · 3 min swim · 1 min rest · 4 min swim · 1 min rest · 3 min swim · 1 min rest · 2 min swim'),
+      C('5 min easy'),
+    ]},
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 4 min moderate swim · 1 min rest'),
+      N('5 min vertical kicking: in deep water, body upright, kick legs to keep mouth above water (rest at side if needed)'),
+      C('5 min easy float'),
+    ]},
+    'Vertical kicking is a powerful leg builder. Start with arms folded at chest. Progress to hands out of water as you get stronger.'
+  ),
+  day(10, 'Continuous', 'Build endurance',
+    { dur: '35 min', blocks: [
+      W('5 min easy'),
+      M('2 rounds of: 10 min steady swim · 2 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '65 min', blocks: [
+      W('5 min easy'),
+      M('15 min continuous · 3 min rest · 15 min continuous · 3 min rest · 10 min mixed easy'),
+      C('5 min easy float'),
+    ]},
+    'On long continuous swims, switch strokes when one set of muscles gets tired. Breast is gentlest.'
+  ),
+  day(11, 'Tone day', 'Strength focus',
+    { dur: '35 min', blocks: [
+      W('5 min easy breast'),
+      M('Tone — 6 rounds of: 1 min vertical tread with arms folded · 1 min tread with hands at surface · 1 min easy swim'),
+      C('5 min easy back'),
+    ]},
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('Kick-focused — 6 rounds of: 2 min strong flutter kick on back, arms at sides · 1 min easy swim'),
+      N('5 min sculling on back'),
+      C('5 min easy float'),
+    ]},
+    'Kick sets burn legs fast. If your hips drop, slow the kick and keep them up at the surface.'
+  ),
+  day(12, 'Interval', 'Stamina',
+    { dur: '35 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 4 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '65 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 6 min steady swim, change stroke each round · 90 sec rest'),
+      N('Vertical kick 4 × 30 sec with 30 sec rest'),
+      C('5 min easy'),
+    ]},
+    'Notice your breathing rhythm. Find a pattern that feels sustainable, then stick to it.'
+  ),
+  day(13, 'Long swim', 'Endurance',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('3 rounds of: 8 min steady swim · 1 min rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '75 min', blocks: [
+      W('5 min easy'),
+      M('20 min continuous easy swim · 3 min rest · 15 min continuous · 3 min rest · 10 min mixed strokes easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Try to swim parallel to shore at a steady distance out. Easier to track progress and safer.'
+  ),
+  rest(14, 'Take it truly easy. Light walk only. Notice any soreness — that is your body adapting.'),
+
+  // Week 3
+  day(15, 'Smooth + steady', 'Technique',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 4 min freestyle, count strokes per minute — aim for slower count with longer reach · 30 sec rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '70 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 5 min steady swim · 1 min rest'),
+      N('5 min sculling + 5 min vertical kick'),
+      C('5 min float'),
+    ]},
+    'Fewer strokes per minute usually means better form. Patience with each stroke.'
+  ),
+  day(16, 'Ladder up', 'Build effort',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('3 min · 4 min · 5 min · 4 min · 3 min steady swim, 1 min rest between each'),
+      C('5 min easy'),
+    ]},
+    { dur: '70 min', blocks: [
+      W('5 min easy'),
+      M('7 rounds of: 4 min moderate swim · 1 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Ladder workouts help you find your rhythm. Treat them as a single connected effort.'
+  ),
+  day(17, 'Continuous', 'Endurance',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('2 rounds of: 13 min continuous swim · 2 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '70 min', blocks: [
+      W('5 min easy'),
+      M('20 min continuous easy · 3 min rest · 20 min continuous easy · 3 min rest · 10 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'End of foundation phase. You are building a base — slow and steady wins this stretch.'
+  ),
+  day(18, 'Tone', 'Strength',
+    { dur: '35 min', blocks: [
+      W('5 min easy'),
+      M('Vertical kick 8 rounds of: 45 sec strong kick · 45 sec easy swim'),
+      C('5 min sculling on back'),
+    ]},
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('Kick-focused — 8 rounds of: 2 min strong flutter kick on back · 1 min easy swim'),
+      N('Sculling 6 × 1 min with 30 sec rest'),
+      C('5 min float'),
+    ]},
+    'Sculling builds forearm and shoulder endurance — important for long freestyle swims.'
+  ),
+  day(19, 'Interval', 'Pace',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 4 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '70 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 7 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'You should feel like you could do one more round at the end. Save something in the tank.'
+  ),
+  day(20, 'Long swim', 'Phase test',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('20 min continuous easy swim · 3 min rest · 10 min steady swim'),
+      C('5 min easy'),
+    ]},
+    { dur: '80 min', blocks: [
+      W('5 min easy'),
+      M('25 min continuous easy · 5 min rest · 20 min continuous easy · 3 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Big day — pick your easiest stroke for the long blocks. Goal is finishing, not speed.'
+  ),
+  rest(21, 'Phase 1 complete! Reflect: which stroke feels strongest? Any pains? Adjust next week if needed.'),
+
+  // === PHASE 2: ENDURANCE BASE (Days 22-49) ===
+  // Week 4
+  day(22, 'Phase 2 kickoff', 'Smooth swim',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 5 min steady freestyle, focus on long smooth strokes · 1 min rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '75 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 8 min steady swim, change stroke · 1 min rest'),
+      N('5 min vertical kick'),
+      C('5 min float'),
+    ]},
+    'Welcome to phase 2. Now we extend the time and add intensity. Trust the base you built.'
+  ),
+  day(23, 'Intervals', 'Stamina',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 5 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '75 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 6 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Moderate effort = breathing hard but still in control. You could hold a short conversation.'
+  ),
+  day(24, 'Continuous', 'Build',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('2 rounds of: 15 min continuous swim · 2 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '80 min', blocks: [
+      W('5 min easy'),
+      M('25 min continuous easy · 3 min rest · 20 min continuous easy · 3 min rest · 15 min mixed'),
+      C('5 min float'),
+    ]},
+    'Stay relaxed in the long blocks. Tension wastes energy.'
+  ),
+  day(25, 'Tone', 'Strength',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('Vertical kick — 10 rounds of: 45 sec strong kick · 45 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '65 min', blocks: [
+      W('5 min easy'),
+      M('Strength mix — 8 rounds of: 2 min strong kick on back · 2 min breaststroke (slow, with strong pull) · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Slow breaststroke with strong pulls builds chest and arm tone better than fast swimming.'
+  ),
+  day(26, 'Intervals', 'Pace',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 5 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '80 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 8 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'In open water, sight a fixed landmark every 8-10 strokes to swim straight.'
+  ),
+  day(27, 'Long swim', 'Endurance',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('25 min continuous · 3 min rest · 10 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('30 min continuous easy · 5 min rest · 25 min continuous · 3 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Longest week so far. Eat well after. Protein within 30 min helps muscle repair.'
+  ),
+  rest(28, 'Walk only. Stretch shoulders, chest, and lats. You earned this rest.'),
+
+  // Week 5
+  day(29, 'Smooth swim', 'Technique',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 5 min freestyle with rhythmic breathing every 3 strokes · 1 min rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '85 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 8 min steady swim · 1 min rest'),
+      N('Vertical kick 6 × 1 min with 1 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Breathing every 3 strokes alternates sides — keeps your stroke balanced. Try it for short bursts.'
+  ),
+  day(30, 'Intervals', 'Stamina',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 6 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '85 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 9 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Eat a small carb snack 60-90 min before this session if you have time.'
+  ),
+  day(31, 'Continuous', 'Build',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('20 min continuous swim · 2 min rest · 10 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '85 min', blocks: [
+      W('5 min easy'),
+      M('30 min continuous easy · 5 min rest · 25 min continuous easy · 3 min rest · 10 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'You can now swim for 30 min without stopping. Real progress. Notice it.'
+  ),
+  day(32, 'Tone', 'Strength',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('Vertical kick — 12 rounds of: 45 sec strong kick · 45 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '70 min', blocks: [
+      W('5 min easy'),
+      M('Strength mix — 8 rounds of: 3 min strong kick on back · 2 min slow breaststroke with strong pulls · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'For breast pull strength: pause briefly when your hands meet at chest, then squeeze inward hard.'
+  ),
+  day(33, 'Intervals', 'Pace',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 5 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 10 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'If a round feels too hard, drop intensity but not duration. Time in water matters most.'
+  ),
+  day(34, 'Long swim', 'Endurance',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('30 min continuous easy · 3 min rest · 10 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '100 min', blocks: [
+      W('5 min easy'),
+      M('35 min continuous easy · 5 min rest · 30 min continuous · 3 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Bring water to shore. Sip between rest periods. Sea swimming dehydrates you more than you think.'
+  ),
+  rest(35, 'Eat well today. Big training week. Walk only, no swimming.'),
+
+  // Week 6
+  day(36, 'Smooth swim', 'Technique',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 6 min freestyle, focus on relaxed face and neck · 1 min rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 10 min steady swim · 1 min rest'),
+      N('Vertical kick 8 × 45 sec with 45 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Tense face = tense body. Soft jaw, soft neck. Energy goes into the stroke.'
+  ),
+  day(37, 'Intervals', 'Stamina',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 5 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 12 min steady swim · 2 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Longer steady rounds train you to find a stroke rhythm and hold it.'
+  ),
+  day(38, 'Continuous', 'Build',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('25 min continuous swim · 3 min rest · 12 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '95 min', blocks: [
+      W('5 min easy'),
+      M('35 min continuous easy · 5 min rest · 30 min continuous · 3 min rest · 10 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'Mentally chunk long swims into 5-min blocks. Count them down.'
+  ),
+  day(39, 'Tone', 'Strength',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('Vertical kick — 12 rounds of: 1 min strong kick · 30 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '75 min', blocks: [
+      W('5 min easy'),
+      M('Strength mix — 6 rounds of: 4 min strong kick on back · 3 min slow breast with strong pulls · 1 min rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Strong breast pulls + strong kicks are your main tone builders. They beat hours of easy swimming for muscle.'
+  ),
+  day(40, 'Intervals', 'Pace',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 6 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '95 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 12 min steady swim · 2 min rest · then 15 min easy continuous'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'You can now do 4 × 12 min steady. Six weeks ago, 5 min was your limit. Real progress.'
+  ),
+  day(41, 'Long swim', 'Endurance',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('35 min continuous easy · 3 min rest · 7 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '110 min', blocks: [
+      W('5 min easy'),
+      M('40 min continuous easy · 5 min rest · 35 min continuous · 3 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Mid-program checkpoint. You are halfway. Big long swim today.'
+  ),
+  rest(42, 'Full rest day. Stretch, walk, sleep extra. Reflect on muscle changes you can see in the mirror.'),
+
+  // Week 7
+  day(43, 'Smooth swim', 'Technique',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 7 min freestyle, focus on long glide between strokes · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '95 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 12 min steady · 1 min rest'),
+      N('Vertical kick 10 × 45 sec with 45 sec rest'),
+      C('5 min float'),
+    ]},
+    'Glide means: after your hand enters the water in front, pause briefly with arm extended before pulling.'
+  ),
+  day(44, 'Intervals', 'Stamina',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 5 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '95 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 12 min steady swim · 2 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Save energy for the second half. Negative split: faster in round 4-5 than round 1-2.'
+  ),
+  day(45, 'Continuous', 'Build',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('30 min continuous swim · 3 min rest · 10 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '100 min', blocks: [
+      W('5 min easy'),
+      M('40 min continuous easy · 5 min rest · 35 min continuous · 3 min rest · 10 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'On long continuous swims, find a song with a steady beat and mentally play it.'
+  ),
+  day(46, 'Tone', 'Strength',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('Vertical kick — 14 rounds of: 1 min strong kick · 30 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '80 min', blocks: [
+      W('5 min easy'),
+      M('Strength mix — 8 rounds of: 3 min strong kick on back · 3 min slow breast with strong pulls · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'You should now visibly see shoulder and arm tone improvement. Take a photo today to compare later.'
+  ),
+  day(47, 'Intervals', 'Pace',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 7 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '100 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 15 min steady swim · 2 min rest · then 15 min easy'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Steady = the pace you could hold for an hour. If a round feels easy, you have more to give.'
+  ),
+  day(48, 'Long swim', 'Phase test',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('40 min continuous easy · 3 min rest · 5 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('45 min continuous easy · 5 min rest · 35 min continuous · 3 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'End of phase 2. You can now swim 45+ min straight. That is a real endurance base.'
+  ),
+  rest(49, 'Phase 2 complete. Two days of light walking would not hurt. Stay hydrated.'),
+
+  // === PHASE 3: STRENGTH & DISTANCE (Days 50-77) ===
+  // Week 8
+  day(50, 'Phase 3 kickoff', 'Power building',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 8 min steady swim, focus on a strong pull (full extension, fingers wide) · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '100 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 15 min steady swim · 2 min rest'),
+      N('Vertical kick 8 × 1 min with 30 sec rest'),
+      C('5 min float'),
+    ]},
+    'Phase 3: we add power. Strong pulls and stronger kicks build muscle harder. Eat enough protein.'
+  ),
+  day(51, 'Intervals', 'Power',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 6 min moderate-strong swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '105 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 15 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Strong pull: wide hand, bent elbow under water, push water past your hip.'
+  ),
+  day(52, 'Continuous', 'Endurance',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('35 min continuous swim · 3 min rest · 7 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '105 min', blocks: [
+      W('5 min easy'),
+      M('45 min continuous easy · 5 min rest · 30 min continuous · 3 min rest · 15 min mixed'),
+      C('5 min float'),
+    ]},
+    'You should feel fitter now. The 45 min block should not feel as hard as 30 min did 3 weeks ago.'
+  ),
+  day(53, 'Tone heavy', 'Strength',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('Heavy kick — 10 rounds of: 2 min very strong kick on back · 1 min easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '85 min', blocks: [
+      W('5 min easy'),
+      M('Strength stack — 6 rounds of: 4 min strong kick on back · 3 min slow strong breast · 2 min easy free · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Today is hard. The reward is real muscle. Keep going. You can rest tomorrow if needed.'
+  ),
+  day(54, 'Intervals', 'Speed',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 6 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '105 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 18 min steady swim · 2 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Adding more variety means more muscle recruitment. Mix is what builds tone.'
+  ),
+  day(55, 'Long swim', 'Endurance',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('40 min continuous · 3 min rest · 7 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('50 min continuous easy · 5 min rest · 35 min continuous · 3 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    '50 min continuous is a major milestone. Pace yourself for it — start slower than feels right.'
+  ),
+  rest(56, 'Rest. Massage shoulders gently. Eat carbs and protein. Sleep 8+ hours.'),
+
+  // Week 9
+  day(57, 'Smooth power', 'Technique',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 7 min freestyle with strong pulls · 30 sec rest'),
+      C('5 min easy back'),
+    ]},
+    { dur: '110 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 15 min steady swim · 1 min rest'),
+      N('Vertical kick 10 × 1 min with 30 sec rest'),
+      C('5 min float'),
+    ]},
+    'Smooth + powerful is the goal. Power without smoothness wastes energy.'
+  ),
+  day(58, 'Intervals', 'Stamina',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 7 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '110 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 17 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Five 17-min rounds is 85 min of swimming. A real endurance day.'
+  ),
+  day(59, 'Continuous', 'Build',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('40 min continuous swim · 3 min rest · 7 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '110 min', blocks: [
+      W('5 min easy'),
+      M('50 min continuous easy · 5 min rest · 35 min continuous · 3 min rest · 12 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'You are now spending 100+ minutes in water some days. The body has adapted.'
+  ),
+  day(60, 'Tone heavy', 'Strength',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('Heavy kick — 12 rounds of: 2 min very strong kick · 1 min easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('Strength stack — 6 rounds of: 4 min strong kick on back · 3 min slow strong breast · 3 min easy free · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'You should now visibly see leg muscle changes. Calves, thighs, glutes all benefit from vertical kicking.'
+  ),
+  day(61, 'Intervals', 'Pace',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('6 rounds of: 7 min moderate · 30 sec rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '110 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 20 min steady swim · 2 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    '20 min steady, four times. Try to finish round 4 stronger than round 1.'
+  ),
+  day(62, 'Long swim', 'Endurance',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('45 min continuous · 3 min rest · 5 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('55 min continuous easy · 5 min rest · 35 min continuous · 3 min rest · 10 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Almost an hour straight. Sip water at the rest break, do not gulp.'
+  ),
+  rest(63, 'Rest. Stretch hips and ankles — important for kicking. Sleep well.'),
+
+  // Week 10
+  day(64, 'Smooth power', 'Technique',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 10 min steady freestyle, breathe every 3 strokes for first half, every 2 for second half · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 17 min steady swim · 1 min rest'),
+      N('Vertical kick 12 × 1 min with 30 sec rest'),
+      C('5 min float'),
+    ]},
+    'Breathing patterns build lung tolerance. Every-3 forces you to control breath, every-2 lets you recover.'
+  ),
+  day(65, 'Intervals', 'Stamina',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 9 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 18 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Hard week, big efforts. Eat extra rice or pasta tonight.'
+  ),
+  day(66, 'Continuous', 'Build',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('45 min continuous swim · 2 min rest · 5 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('55 min continuous easy · 5 min rest · 40 min continuous · 3 min rest · 10 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'Big continuous day. Mid-swim, do a self-check: shoulders relaxed? Hips up? Steady breath?'
+  ),
+  day(67, 'Tone heavy', 'Strength',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('Heavy kick — 12 rounds of: 2 min very strong kick · 45 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('Strength stack — 5 rounds of: 5 min strong kick on back · 4 min slow strong breast · 3 min easy free · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'You are 2/3 done. The tone work is paying off. Keep eating enough.'
+  ),
+  day(68, 'Intervals', 'Pace',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 8 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 22 min steady swim · 2 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Try to negative-split: average a bit faster in the second half than first half.'
+  ),
+  day(69, 'Long swim', 'Endurance',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('50 min continuous · 5 min easy cooldown swim'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('60 min continuous easy swim · 5 min rest · 35 min continuous · 3 min rest · 10 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'One hour straight in open water. Major milestone. Eat well tonight.'
+  ),
+  rest(70, 'Rest day. You earned it. Reflect on how far you have come from week 1.'),
+
+  // Week 11
+  day(71, 'Smooth power', 'Technique',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 10 min steady freestyle, long smooth strokes · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 18 min steady swim · 1 min rest'),
+      N('Vertical kick 12 × 1 min with 30 sec rest'),
+      C('5 min float'),
+    ]},
+    'Same volume, smoother. Quality over quantity now.'
+  ),
+  day(72, 'Intervals', 'Stamina',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 8 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '115 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 20 min steady swim · 90 sec rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Five 20-min rounds. A serious workout. Pace yourself early.'
+  ),
+  day(73, 'Continuous', 'Build',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('45 min continuous swim · 2 min rest · 8 min steady'),
+      C('5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('60 min continuous easy · 5 min rest · 40 min continuous · 3 min rest · 7 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'Steady week. Hold form even when tired. Strong finish.'
+  ),
+  day(74, 'Tone', 'Strength',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('Heavy kick — 14 rounds of: 1.5 min very strong kick · 45 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('Strength stack — 5 rounds of: 5 min strong kick on back · 4 min slow strong breast · 3 min easy free · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Last heavy tone week before peak. Push through it.'
+  ),
+  day(75, 'Intervals', 'Pace',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 9 min moderate · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('3 rounds of: 30 min steady swim · 3 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Three 30-min rounds. Try to finish on the highest effort you can hold for 30 min.'
+  ),
+  day(76, 'Long swim', 'Peak prep',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('50 min continuous · 5 min easy cooldown swim'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('65 min continuous easy swim · 5 min rest · 35 min continuous · 3 min rest · 5 min mixed easy'),
+      C('5 min float'),
+    ]},
+    '65 min straight. You are ready for the peak phase.'
+  ),
+  rest(77, 'Rest. Recover well. Final phase begins tomorrow.'),
+
+  // === PHASE 4: PEAK (Days 78-90) ===
+  // Week 12
+  day(78, 'Peak begins', 'Sustained swim',
+    { dur: '50 min', blocks: [
+      W('5 min easy'),
+      M('40 min steady swim, smooth and strong · 5 min easy cool'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('Long block — 70 min continuous easy swim · 5 min rest · 30 min continuous · 3 min rest · 5 min easy'),
+      C('5 min float'),
+    ]},
+    'Peak phase. Longer swims, less interval work. Build the ability to stay in water.'
+  ),
+  day(79, 'Mixed long', 'Endurance',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('45 min steady swim · 5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 25 min steady swim · 2 min rest · then 10 min easy'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Four 25-min steady rounds. You can do this.'
+  ),
+  day(80, 'Continuous push', 'Stamina',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('50 min continuous steady swim · 5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('75 min continuous easy swim · 5 min rest · 25 min continuous · 5 min mixed easy'),
+      C('5 min float'),
+    ]},
+    '75 min straight. Pace it carefully. Switch strokes within the swim when needed.'
+  ),
+  day(81, 'Tone tune-up', 'Strength',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('Heavy kick — 12 rounds of: 1.5 min strong kick · 45 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '90 min', blocks: [
+      W('5 min easy'),
+      M('Strength stack — 6 rounds of: 4 min strong kick · 3 min slow strong breast · 2 min easy free · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Last big tone day. Push it.'
+  ),
+  day(82, 'Sustained', 'Endurance',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('45 min steady swim · 5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('3 rounds of: 35 min steady swim · 3 min rest'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'Three 35-min rounds at steady pace. Real swimmer territory.'
+  ),
+  day(83, 'Long swim', 'Big effort',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('55 min continuous swim · 5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('80 min continuous easy swim · 5 min rest · 25 min continuous · 5 min mixed easy'),
+      C('5 min float'),
+    ]},
+    '80 min continuous. Major achievement. Celebrate finishing.'
+  ),
+  rest(84, 'Rest. One week left. Sleep well. Eat well. You are nearly there.'),
+
+  // Week 13
+  day(85, 'Strong start', 'Sustained',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('45 min steady swim · 5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('Long block — 75 min continuous · 5 min rest · 25 min continuous · 5 min mixed'),
+      C('5 min float'),
+    ]},
+    'Final week. Keep doing what works. No new tricks.'
+  ),
+  day(86, 'Intervals', 'Pace',
+    { dur: '55 min', blocks: [
+      W('5 min easy'),
+      M('5 rounds of: 8 min moderate swim · 1 min rest'),
+      C('5 min easy'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('4 rounds of: 25 min steady · 2 min rest · then 12 min easy'),
+      C('5 min easy + 5 min float'),
+    ]},
+    'You should feel strong today. Trust your fitness.'
+  ),
+  day(87, 'Continuous', 'Stamina',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('55 min continuous steady swim'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('75 min continuous easy · 5 min rest · 30 min continuous · 5 min mixed easy'),
+      C('5 min float'),
+    ]},
+    'Steady is the new easy. That is what 13 weeks does.'
+  ),
+  day(88, 'Tone final', 'Strength',
+    { dur: '45 min', blocks: [
+      W('5 min easy'),
+      M('Heavy kick — 12 rounds of: 1.5 min strong kick · 45 sec easy swim'),
+      C('5 min sculling'),
+    ]},
+    { dur: '85 min', blocks: [
+      W('5 min easy'),
+      M('Strength stack — 5 rounds of: 4 min strong kick · 3 min slow strong breast · 2 min easy free · 30 sec rest'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Last tone day. Take photos to compare with day 1.'
+  ),
+  day(89, 'Easy day', 'Pre-final',
+    { dur: '40 min', blocks: [
+      W('5 min easy'),
+      M('30 min very easy continuous swim'),
+      C('5 min float'),
+    ]},
+    { dur: '75 min', blocks: [
+      W('5 min easy'),
+      M('45 min easy continuous swim · 5 min rest · 15 min mixed easy'),
+      C('5 min sculling + 5 min float'),
+    ]},
+    'Light day before finale. Stay loose, do not push.'
+  ),
+  day(90, 'FINALE', 'Big swim',
+    { dur: '60 min', blocks: [
+      W('5 min easy'),
+      M('50 min continuous swim — your strongest stroke, smooth and strong'),
+      C('5 min easy + 2 min float'),
+    ]},
+    { dur: '120 min', blocks: [
+      W('5 min easy'),
+      M('FINAL CHALLENGE — swim as long as you can continuously. Aim for 90 minutes. Pace easy. Stop when truly tired.'),
+      C('5 min sculling + 10 min float — celebrate'),
+    ]},
+    'Day 90. Compare this to day 1. You are a different swimmer now. Be proud.'
+  ),
+];
+
+// === GLOSSARY ===
+const GLOSSARY = [
+  { term: 'Easy', def: 'A pace where you can breathe through your nose and feel relaxed. You could keep going for an hour. Light effort.' },
+  { term: 'Steady', def: 'A pace you could hold for a long swim (30+ min) without struggling. Comfortable but not lazy. Moderate effort.' },
+  { term: 'Moderate', def: 'Slightly harder than steady. You are breathing hard but in control. Could hold for 5–10 minutes.' },
+  { term: 'Strong / Hard', def: 'High effort. Used in short bursts. Breath is fast. Should feel tired after 1–2 minutes.' },
+  { term: 'Stroke', def: 'A swimming style. The main four are: freestyle (front crawl), backstroke, breaststroke, butterfly. You will use the first three.' },
+  { term: 'Freestyle / Front crawl', def: 'Face down, alternating arm pulls, with a flutter kick. Fastest stroke for most people.' },
+  { term: 'Breaststroke', def: 'Frog-like kick, sweeping arms in front, head can stay up. Easiest to breathe with.' },
+  { term: 'Backstroke', def: 'On your back, alternating arm pulls overhead, flutter kick. Easy to breathe but harder to swim straight.' },
+  { term: 'Tread water', def: 'Stay vertical in the water without moving forward. Hands and feet move to keep you afloat.' },
+  { term: 'Vertical kick', def: 'Tread water using only your legs. Arms folded at chest or held above the water. Builds strong legs and core fast.' },
+  { term: 'Flutter kick', def: 'Quick, small up-and-down leg kicks with straight legs and pointed toes. The kick used in freestyle and backstroke.' },
+  { term: 'Sculling', def: 'Lying on your back (or face down), making small figure-8 motions with your hands at the surface to stay afloat or move. Builds forearms and shoulders.' },
+  { term: 'Pull', def: 'The arm motion that propels you forward in the water. A "strong pull" means using your hand wide and pushing water firmly past your hip.' },
+  { term: 'Glide', def: 'A brief pause after your hand enters the water in front of you, before you start the pull. Lets the stroke be smoother and travel farther.' },
+  { term: 'Continuous swim', def: 'Swimming non-stop for a set time, no breaks. Builds endurance.' },
+  { term: 'Interval', def: 'A repeated pattern of swim + rest. E.g. "6 rounds of 3 min swim, 1 min rest".' },
+  { term: 'Round', def: 'One repeat of an interval. "5 rounds of X" means do X five times.' },
+  { term: 'Warm-up', def: 'Easy swimming at the start to prepare your body. Always do it. Reduces injury risk and helps performance.' },
+  { term: 'Cool-down', def: 'Easy swimming at the end. Helps your body recover and clear out fatigue products.' },
+  { term: 'Sight / Sighting', def: 'In open water: briefly look up to check direction. Pick a fixed landmark and aim for it.' },
+  { term: 'Float', def: 'Lie still on your back in the water and just breathe. A real rest position. Practice it — useful when tired.' },
+  { term: 'Negative split', def: 'Swimming the second half of a workout faster than the first half. A sign of good pacing.' },
+];
+
+// === PRINCIPLES ===
+const PRINCIPLES = [
+  'Eat enough protein. Without it, you cannot build tone. Aim for some at each meal (eggs, fish, chicken, beans, yogurt, lentils).',
+  'Sip water before and after every session. Sea swimming dehydrates you more than you feel.',
+  'Sleep 8+ hours. Muscle is built while sleeping, not while swimming.',
+  'If a session feels too hard, cut it short — never push through sharp pain. Adapt the plan, do not abandon it.',
+  'On rest days, actually rest. Light walking is fine. No high-effort activity.',
+  'Sea swim safety: always swim with someone watching from shore, or near other swimmers. Know where you can stand. Watch for currents and boats.',
+  'Sun protection: wear waterproof sunscreen, a swim cap if you have one, and avoid the strongest midday sun if possible.',
+  'Track your progress: take a photo on day 1 and again every 2 weeks. Visual change is encouraging.',
+  'Trust the plan. The early weeks may feel too easy. They are building the base for harder weeks. Do not skip ahead.',
+  'Listen for "good tired" vs "bad tired". Good tired = pleasantly worn out, will recover by tomorrow. Bad tired = sharp pain, joints aching, can barely lift arms. The first is normal. The second means rest.',
+];
+
+// === SAFETY ===
+const SAFETY = [
+  { name: 'Cramp mid-swim (calf, foot, hamstring)', steps: [
+    'Stay calm. Roll onto your back and float. Do NOT panic-kick — that makes cramps worse.',
+    'Breathe slowly. Gently stretch the cramped muscle (e.g., pull your toes up toward your shin for a calf cramp).',
+    'Wave one arm to shore if anyone is watching.',
+    'When it eases, swim slowly back using mostly arms — breaststroke or sidestroke is gentlest.',
+  ]},
+  { name: 'Sudden exhaustion / panic', steps: [
+    'Roll onto your back. Spread arms and legs into a star — you will float. The sea is salty, it holds you up.',
+    'Slow your breathing. In through the nose for 4 counts, out through the mouth for 6. Repeat for 1–2 minutes.',
+    'Hug your tow float if you have one. Wave the other arm to shore.',
+    'Once your heart slows, swim back at a very easy pace, breaststroke with head up if that feels safer.',
+  ]},
+  { name: 'Caught in a current pulling you out', steps: [
+    'Do NOT swim straight back to shore — you will exhaust yourself fighting it.',
+    'Swim parallel to the shore (sideways) until you feel the pull weaken — usually 20–50 meters.',
+    'Then swim diagonally back to shore at an angle.',
+    'If you cannot escape, float on your back, wave, and shout for help. Conserve energy.',
+  ]},
+  { name: 'Cold shock (jumping in, breath goes)', steps: [
+    'Do not try to swim. Just float on your back and breathe.',
+    'It passes in 60–90 seconds. Stay calm — your breath will return.',
+    'Once you are breathing normally, swim gently. Get out if you feel chilled to the core.',
+    'Prevent it: walk in slowly, splash water on your chest and neck before going under.',
+  ]},
+  { name: 'Lost orientation (cannot find shore)', steps: [
+    'Stop swimming. Tread water and look around slowly, 360 degrees.',
+    'Look for: shore, your starting point, other swimmers, boats, mountains, the sun position.',
+    'Pick the nearest safe direction. Swim slowly toward it — do not sprint.',
+    'Prevent it: pick 2 landmarks before entering (e.g., a rock and a tree) and check every 8–10 strokes.',
+  ]},
+  { name: 'Jellyfish sting', steps: [
+    'Get out of the water if you can — more stings are likely in the same spot.',
+    'Rinse the stung area with SEAWATER. Do NOT use fresh water — it triggers more venom release.',
+    'Carefully scrape off any tentacles with a credit card, stick, or shell edge. Do not rub with your hand.',
+    'If you have vinegar, pour it on (helps with most Mediterranean species). Then rinse with seawater again.',
+    'Watch for severe reactions: trouble breathing, dizziness, chest pain → get help fast.',
+  ]},
+  { name: 'Boat approaching', steps: [
+    'Stop swimming. Wave your bright cap or tow float high above the water — boaters often cannot see swimmers low in the water.',
+    'If it keeps coming, swim hard perpendicular to its path (sideways out of its way).',
+    'Stay alert near harbors and beach edges — boats accelerate fast.',
+    'Prevent it: bright cap + tow float every swim. Stay out of marked boat lanes.',
+  ]},
+  { name: 'Before every swim — quick check', steps: [
+    'Tell someone where you are going and when you will be back.',
+    'Check the sea: waves, wind, jellyfish reports, visible currents. If in doubt, do not go.',
+    'Wear your bright cap and tow if you have one. Goggles. Sunscreen.',
+    'Know where you will exit. Pick 2 landmarks for sighting.',
+    'Do not swim alone in open water if you can avoid it. At minimum, someone on shore should watch you.',
+  ]},
+];
+
+// === EASIER SESSION (conditions swap) ===
+function easierFor(d) {
+  // If today's plan feels too much (rough sea, cold, tired, sick): return a simpler version.
+  if (d.rest) return null;
+  return {
+    am: { dur: '20 min', text: '15 min very easy continuous breaststroke or backstroke. Float and rest whenever you want. Stay close to shore.' },
+    pm: { dur: '30 min', text: '5 min easy warm-up. 20 min very easy continuous swim, alternating breast and back, with floating rests as needed. 5 min float and cool down.' },
+    note: 'Use this if the sea is rough, you slept badly, you are sore, or you just feel off. A short easy swim still keeps your habit and your fitness alive. Better than skipping.',
+  };
+}
+
+// === RENDERING ===
+const STORAGE_KEY = 'swim90_state_v1';
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return Object.assign({ done: {}, notes: {}, startDate: START_DATE, view: 'today' }, s);
+  } catch { return { done: {}, notes: {}, startDate: START_DATE, view: 'today' }; }
+}
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+let state = loadState();
+
+function fmtDate(d) {
+  return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+}
+function dateForDay(num) {
+  const start = new Date(state.startDate + 'T00:00:00');
+  const d = new Date(start);
+  d.setDate(d.getDate() + (num - 1));
+  return d;
+}
+function currentDayNumber() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const start = new Date(state.startDate + 'T00:00:00');
+  const diff = Math.floor((today - start) / (24*60*60*1000));
+  return diff + 1;
+}
+function phaseOf(num) {
+  if (num <= 21) return 1;
+  if (num <= 49) return 2;
+  if (num <= 77) return 3;
+  return 4;
+}
+function phaseInfo(p) {
+  return [
+    null,
+    { name: 'Phase 1 · Foundation', range: 'Days 1–21', desc: 'Get comfortable. Build to 15 min continuous swim. Light tone work.', cls: 'phase-1' },
+    { name: 'Phase 2 · Endurance Base', range: 'Days 22–49', desc: 'Extend continuous swim to 45 min. Add real tone sessions.', cls: 'phase-2' },
+    { name: 'Phase 3 · Strength & Distance', range: 'Days 50–77', desc: 'Push beyond an hour. Heavy kick and pull work for visible tone.', cls: 'phase-3' },
+    { name: 'Phase 4 · Peak', range: 'Days 78–90', desc: 'Sustained long swims. Consolidate fitness and finish strong.', cls: 'phase-4' },
+  ][p];
+}
+
+function dayCard(d, expandedDefault = false) {
+  const date = dateForDay(d.num);
+  const isToday = d.num === currentDayNumber();
+  const done = state.done[d.num];
+  const ph = phaseOf(d.num);
+  const expanded = expandedDefault || isToday;
+  const cls = `day-card ${d.rest ? 'rest' : ''} ${isToday ? 'today' : ''} ${done ? 'done' : ''} ${expanded ? 'open' : ''}`;
+  let html = `<div class="${cls}" data-day="${d.num}">`;
+  html += `<div class="day-head">`;
+  html += `<div class="day-head-left">`;
+  html += `<div class="day-num">${d.num}</div>`;
+  html += `<div class="day-meta">`;
+  html += `<div class="day-title">${d.title} <span class="focus-tag">${d.focus}</span></div>`;
+  html += `<div class="day-sub">${fmtDate(date)} · Phase ${ph}</div>`;
+  html += `</div></div>`;
+  html += `<div class="day-actions">`;
+  html += `<button class="check-btn ${done ? 'checked' : ''}" data-check="${d.num}" aria-label="Mark done">${done ? '✓' : ''}</button>`;
+  html += `<span class="chevron">▾</span>`;
+  html += `</div></div>`;
+  html += `<div class="day-body">`;
+  if (d.rest) {
+    html += `<div class="tip"><b>Rest:</b> ${d.tip}</div>`;
+  } else {
+    html += sessionHTML('Morning', d.am);
+    html += sessionHTML('Afternoon', d.pm);
+    if (d.tip) html += `<div class="tip"><b>Tip:</b> ${d.tip}</div>`;
+    const ez = easierFor(d);
+    if (ez) {
+      html += `<div class="easier-row">`;
+      html += `<button class="easier-btn" data-easier="${d.num}">Conditions bad? Tap for an easier version</button>`;
+      html += `<div class="easier-content" id="easier-${d.num}">`;
+      html += `<h5>Easier swap</h5>`;
+      html += `<p><b>Morning (${ez.am.dur}):</b> ${ez.am.text}</p>`;
+      html += `<p><b>Afternoon (${ez.pm.dur}):</b> ${ez.pm.text}</p>`;
+      html += `<p style="margin-top:6px;font-size:13px;color:var(--muted);">${ez.note}</p>`;
+      html += `</div></div>`;
+    }
+  }
+  const noteVal = (state.notes && state.notes[d.num]) || '';
+  html += `<div class="notes-row"><label>How did it go? <span class="saved-tag" id="saved-${d.num}">saved</span></label>`;
+  html += `<textarea data-note="${d.num}" placeholder="${d.rest ? 'How are you feeling? Any soreness?' : 'How did it feel? Energy, sea conditions, anything to remember.'}">${escapeHTML(noteVal)}</textarea></div>`;
+  html += `</div></div>`;
+  return html;
+}
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function sessionHTML(name, s) {
+  let h = `<div class="session"><h4>${name} <span class="duration">· ${s.dur}</span></h4><div class="blocks">`;
+  for (const b of s.blocks) {
+    h += `<div class="block ${b.kind}"><span class="block-label">${b.label}</span>${b.text}</div>`;
+  }
+  h += `</div></div>`;
+  return h;
+}
+
+function renderProgress() {
+  const total = SCHEDULE.length;
+  const done = Object.values(state.done).filter(Boolean).length;
+  document.getElementById('progress-text').textContent = `${done} / ${total}`;
+  document.getElementById('progress-bar').style.width = (done / total * 100) + '%';
+}
+
+function renderToday() {
+  const n = currentDayNumber();
+  const app = document.getElementById('app');
+  if (n < 1) {
+    const start = new Date(state.startDate + 'T00:00:00');
+    app.innerHTML = `<div class="start-row">Start date: <input type="date" id="startInput" value="${state.startDate}"></div>
+      <div class="empty"><h3>Not started yet</h3><p>Your plan starts on ${fmtDate(start)}. Come back then, or update your start date above.</p></div>`;
+  } else if (n > SCHEDULE.length) {
+    app.innerHTML = `<div class="start-row">Start date: <input type="date" id="startInput" value="${state.startDate}"></div>
+      <div class="empty"><h3>Plan complete</h3><p>You finished the 90-day program. Maintain with 4–5 long swims per week, or start the plan again.</p></div>`;
+  } else {
+    const d = SCHEDULE[n - 1];
+    let html = `<div class="start-row">Start date: <input type="date" id="startInput" value="${state.startDate}"><button class="reset-btn" id="resetBtn">Reset progress</button></div>`;
+    html += `<div class="phase-banner ${phaseInfo(phaseOf(n)).cls}"><h2>${phaseInfo(phaseOf(n)).name}</h2><p>${phaseInfo(phaseOf(n)).desc}</p></div>`;
+    html += `<h3 style="margin:4px 0 10px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Today</h3>`;
+    html += dayCard(d, true);
+    if (n < SCHEDULE.length) {
+      html += `<h3 style="margin:18px 0 10px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Tomorrow</h3>`;
+      html += dayCard(SCHEDULE[n], false);
+    }
+    app.innerHTML = html;
+  }
+  hookEvents();
+}
+
+function renderWeek() {
+  const n = Math.max(1, Math.min(currentDayNumber(), SCHEDULE.length));
+  const weekStart = Math.floor((n - 1) / 7) * 7 + 1;
+  const app = document.getElementById('app');
+  let html = `<div class="start-row">Start date: <input type="date" id="startInput" value="${state.startDate}"></div>`;
+  html += `<h3 style="margin:4px 0 10px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Week of day ${weekStart}–${Math.min(weekStart+6, SCHEDULE.length)}</h3>`;
+  for (let i = weekStart; i <= Math.min(weekStart + 6, SCHEDULE.length); i++) {
+    html += dayCard(SCHEDULE[i - 1], false);
+  }
+  app.innerHTML = html;
+  hookEvents();
+}
+
+function renderAll() {
+  const app = document.getElementById('app');
+  let html = `<div class="start-row">Start date: <input type="date" id="startInput" value="${state.startDate}"><button class="reset-btn" id="resetBtn">Reset</button></div>`;
+  html += `<div class="filter-row" id="filter-row">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="1">Phase 1</button>
+    <button data-filter="2">Phase 2</button>
+    <button data-filter="3">Phase 3</button>
+    <button data-filter="4">Phase 4</button>
+    <button data-filter="rest">Rest days</button>
+    <button data-filter="todo">Not done</button>
+  </div>`;
+  html += `<div id="all-days">`;
+  for (const d of SCHEDULE) html += dayCard(d, false);
+  html += `</div>`;
+  app.innerHTML = html;
+  hookEvents();
+  document.querySelectorAll('#filter-row button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#filter-row button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      const f = b.dataset.filter;
+      document.querySelectorAll('#all-days .day-card').forEach(card => {
+        const num = +card.dataset.day;
+        const d = SCHEDULE[num - 1];
+        let show = true;
+        if (f === '1') show = phaseOf(num) === 1;
+        else if (f === '2') show = phaseOf(num) === 2;
+        else if (f === '3') show = phaseOf(num) === 3;
+        else if (f === '4') show = phaseOf(num) === 4;
+        else if (f === 'rest') show = !!d.rest;
+        else if (f === 'todo') show = !state.done[num];
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+}
+
+function renderPhases() {
+  const app = document.getElementById('app');
+  const done = Object.values(state.done).filter(Boolean).length;
+  let html = `<div class="stat-grid">
+    <div class="stat"><span class="n">${done}</span><span class="l">Done</span></div>
+    <div class="stat"><span class="n">${SCHEDULE.length - done}</span><span class="l">To go</span></div>
+    <div class="stat"><span class="n">${Math.round(done / SCHEDULE.length * 100)}%</span><span class="l">Progress</span></div>
+  </div>`;
+  for (let p = 1; p <= 4; p++) {
+    const info = phaseInfo(p);
+    html += `<div class="phase-banner ${info.cls}"><h2>${info.name}</h2><p>${info.range} — ${info.desc}</p></div>`;
+  }
+  html += `<div class="principles"><h3>Core principles</h3><ul>`;
+  for (const p of PRINCIPLES) html += `<li>${p}</li>`;
+  html += `</ul></div>`;
+  html += `<div class="principles"><h3>Sync between devices</h3>
+    <p style="margin:0 0 8px;font-size:14px;">Your check-marks and notes live on this device only. To use the plan from another phone or laptop, export the data here, save the file to iCloud / Google Drive / email it to yourself, then import it on the other device.</p>
+    <div class="sync-row">
+      <button class="sync-btn" id="exportBtn">Export data</button>
+      <button class="sync-btn secondary" id="importBtn">Import data</button>
+      <button class="sync-btn secondary" id="resetBtn">Reset progress</button>
+    </div>
+    <p class="sync-note">No account, no server. The file is a small JSON with your dates, checks, and notes.</p>
+  </div>`;
+  app.innerHTML = html;
+  hookSyncButtons();
+}
+
+function renderSafety() {
+  const app = document.getElementById('app');
+  let html = `<div class="safety-intro">
+    <b>If something feels wrong, get out of the water.</b> The sea will be there tomorrow. These cards cover the situations most likely to come up. Skim them once now so they are familiar if you ever need them.
+  </div>`;
+  for (const s of SAFETY) {
+    html += `<div class="safety-card"><h4>${s.name}</h4><ol>`;
+    for (const step of s.steps) html += `<li>${step}</li>`;
+    html += `</ol></div>`;
+  }
+  html += `<div class="safety-intro" style="background:rgba(3,105,161,.08);border-left-color:var(--accent);"><b>Emergency:</b> in Albania call <b>112</b> (general) or <b>129</b> (coast guard). Save these in your phone.</div>`;
+  app.innerHTML = html;
+}
+
+function renderGlossary() {
+  const app = document.getElementById('app');
+  let html = `<div class="principles"><h3>How effort levels work</h3>
+    <p style="margin:0 0 6px;font-size:14px;">The plan uses simple effort words instead of pace numbers. Here is what each one means:</p>
+    <ul>
+      <li><b>Easy</b> — you could keep going for an hour. Nose-breathing pace.</li>
+      <li><b>Steady</b> — you could hold for 30+ min. Comfortable, not lazy.</li>
+      <li><b>Moderate</b> — breathing hard, but in control. Holdable for 5–10 min.</li>
+      <li><b>Strong / Hard</b> — high effort. Used in short bursts only.</li>
+    </ul>
+  </div>`;
+  html += `<h3 style="margin:14px 0 8px;font-size:15px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;">Glossary</h3>`;
+  for (const g of GLOSSARY) {
+    html += `<div class="glossary-item"><h4>${g.term}</h4><p>${g.def}</p></div>`;
+  }
+  app.innerHTML = html;
+}
+
+function hookEvents() {
+  document.querySelectorAll('.day-head').forEach(h => {
+    h.addEventListener('click', e => {
+      if (e.target.closest('.check-btn')) return;
+      h.closest('.day-card').classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('.check-btn').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const n = +b.dataset.check;
+      state.done[n] = !state.done[n];
+      saveState();
+      renderProgress();
+      b.classList.toggle('checked');
+      b.textContent = state.done[n] ? '✓' : '';
+      b.closest('.day-card').classList.toggle('done', !!state.done[n]);
+    });
+  });
+  const si = document.getElementById('startInput');
+  if (si) si.addEventListener('change', e => {
+    state.startDate = e.target.value || START_DATE;
+    saveState();
+    render();
+  });
+  const rb = document.getElementById('resetBtn');
+  if (rb) rb.addEventListener('click', () => {
+    if (confirm('Reset all checkmarks?')) {
+      state.done = {};
+      saveState();
+      render();
+    }
+  });
+  // Notes — save on input (debounced) + on blur
+  document.querySelectorAll('textarea[data-note]').forEach(t => {
+    const n = +t.dataset.note;
+    let timer;
+    const flash = () => {
+      const tag = document.getElementById('saved-' + n);
+      if (!tag) return;
+      tag.classList.add('show');
+      setTimeout(() => tag.classList.remove('show'), 1200);
+    };
+    t.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        state.notes[n] = t.value;
+        if (!t.value) delete state.notes[n];
+        saveState();
+        flash();
+      }, 400);
+    });
+    t.addEventListener('blur', () => {
+      clearTimeout(timer);
+      state.notes[n] = t.value;
+      if (!t.value) delete state.notes[n];
+      saveState();
+    });
+    // prevent toggling card when typing
+    t.addEventListener('click', e => e.stopPropagation());
+  });
+  // Easier-swap toggles
+  document.querySelectorAll('[data-easier]').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const n = b.dataset.easier;
+      document.getElementById('easier-' + n).classList.toggle('show');
+    });
+  });
+}
+
+function hookSyncButtons() {
+  const exp = document.getElementById('exportBtn');
+  if (exp) exp.addEventListener('click', exportData);
+  const imp = document.getElementById('importBtn');
+  if (imp) imp.addEventListener('click', () => document.getElementById('file-input').click());
+  const rb = document.getElementById('resetBtn');
+  if (rb) rb.addEventListener('click', () => {
+    if (confirm('Reset all checkmarks and notes?')) {
+      state.done = {}; state.notes = {};
+      saveState(); render();
+    }
+  });
+}
+
+function exportData() {
+  const data = {
+    exportedAt: new Date().toISOString(),
+    version: 1,
+    startDate: state.startDate,
+    done: state.done,
+    notes: state.notes,
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,10);
+  a.href = url; a.download = `swim-plan-data-${stamp}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function setupImport() {
+  const fi = document.getElementById('file-input');
+  if (!fi) return;
+  fi.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (!data || typeof data !== 'object') throw new Error('bad file');
+        const choice = confirm('Import this file? It will MERGE with your current data (existing checks/notes stay unless overwritten).\n\nCancel to abort.');
+        if (!choice) { fi.value = ''; return; }
+        if (data.startDate) state.startDate = data.startDate;
+        if (data.done) state.done = Object.assign({}, state.done, data.done);
+        if (data.notes) state.notes = Object.assign({}, state.notes, data.notes);
+        saveState();
+        alert('Imported. Your data is now in sync.');
+        render();
+      } catch (err) {
+        alert('Could not read that file. It should be a swim-plan export JSON.');
+      }
+      fi.value = '';
+    };
+    reader.readAsText(file);
+  });
+}
+
+function render() {
+  renderProgress();
+  if (state.view === 'today') renderToday();
+  else if (state.view === 'week') renderWeek();
+  else if (state.view === 'all') renderAll();
+  else if (state.view === 'phases') renderPhases();
+  else if (state.view === 'safety') renderSafety();
+  else if (state.view === 'glossary') renderGlossary();
+}
+
+document.querySelectorAll('#nav button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#nav button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.view = b.dataset.view;
+    saveState();
+    render();
+  });
+});
+
+// restore view
+const initBtn = document.querySelector(`#nav button[data-view="${state.view}"]`);
+if (initBtn) { document.querySelectorAll('#nav button').forEach(x => x.classList.remove('active')); initBtn.classList.add('active'); }
+setupImport();
+render();
+
+// Service worker — for offline use on phone (no signal at the beach is normal)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {/* ok if offline first load */});
+  });
+}
+</script>
+</body>
+</html>
