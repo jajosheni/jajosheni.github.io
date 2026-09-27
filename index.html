@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sheme Hamitaj — Computer Engineer</title>
-<meta name="description" content="Sheme Hamitaj — Computer Engineer in Tirana, Albania. Frontend Lead at Ritech Solutions. Vue, Nuxt, Laravel, robotics, and a healthy dose of AI.">
-<meta name="keywords" content="sheme hamitaj, computer engineer, frontend lead, tirana, albania, vue, nuxt, laravel, ritech solutions, ros, ai, llm">
-<meta name="theme-color" content="#0a0a0d">
-<meta property="og:title" content="Sheme Hamitaj — Computer Engineer">
-<meta property="og:description" content="Frontend Lead at Ritech Solutions in Tirana, Albania. Vue, Nuxt, Laravel, robotics, and a healthy dose of AI.">
+<title>Sheme Hamitaj — Senior Software Engineer</title>
+<meta name="description" content="Sheme Hamitaj — Senior Software Engineer at Ritech Solutions in Tirana, Albania. Building through AI.">
+<meta name="keywords" content="sheme hamitaj, senior software engineer, ai engineering, claude, llm, agents, tirana, albania, ritech solutions, hipzbrit">
+<meta name="theme-color" content="#0f1d24">
+<meta property="og:title" content="Sheme Hamitaj — Senior Software Engineer">
+<meta property="og:description" content="Senior Software Engineer in Tirana, building through AI. The career so far, played as a Bird’s Opening.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shemehamitaj.com">
 <link rel="icon" type="image/png" href="favicon.png">
 <script>
-  // set theme before paint — prevents flash
+  // set theme before paint to avoid a flash
   (function () {
     try {
       var t = localStorage.getItem('theme');
@@ -24,804 +24,408 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
+<!-- chess glyphs only, subset via text= -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=block&text=%E2%99%94%E2%99%95%E2%99%96%E2%99%97%E2%99%98%E2%99%99%E2%99%9A%E2%99%9B%E2%99%9C%E2%99%9D%E2%99%9E%E2%99%9F">
 <style>
   :root {
-    color-scheme: dark light;
-
-    --bg:        #0a0a0d;
-    --panel:     #131318;
-    --panel-2:   #181820;
-    --border:    #23232c;
-    --border-2:  #2e2e3a;
-
-    --text:      #e6e6e9;
-    --dim:       #b8b8c0;
-    --muted:     #7c7c8a;
-    --faint:     #4a4a55;
-
+    color-scheme: dark;
+    --bg:        #0f1d24;
+    --surface:   #162a33;
+    --line:      #24404c;
+    --text:      #e2ebee;
+    --text-2:    #c3d2d8;
+    --muted:     #8ea6b0;
     --accent:    #33aace;
-    --accent-2:  #5cd6ff;
-    --ai:        #c4a7e7;
+    --on-accent: #06222c;
+    --stone:     #cdbf98;
+    --threat:    #f0b95a;
 
-    /* syntax */
-    --kw:        #c4a7e7;
-    --str:       #f6c177;
-    --num:       #ea9a97;
-    --com:       #6e7383;
-    --fn:        #9ccfd8;
-    --bool:      #eb6f92;
-    --punct:     #908caa;
+    --sq-light:  #8fa9b3;
+    --sq-dark:   #406474;
+    --hl:        rgba(51, 170, 206, 0.55);
+    --center:    rgba(240, 185, 90, 0.42);
+    --mate:      rgba(226, 88, 74, 0.72);
+    --piece-w:   #f7fafb;
+    --piece-b:   #0e1c22;
+    --piece-line:#0e1c22;
 
-    --green:     #5cf08e;
-    --yellow:    #f9e79f;
-    --red:       #ff7b72;
-
-    /* surfaces — alpha-tinted overlays */
-    --surface-1: rgba(255, 255, 255, 0.02);   /* card bg */
-    --surface-2: rgba(255, 255, 255, 0.05);   /* bar bg */
-    --surface-3: rgba(255, 255, 255, 0.06);   /* dot bg */
-    --surface-4: rgba(255, 255, 255, 0.04);   /* hover bg */
-    --hairline:  rgba(255, 255, 255, 0.03);
-    --tile-shadow: 0 30px 80px rgba(0,0,0,0.5);
-    --backdrop-1: rgba(51, 170, 206, 0.06);
-    --backdrop-2: rgba(196, 167, 231, 0.05);
-
-    --r: 10px;
-    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --glyph: "Noto Sans Symbols 2", "Segoe UI Symbol", "Apple Symbols", "DejaVu Sans", sans-serif;
+    --pad: clamp(20px, 5vw, 48px);
   }
-
-  [data-theme="light"] {
+  :root[data-theme="light"] {
     color-scheme: light;
+    --bg:        #e7eef0;
+    --surface:   #d8e4e8;
+    --line:      #bccdd4;
+    --text:      #10222a;
+    --text-2:    #2a414b;
+    --muted:     #4b6570;
+    --accent:    #0b7593;
+    --on-accent: #ffffff;
+    --stone:     #7a6634;
+    --threat:    #c77d0a;
 
-    --bg:        #f4f1e8;
-    --panel:     #fdfcf6;
-    --panel-2:   #f0ecde;
-    --border:    #d8d4c4;
-    --border-2:  #c4bfac;
-
-    --text:      #1c1c1f;
-    --dim:       #3f4049;
-    --muted:     #6c6f7a;
-    --faint:     #a8a698;
-
-    --accent:    #0e7090;
-    --accent-2:  #1a86b0;
-    --ai:        #7c3aed;
-
-    /* syntax — GitHub-light-ish */
-    --kw:        #cf222e;
-    --str:       #0a3069;
-    --num:       #0550ae;
-    --com:       #6e7781;
-    --fn:        #8250df;
-    --bool:      #cf222e;
-    --punct:     #57606a;
-
-    --green:     #1a7f37;
-    --yellow:    #9a6700;
-    --red:       #cf222e;
-
-    --surface-1: rgba(0, 0, 0, 0.025);
-    --surface-2: rgba(0, 0, 0, 0.06);
-    --surface-3: rgba(0, 0, 0, 0.08);
-    --surface-4: rgba(0, 0, 0, 0.035);
-    --hairline:  rgba(0, 0, 0, 0.025);
-    --tile-shadow: 0 12px 40px rgba(0,0,0,0.06);
-    --backdrop-1: rgba(14, 112, 144, 0.05);
-    --backdrop-2: rgba(124, 58, 237, 0.04);
+    --sq-light:  #d6e2e6;
+    --sq-dark:   #86a6b1;
+    --hl:        rgba(11, 117, 147, 0.42);
+    --center:    rgba(199, 125, 10, 0.3);
+    --mate:      rgba(200, 60, 45, 0.6);
+    --piece-w:   #ffffff;
+    --piece-b:   #10222a;
+    --piece-line:#10222a;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
+    margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: var(--mono);
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    transition: background-color .3s ease, color .3s ease;
   }
-  ::selection { background: var(--accent); color: var(--bg); }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+  a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  button { font: inherit; }
+  .fig { font-family: var(--glyph); font-weight: 400; font-size: 1.36em; line-height: 0; vertical-align: -0.05em; margin-right: 1px; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .skip { position: absolute; left: var(--pad); top: -60px; background: var(--accent); color: var(--on-accent); padding: 8px 14px; border-radius: 6px; z-index: 10; }
+  .skip:focus { top: 12px; }
 
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding-inline: var(--pad); }
 
-  /* subtle backdrop */
-  body::before {
-    content: "";
-    position: fixed; inset: 0;
-    background:
-      radial-gradient(circle at 20% 0%, var(--backdrop-1), transparent 40%),
-      radial-gradient(circle at 90% 100%, var(--backdrop-2), transparent 40%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .terminal {
-    position: relative;
-    z-index: 1;
-    max-width: 980px;
-    margin: 24px auto 96px;
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    background: var(--panel);
-    box-shadow:
-      0 1px 0 var(--hairline) inset,
-      var(--tile-shadow);
-    overflow: hidden;
-  }
-
-  /* ── title bar ─────────────────────────────────── */
-  .titlebar {
-    display: flex; align-items: center; gap: 12px;
-    height: 38px; padding: 0 14px;
-    background: var(--panel-2);
-    border-bottom: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .lights { display: flex; gap: 7px; }
-  .lights span {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: #3a3a45;
-    border: 0.5px solid var(--hairline);
-  }
-  .lights span:nth-child(1) { background: #ff5f56; }
-  .lights span:nth-child(2) { background: #ffbd2e; }
-  .lights span:nth-child(3) { background: #27c93f; }
-  .titlebar .path { flex: 1; text-align: center; }
-  .titlebar .path b { color: var(--dim); font-weight: 500; }
-
-  .ai-pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 3px 10px;
-    background: color-mix(in oklab, var(--ai) 10%, transparent);
-    border: 0.5px solid color-mix(in oklab, var(--ai) 30%, transparent);
-    border-radius: 99px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ai);
-    cursor: default;
-    transition: all .25s ease;
-  }
-  .ai-pill::before {
-    content: "";
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--ai);
-    box-shadow: 0 0 8px var(--ai);
-    animation: pulse 1.6s ease-in-out infinite;
-  }
-  .ai-pill:hover { background: color-mix(in oklab, var(--ai) 18%, transparent); }
-
-  /* theme toggle */
+  /* ── header ─────────────────────────────── */
+  .top { display: flex; align-items: center; gap: 28px; height: 72px; }
+  .home { color: var(--text); font-weight: 700; text-decoration: none; letter-spacing: -0.01em; }
+  .nav { display: flex; gap: 24px; margin-left: auto; font-size: 15px; }
+  .nav a { color: var(--muted); text-decoration: none; }
+  .nav a:hover { color: var(--text); }
   .theme-toggle {
-    appearance: none;
-    background: transparent;
-    border: 0.5px solid var(--border-2);
-    color: var(--muted);
-    width: 26px; height: 26px;
-    border-radius: 6px;
+    appearance: none; background: transparent; cursor: pointer;
+    width: 36px; height: 36px; padding: 0; flex: none;
     display: inline-flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: all .2s ease;
-    padding: 0;
-  }
-  .theme-toggle:hover {
-    color: var(--text);
-    background: var(--surface-4);
-    border-color: var(--border);
-  }
-  .theme-toggle svg { width: 14px; height: 14px; pointer-events: none; }
-  .theme-toggle .moon { display: none; }
-  [data-theme="light"] .theme-toggle .sun  { display: none; }
-  [data-theme="light"] .theme-toggle .moon { display: inline-block; }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: .35; }
-  }
-
-  /* ── tabs ──────────────────────────────────────── */
-  .tabs {
-    display: flex;
-    background: var(--panel-2);
-    border-bottom: 1px solid var(--border);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tabs button {
-    appearance: none;
-    background: transparent;
+    border: 1px solid var(--line); border-radius: 50%;
     color: var(--muted);
-    border: 0;
-    border-right: 1px solid var(--border);
-    padding: 9px 18px;
-    font-family: var(--mono);
-    font-size: 12.5px;
-    cursor: pointer;
-    white-space: nowrap;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: color .2s ease, background .2s ease;
-    border-bottom: 2px solid transparent;
   }
-  .tabs button:hover { color: var(--dim); background: var(--surface-1); }
-  .tabs button.active {
-    color: var(--text);
-    background: var(--panel);
-    border-bottom: 2px solid var(--accent);
-  }
-  .tabs button .ico {
-    width: 12px; height: 12px;
-    display: inline-block;
-    border-radius: 2px;
-  }
-  .ico.md   { background: #519aba; }
-  .ico.json { background: #cbcb41; }
-  .ico.ts   { background: #519aba; }
-  .ico.ai   { background: linear-gradient(135deg, var(--ai), var(--accent)); }
-  .ico.sh   { background: #4d5a5e; }
-  .tabs button.ai-tab { color: var(--ai); }
-  .tabs button.ai-tab.active { color: var(--ai); border-bottom-color: var(--ai); }
+  .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .moon { display: block; }
 
-  /* ── editor body ───────────────────────────────── */
-  .editor {
+  /* ── game (hero + career) ───────────────── */
+  .game {
     display: grid;
-    grid-template-columns: 56px 1fr;
-    min-height: 480px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 500px);
+    grid-template-areas: "intro board" "moves board";
+    column-gap: clamp(40px, 6vw, 96px);
+    padding-top: clamp(24px, 5vw, 56px);
   }
-  .gutter {
-    background: var(--panel);
-    border-right: 1px solid var(--border);
-    padding: 24px 0;
-    text-align: right;
-    color: var(--faint);
-    font-size: 12px;
-    line-height: 1.7;
-    user-select: none;
+  .intro { grid-area: intro; }
+  .intro h1 {
+    font-size: clamp(3.5rem, 7.6vw, 7.25rem);
+    font-weight: 800;
+    line-height: .9;
+    letter-spacing: -0.045em;
+    margin-left: -0.04em;
   }
-  .gutter span {
-    display: block;
-    padding-right: 14px;
+  .intro .lede {
+    margin-top: 28px;
+    max-width: 36ch;
+    font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+    line-height: 1.45;
+    color: var(--text-2);
   }
-  .code {
-    padding: 24px 28px 32px;
-    font-size: 13.5px;
-    line-height: 1.7;
-    overflow-wrap: break-word;
-  }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; animation: fadeIn .25s ease; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(2px); }
-    to   { opacity: 1; transform: none; }
+  .hint { margin-top: 18px; font-size: 15px; color: var(--muted); }
+  .hint .touch { display: none; }
+  @media (hover: none) { .hint .keys { display: none; } .hint .touch { display: inline; } }
+  kbd {
+    font-family: var(--sans); font-size: 13px;
+    display: inline-block; min-width: 24px; padding: 1px 6px; margin: 0 1px;
+    text-align: center; color: var(--text-2);
+    border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px;
   }
 
-  /* syntax */
-  .kw    { color: var(--kw); }
-  .str   { color: var(--str); }
-  .num   { color: var(--num); }
-  .com   { color: var(--com); font-style: italic; }
-  .fn    { color: var(--fn); }
-  .bool  { color: var(--bool); }
-  .punct { color: var(--punct); }
-  .key   { color: var(--accent-2); }
-  .tag   { color: var(--ai); }
-  .h1, h1.line { color: var(--text); font-size: 22px; line-height: 1.3; margin: 0 0 6px; font-weight: 600; }
-  h1.line .hash { color: var(--bool); margin-right: 10px; }
-  h2.section { color: var(--ai); font-size: 14px; margin: 22px 0 6px; font-weight: 500; }
-  h2.section .hash { color: var(--com); margin-right: 8px; font-weight: 400; }
-  blockquote.line {
-    margin: 0 0 18px;
-    padding: 0;
-    color: var(--dim);
-    border: none;
+  .board-col {
+    grid-area: board;
+    align-self: start;
+    position: sticky;
+    top: 28px;
+    padding-top: 8px;
   }
-  blockquote.line::before {
-    content: "> "; color: var(--com);
+  .board {
+    position: relative;
+    width: min(100%, calc(100svh - 150px));
+    aspect-ratio: 1;
+    margin-left: auto;
+    border-radius: 6px;
+    overflow: hidden;
+    container-type: inline-size;
+    outline: 1px solid var(--line);
+    outline-offset: 5px;
   }
-  ul.tree { list-style: none; margin: 0 0 8px; padding: 0; }
-  ul.tree li {
-    display: flex;
-    gap: 10px;
-    padding: 1px 0;
-    color: var(--dim);
+  .squares { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); }
+  .sq { position: relative; background: var(--sq-light); transition: background-color .3s ease; }
+  .sq.dark { background: var(--sq-dark); }
+  .sq::after { content: ""; position: absolute; inset: 0; background: transparent; transition: background-color .35s ease; }
+  .sq.hl::after { background: var(--hl); }
+  .sq.center::after { background: var(--center); }
+  .sq.mate::after { background: var(--mate); transition-delay: .35s; }
+  .sq .coord {
+    position: absolute; font-size: 2.1cqw; font-weight: 600; line-height: 1; z-index: 1;
+    color: var(--sq-dark);
   }
-  ul.tree li .arrow { color: var(--com); }
-  ul.tree li .dim   { color: var(--muted); }
-  ul.tree li b      { color: var(--text); font-weight: 500; }
+  .sq.dark .coord { color: var(--sq-light); }
+  .sq .rank { top: 4%; left: 6%; }
+  .sq .file { bottom: 5%; right: 7%; }
 
-  /* tag chips for stack */
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 8px; }
-  .chip {
+  .pieces { position: absolute; inset: 0; }
+  .pc {
+    position: absolute; top: 0; left: 0;
+    width: 12.5%; height: 12.5%;
+    display: grid; place-items: center;
+    font-family: var(--glyph);
+    font-size: 10.2cqw;
+    line-height: 1;
+    filter: drop-shadow(0 .05em .04em rgba(0, 0, 0, .3));
+    transition: transform .42s cubic-bezier(.3, .7, .2, 1), opacity .25s ease;
+    will-change: transform;
+    z-index: 2;
+  }
+  .pc > span { grid-area: 1 / 1; transition: rotate .5s cubic-bezier(.5, 0, .3, 1.4); }
+  .pc.w .fill { color: var(--piece-w); }
+  .pc.w .line { color: var(--piece-line); }
+  .pc.b .fill { color: var(--piece-b); }
+  .pc.b .line { display: none; }
+  .pc.moving { z-index: 3; }
+  .pc.gone { opacity: 0; transition-delay: 0s, .3s; }
+  .pc.fallen > span { rotate: 90deg; transition-delay: .45s; }
+  .board.snap .pc, .board.snap .pc > span, .board.snap .sq::after { transition: none !important; }
+
+  .arrows { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+  .arrows g { fill: var(--threat); stroke: var(--threat); opacity: .88; animation: arrow-in .4s ease .2s both; }
+  .arrows .ring { fill: none; stroke-width: .07; transform-box: fill-box; transform-origin: center; animation: arrow-in .4s ease .2s both, pulse 1.6s ease-in-out .6s infinite; }
+  @keyframes arrow-in { from { opacity: 0; } }
+  @keyframes pulse { 50% { transform: scale(.86); } }
+
+  .board-bar {
+    display: flex; align-items: center; gap: 12px;
+    width: min(100%, calc(100svh - 150px));
+    margin: 18px 0 0 auto;
+  }
+  .step-btn {
+    appearance: none; cursor: pointer; flex: none;
+    width: 40px; height: 40px; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--line); border-radius: 50%;
+  }
+  .step-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .step-btn:disabled { opacity: .35; cursor: default; }
+  .step-btn svg { width: 16px; height: 16px; }
+  .caption { flex: 1; min-width: 0; text-align: center; line-height: 1.3; }
+  .caption .opening { display: block; font-weight: 600; font-size: 15px; }
+  .caption .after { display: block; font-size: 14px; color: var(--muted); }
+
+  /* move list */
+  .moves { grid-area: moves; margin-top: 52px; margin-left: -1rem; }
+  .move {
+    display: grid;
+    grid-template-columns: 2.3rem 4.1rem 4.1rem minmax(0, 1fr);
+    align-items: first baseline;
+    column-gap: .25rem;
+    padding: 1.1rem 1rem 1.2rem;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color .25s ease;
+  }
+  .move.active { background: var(--surface); }
+  .num { color: var(--muted); }
+  .ply { white-space: nowrap; }
+  .ply.w {
+    appearance: none; background: none; border: 0; padding: 0; cursor: pointer;
+    font-weight: 600; color: var(--text); text-align: left;
+    justify-self: start;
+  }
+  .ply.b { color: var(--muted); }
+  .move.active .num, .move.active .ply.w { color: var(--accent); }
+  .ply.b.ask { color: var(--threat); font-weight: 700; }
+  .note .when { font-size: 14px; color: var(--muted); }
+  .note h3 { margin-top: 2px; font-size: 1.1875rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.005em; }
+  .note .detail { margin-top: 6px; color: var(--muted); max-width: 52ch; transition: color .25s ease; }
+  .move.active .note .detail { color: var(--text-2); }
+  .note .link { display: inline-block; margin-top: 8px; font-size: 15px; }
+
+  .choice { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .choice button {
+    appearance: none; cursor: pointer;
+    padding: 8px 18px; border-radius: 999px;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--accent);
+    font-weight: 600;
+  }
+  .choice button:hover { background: color-mix(in oklab, var(--accent) 16%, transparent); }
+  .choice button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+  .outcome { margin-top: 14px; }
+  .outcome p { color: var(--text); }
+  .retry {
+    appearance: none; background: none; border: 0; padding: 0; margin-top: 8px;
+    color: var(--muted); cursor: pointer; font-size: 15px;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .retry:hover { color: var(--text); }
+
+  /* ── AI ─────────────────────────────────── */
+  .ai { padding-top: clamp(104px, 13vw, 168px); scroll-margin-top: 24px; }
+  .statement {
+    font-size: clamp(2.5rem, 6.2vw, 5.5rem);
+    font-weight: 800;
+    line-height: .98;
+    letter-spacing: -0.04em;
+    max-width: 14ch;
+  }
+  .statement-sub {
+    margin-top: 24px;
+    max-width: 34ch;
+    font-size: clamp(1.25rem, 2.1vw, 1.75rem);
+    line-height: 1.35;
+    color: var(--muted);
+  }
+  .ai-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; }
+  .queen {
+    font-family: var(--glyph);
+    font-size: clamp(9rem, 22vw, 19rem);
+    line-height: .78;
+    color: var(--accent);
+    margin-right: -0.04em;
+  }
+  .ai-lede { margin-top: clamp(48px, 7vw, 80px); max-width: 52ch; font-size: 1.1875rem; color: var(--text-2); }
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 36px;
+    counter-reset: step;
+  }
+  .flow li { position: relative; padding: 28px 28px 0 0; border-top: 1px solid var(--line); }
+  .flow li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute; top: -15px; left: 0;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 14px; font-weight: 700;
+    background: var(--bg); color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .flow h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+  .flow p { margin-top: 6px; color: var(--muted); max-width: 30ch; }
+
+  /* ── contact ────────────────────────────── */
+  .contact {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 28px clamp(40px, 6vw, 88px);
+    padding-top: clamp(104px, 13vw, 168px);
+    scroll-margin-top: 24px;
+  }
+  .contact h2 { font-size: clamp(2rem, 3.4vw, 2.75rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; }
+  .contact .email {
     display: inline-block;
-    padding: 2px 9px;
-    background: color-mix(in oklab, var(--accent) 12%, transparent);
-    border: 0.5px solid color-mix(in oklab, var(--accent) 30%, transparent);
-    color: var(--accent-2);
-    border-radius: 99px;
-    font-size: 11.5px;
-  }
-  .chip.dim {
-    background: var(--surface-1);
-    border-color: var(--border-2);
-    color: var(--dim);
-  }
-
-  /* json viewer */
-  pre.json, pre.ts {
-    margin: 0;
-    font-family: var(--mono);
-    font-size: 13.5px;
-    line-height: 1.65;
-    white-space: pre-wrap;
-    word-break: break-word;
+    font-size: clamp(1.75rem, 4.6vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
     overflow-wrap: anywhere;
   }
-  .ai-label-short { display: none; }
+  .contact .email:hover { color: var(--accent); }
+  .contact .lede { margin-top: 20px; max-width: 50ch; color: var(--text-2); }
+  .details { display: grid; grid-template-columns: max-content 1fr; gap: 12px 32px; margin-top: 36px; }
+  .details dt { color: var(--muted); }
+  .details .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 
-  /* skill bar */
-  .skill {
-    display: grid;
-    grid-template-columns: 130px 1fr 30px;
-    gap: 12px;
-    align-items: center;
-    margin: 4px 0;
-  }
-  .skill .label { color: var(--dim); font-size: 12.5px; }
-  .skill .bar {
-    height: 4px;
-    background: var(--surface-2);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-  .skill .bar > i {
-    display: block;
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    border-radius: 99px;
-    width: 0;
-    animation: fill 1.2s ease-out forwards;
-  }
-  @keyframes fill { to { width: var(--w, 0%); } }
-  .skill .pct { color: var(--muted); font-size: 11.5px; text-align: right; }
-
-  .dots { display: flex; gap: 4px; align-items: center; }
-  .dots .d { width: 8px; height: 8px; border-radius: 50%; background: var(--surface-3); }
-  .dots .d.on { background: var(--accent); }
-
-  /* resume top strip */
-  .resume-top {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 22px;
-    align-items: center;
-    padding: 0 0 18px;
-    margin: -4px 0 18px;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .dl-cv {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 14px;
-    background: color-mix(in oklab, var(--accent) 12%, transparent);
-    border: 0.5px solid color-mix(in oklab, var(--accent) 35%, transparent);
-    color: var(--accent-2);
-    border-radius: 8px;
-    font-family: var(--mono);
-    font-size: 12.5px;
-    text-decoration: none;
-    transition: all .2s ease;
-    white-space: nowrap;
-  }
-  .dl-cv:hover {
-    background: color-mix(in oklab, var(--accent) 22%, transparent);
-    border-color: var(--accent);
-    color: var(--accent-2);
-    text-decoration: none;
-  }
-  .dl-cv svg { width: 14px; height: 14px; }
-  .resume-highlights .kicker {
-    color: var(--muted);
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    margin: 0 0 6px;
-  }
-  .resume-highlights .chips { margin: 0; }
-  @media (max-width: 720px) {
-    .resume-top {
-      grid-template-columns: 1fr;
-      gap: 14px;
-      padding-bottom: 14px;
-      margin-bottom: 14px;
-    }
-    .dl-cv { justify-content: center; padding: 10px 14px; }
-  }
-
-  /* services / cards */
-  .grid2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 10px 0 8px;
-  }
-  .card {
-    background: var(--surface-1);
-    border: 0.5px solid var(--border-2);
-    border-radius: 8px;
-    padding: 14px;
-    transition: all .2s ease;
-  }
-  .card:hover {
-    border-color: color-mix(in oklab, var(--accent) 55%, transparent);
-    transform: translateY(-1px);
-  }
-  .card.card-ai {
-    grid-column: span 2;
-    border-color: color-mix(in oklab, var(--ai) 35%, transparent);
-    background: color-mix(in oklab, var(--ai) 5%, transparent);
-  }
-  .card.card-ai:hover {
-    border-color: color-mix(in oklab, var(--ai) 55%, transparent);
-  }
-  .card .t { color: var(--text); font-weight: 500; margin-bottom: 4px; font-size: 13px; }
-  .card .d { color: var(--muted); font-size: 12px; line-height: 1.5; }
-
-  /* git log — projects */
-  .gitlog {
-    margin: 6px 0 4px;
-    border-left: 1px dashed var(--border-2);
-    padding-left: 0;
-    font-family: var(--mono);
-  }
-  .commit {
-    display: grid;
-    grid-template-columns: 14px 64px 1fr auto;
-    gap: 10px;
-    align-items: baseline;
-    padding: 7px 8px 7px 0;
-    margin-left: -8px;
-    border-radius: 6px;
-    color: var(--dim);
-    text-decoration: none;
-    font-size: 13px;
-    transition: background .15s ease, transform .15s ease;
-    position: relative;
-  }
-  .commit:hover {
-    background: var(--surface-4);
-    text-decoration: none;
-    transform: translateX(2px);
-  }
-  .commit .node {
-    color: var(--accent);
-    font-size: 11px;
-    line-height: 1;
-    text-align: center;
-    transform: translateX(-7px);
-  }
-  .commit .node::before {
-    content: "●";
-  }
-  .commit.past .node { color: var(--muted); }
-  .commit.past .node::before { content: "○"; }
-  .commit .hash {
-    color: var(--str);
-    font-size: 12px;
-  }
-  .commit .msg {
-    color: var(--dim);
-    font-size: 13px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .commit .msg b {
-    color: var(--text);
-    font-weight: 600;
-    margin-right: 6px;
-  }
-  .commit .msg .tag-ref {
-    color: var(--ai);
-    font-size: 11px;
-    padding: 1px 7px;
-    border: 0.5px solid color-mix(in oklab, var(--ai) 30%, transparent);
-    background: color-mix(in oklab, var(--ai) 8%, transparent);
-    border-radius: 99px;
-    margin-right: 8px;
-    font-family: var(--mono);
-  }
-  .commit .msg .tag-ref.live {
-    color: var(--green);
-    border-color: color-mix(in oklab, var(--green) 30%, transparent);
-    background: color-mix(in oklab, var(--green) 8%, transparent);
-  }
-  .commit .when {
-    color: var(--muted);
-    font-size: 11px;
-    white-space: nowrap;
-  }
-  .commit:hover .when { color: var(--accent-2); }
-  .commit:hover .when::after { content: " ↗"; }
-  @media (max-width: 720px) {
-    .commit {
-      grid-template-columns: 12px 1fr;
-      gap: 8px;
-      padding: 8px 6px;
-    }
-    .commit .hash, .commit .when { display: none; }
-    .commit .msg { white-space: normal; }
-  }
-
-  /* contact links */
-  .links {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
-  }
-  .links a {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 12px;
-    background: var(--surface-1);
-    border: 0.5px solid var(--border-2);
-    border-radius: 6px;
-    font-size: 12.5px;
-    color: var(--dim);
-    transition: all .2s ease;
-  }
-  .links a:hover {
-    color: var(--accent-2);
-    border-color: var(--accent);
-    background: color-mix(in oklab, var(--accent) 8%, transparent);
-    text-decoration: none;
-  }
-  .links a svg { width: 14px; height: 14px; }
-
-  /* hero (about) */
-  .greet {
-    display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px;
-  }
-  .prompt-sym { color: var(--green); font-weight: 500; }
-  .hero-name {
-    color: var(--text);
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-  }
-  .hero-sub {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 18px;
-  }
-  .hero-sub .accent { color: var(--accent-2); }
-  .hero-sub a { color: var(--dim); border-bottom: 1px dotted var(--muted); }
-  .hero-sub a:hover { color: var(--accent-2); border-color: var(--accent-2); text-decoration: none; }
-
-  .ghost {
-    color: var(--faint);
+  .closing {
+    padding-top: clamp(96px, 12vw, 152px);
+    font-size: clamp(1.75rem, 4vw, 3.25rem);
     font-style: italic;
-    user-select: none;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--stone);
+    max-width: 22ch;
   }
 
-  .cursor {
-    display: inline-block;
-    width: 8px; height: 1.1em;
-    background: var(--text);
-    vertical-align: middle;
-    margin-left: 2px;
-    animation: blink 1s steps(2) infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* ── status bar ────────────────────────────────── */
-  .statusbar {
-    display: flex; align-items: center; gap: 18px;
-    padding: 6px 14px;
-    background: var(--panel-2);
-    border-top: 1px solid var(--border);
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .statusbar .left,
-  .statusbar .right { display: flex; gap: 14px; align-items: center; }
-  .statusbar .right { margin-left: auto; }
-  .statusbar .live::before {
-    content: "";
-    display: inline-block;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--green);
-    margin-right: 6px;
-    box-shadow: 0 0 6px var(--green);
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-  .statusbar .pp { color: var(--ai); }
-
-  /* ── ask box ──────────────────────────────────── */
-  .ask-wrap {
-    border-top: 1px solid var(--border);
-    background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--ai) 5%, transparent));
-  }
-  .ask {
-    display: flex; align-items: center; gap: 10px;
-    padding: 14px 20px;
-  }
-  .ask .label {
-    color: var(--ai);
-    font-size: 12.5px;
-    user-select: none;
-  }
-  .ask input {
-    flex: 1;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13.5px;
-    padding: 4px 0;
-  }
-  .ask input::placeholder { color: var(--faint); }
-  .ask .submit {
-    background: color-mix(in oklab, var(--ai) 12%, transparent);
-    border: 0.5px solid color-mix(in oklab, var(--ai) 35%, transparent);
-    color: var(--ai);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-family: var(--mono);
-    font-size: 11px;
-    cursor: pointer;
-    transition: all .2s ease;
-  }
-  .ask .submit:hover {
-    background: color-mix(in oklab, var(--ai) 22%, transparent);
-  }
-  .ask-output {
-    padding: 0 20px 18px 20px;
-    color: var(--dim);
-    font-size: 13px;
-    line-height: 1.65;
-    min-height: 0;
-    white-space: pre-wrap;
-  }
-  .ask-output:empty { padding: 0; }
-  .ask-output .you {
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 6px;
-  }
-  .ask-output .you::before { content: "you: "; color: var(--faint); }
-  .ask-output .me::before { content: "→ "; color: var(--ai); }
-  .ask-output .me {
-    color: var(--dim);
-    margin-bottom: 14px;
-  }
-  .ask-output .typing {
-    display: inline-block;
-    width: 7px; height: 12px;
-    background: var(--ai);
-    vertical-align: middle;
-    margin-left: 2px;
-    animation: blink 0.7s steps(2) infinite;
-  }
-  .ask-output .chips { margin-top: 8px; }
-  .ask-output .quick {
-    background: transparent;
-    border: 0.5px solid var(--border-2);
-    color: var(--muted);
-    padding: 3px 9px;
-    border-radius: 99px;
-    font-family: var(--mono);
-    font-size: 11px;
-    cursor: pointer;
-    transition: all .15s ease;
-  }
-  .ask-output .quick:hover {
-    color: var(--ai);
-    border-color: color-mix(in oklab, var(--ai) 45%, transparent);
-    background: color-mix(in oklab, var(--ai) 8%, transparent);
+  .foot {
+    margin-top: 72px; padding-block: 28px 40px;
+    border-top: 1px solid var(--line);
+    font-size: 14px; color: var(--muted);
   }
 
-  /* ── footer ──────────────────────────────────── */
-  .pagefoot {
-    max-width: 980px;
-    margin: -72px auto 24px;
-    padding: 12px 6px 0;
-    color: var(--muted);
-    font-size: 11px;
-    font-family: var(--mono);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  /* ── responsive ─────────────────────────── */
+  @media (max-width: 1000px) {
+    .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; }
   }
-  .pagefoot a { color: var(--muted); border-bottom: 1px dotted var(--faint); }
-  .pagefoot a:hover { color: var(--ai); border-color: var(--ai); text-decoration: none; }
-
-  /* ── responsive ─────────────────────────────── */
-  @media (max-width: 900px) {
-    .terminal { margin: 14px; }
-    .titlebar .path-suffix { display: none; }
+  @media (max-width: 859px) {
+    .game { display: block; padding-top: 16px; }
+    .intro .lede { max-width: 40ch; }
+    .board-col {
+      position: sticky; top: 0; z-index: 5;
+      margin: 28px calc(-1 * var(--pad)) 0;
+      padding: 12px var(--pad) 10px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .board { width: min(100%, 40svh, 340px); margin: 0 auto; outline-offset: 3px; }
+    .board-bar { width: min(100%, 420px); margin: 10px auto 0; }
+    .moves { margin: 12px calc(-1 * var(--pad) + 8px) 0; }
+    .move { grid-template-columns: 2.2rem 4.1rem 4.1rem 1fr; padding: 1rem calc(var(--pad) - 8px); }
+    .note { grid-column: 2 / -1; margin-top: 6px; }
+    .contact { grid-template-columns: 1fr; }
   }
-
-  @media (max-width: 720px) {
-    body { font-size: 13px; }
-    .terminal { margin: 8px; border-radius: 8px; }
-    .titlebar { height: 36px; padding: 0 10px; gap: 8px; }
-    .titlebar .path { font-size: 10.5px; }
-    .lights span { width: 10px; height: 10px; }
-    .ai-pill { padding: 2px 7px; font-size: 9.5px; gap: 4px; }
-    .ai-pill::before { width: 5px; height: 5px; }
-    .ai-label-full  { display: none; }
-    .ai-label-short { display: inline; }
-    .theme-toggle { width: 24px; height: 24px; }
-    .theme-toggle svg { width: 13px; height: 13px; }
-    .tabs button { padding: 8px 12px; font-size: 11.5px; }
-    .editor { grid-template-columns: 32px 1fr; min-height: 0; }
-    .gutter { font-size: 10px; padding: 16px 0; }
-    .gutter span { padding-right: 6px; }
-    .code { padding: 16px 14px 20px; font-size: 12.5px; line-height: 1.65; }
-    .grid2 { grid-template-columns: 1fr; gap: 10px; }
-    .card.card-ai { grid-column: span 1; }
-    .hero-name { font-size: 22px; }
-    .skill { grid-template-columns: 100px 1fr 30px; gap: 8px; }
-    .statusbar { font-size: 10px; gap: 10px; padding: 5px 10px; }
-    .statusbar .pp { display: none; }
-    .ask { padding: 12px 14px; gap: 8px; }
-    .ask input { font-size: 12.5px; }
-    .ask-output { padding: 0 14px 14px 14px; font-size: 12px; }
-    .pagefoot { padding: 8px 14px 0; }
-    pre.json, pre.ts { font-size: 12px; line-height: 1.6; }
-    h1.line { font-size: 20px; }
+  @media (max-width: 640px) {
+    .nav a:not(.keep) { display: none; }
+    .queen { display: none; }
+    .flow { grid-template-columns: 1fr; row-gap: 0; margin-top: 28px; border-left: 1px solid var(--line); margin-left: 15px; }
+    .flow li { border-top: 0; padding: 0 0 32px 32px; }
+    .flow li::before { top: -2px; left: -16px; }
+    .details { grid-template-columns: 1fr; gap: 2px; }
+    .details dd { margin-bottom: 14px; }
   }
-
-  @media (max-width: 480px) {
-    .terminal { margin: 4px; border-radius: 6px; }
-    .titlebar .path { display: none; }
-    .titlebar { justify-content: space-between; padding: 0 8px; }
-    .lights { margin-right: auto; }
-    .tabs button { padding: 7px 10px; font-size: 11px; }
-    .tabs button .ico { display: none; }
-    .links a { font-size: 12px; padding: 6px 10px; }
-    .links a svg { width: 12px; height: 12px; }
-    .ask .label { font-size: 11px; }
-    .skill { grid-template-columns: 90px 1fr auto; }
-    .skill .label { font-size: 11.5px; }
-    .skill .pct { font-size: 11px; }
-    pre.json, pre.ts { font-size: 11.5px; }
-    .chip { font-size: 11px; padding: 2px 7px; }
-    .pagefoot { font-size: 10.5px; }
-    .pagefoot span { width: 100%; }
-  }
-
-  /* large pointer / no-hover devices: more generous tap targets */
-  @media (hover: none) and (pointer: coarse) {
-    .tabs button { padding-top: 11px; padding-bottom: 11px; }
-    .ask .submit { padding: 6px 14px; }
-    .links a { padding: 9px 14px; }
-    .theme-toggle { width: 30px; height: 30px; }
-  }
-
-  .sr-only {
-    position: absolute; width: 1px; height: 1px;
-    padding: 0; margin: -1px; overflow: hidden;
-    clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .pc, .pc > span, .move, .sq, .sq::after, body { transition: none !important; }
+    .arrows g, .arrows .ring { animation: none; }
   }
 </style>
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#career">Skip to the career</a>
 
-<main class="terminal" aria-label="Personal site of Sheme Hamitaj">
+<div class="wrap">
 
-  <!-- title bar -->
-  <header class="titlebar">
-    <div class="lights" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="path"><b>sheme</b>@portfolio: <b>~/shemehamitaj.com</b> <span class="path-suffix">— bash</span></div>
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light / dark theme" title="Toggle theme">
+  <header class="top">
+    <a class="home" href="#top">Sheme Hamitaj</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#career">Career</a>
+      <a href="#ai">AI</a>
+      <a class="keep" href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
         <circle cx="12" cy="12" r="4"/>
         <path d="M12 2.5v2M12 19.5v2M4.5 12h-2M21.5 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M5.6 18.4l-1.4 1.4M19.8 4.2l-1.4 1.4"/>
@@ -830,591 +434,497 @@
         <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
       </svg>
     </button>
-    <div class="ai-pill" title="claude-opus-4.7 · pair-programmer"><span class="ai-label-full">claude-opus-4.7</span><span class="ai-label-short">opus-4.7</span></div>
   </header>
 
-  <!-- tabs -->
-  <nav class="tabs" aria-label="Sections">
-    <button class="active" data-tab="about"><i class="ico md"></i>about.md</button>
-    <button class="ai-tab" data-tab="ai"><i class="ico ai"></i>~/ai</button>
-    <button data-tab="resume"><i class="ico json"></i>resume.json</button>
-    <button data-tab="services"><i class="ico ts"></i>services.ts</button>
-    <button data-tab="contact"><i class="ico ts"></i>contact.ts</button>
-  </nav>
+  <main>
+    <section class="game" id="career" aria-labelledby="name">
 
-  <!-- editor body -->
-  <div class="editor">
-    <aside class="gutter" id="gutter" aria-hidden="true"></aside>
+      <div class="intro">
+        <h1 id="name">Sheme<br>Hamitaj</h1>
+        <p class="lede">Senior software engineer at Ritech Solutions in Tirana, building mostly through AI now. Here’s the career so far, played as my favourite opening: pawn to f4, then everything goes for f7.</p>
+        <p class="hint"><span class="keys">Scroll the moves, or step through with <kbd>←</kbd> <kbd>→</kbd></span><span class="touch">Scroll the moves, or tap one to jump to it</span></p>
+      </div>
 
-    <div class="code">
-
-      <!-- ============== ABOUT ============== -->
-      <article id="tab-about" class="tab-content active">
-        <h1 class="line"><span class="hash">#</span>Sheme Hamitaj<span class="cursor"></span></h1>
-        <blockquote class="line">Computer Engineer · Tirana, Albania · <span style="color:var(--green)">●</span> Frontend Lead @ Ritech Solutions</blockquote>
-
-        <h2 class="section"><span class="hash">##</span>hello</h2>
-        <p style="margin:0 0 8px; color: var(--dim);">Leading frontend at <span class="key">Ritech Solutions</span> in Tirana. Vue / Nuxt, scalable component systems, API integration, and automated testing as part of the workflow.</p>
-
-        <h2 class="section"><span class="hash">##</span>now</h2>
-        <ul class="tree">
-          <li><span class="arrow">→</span><span><b>Frontend Lead Developer</b> <span class="dim">— Ritech Solutions, Tirana, since 09/2023</span></span></li>
-          <li><span class="arrow">→</span><span>Aligning teams, scoping work, and shipping Vue.js at scale</span></li>
-          <li><span class="arrow">→</span><span>Working with <span style="color:var(--ai)">LLMs</span> on day-to-day development</span></li>
-        </ul>
-
-        <h2 class="section"><span class="hash">##</span><span style="color: var(--com); font-weight: 400;">$</span> git log <span style="color: var(--com); font-weight: 400; font-size: 12px;">--pinned</span></h2>
-        <div class="gitlog">
-          <a class="commit" href="https://hipzbrit.com" target="_blank" rel="noopener">
-            <span class="node" aria-hidden="true"></span>
-            <span class="hash">a1b2c3d</span>
-            <span class="msg"><span class="tag-ref live">shipping</span><b>hipzbrit.com</b> — intercity transport for Albania · 848 routes, 62 cities</span>
-            <span class="when">2026</span>
-          </a>
-          <a class="commit past" href="/hackathon" target="_blank" rel="noopener">
-            <span class="node" aria-hidden="true"></span>
-            <span class="hash">5fa2e0b</span>
-            <span class="msg"><span class="tag-ref live">organized</span><b>MerrBio Hackathon</b> — 20+ teams, €1500 in prizes, a laptop, internships and trainings</span>
-            <span class="when">Apr 2025</span>
-          </a>
+      <figure class="board-col">
+        <div class="board" id="board" role="img" aria-label="Chess board, starting position">
+          <div class="squares" id="squares" aria-hidden="true"></div>
+          <div class="pieces" id="pieces" aria-hidden="true"></div>
+          <svg class="arrows" id="arrows" viewBox="0 0 8 8" aria-hidden="true"></svg>
         </div>
+        <figcaption class="board-bar">
+          <button class="step-btn" id="prev" type="button" aria-label="Previous move">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <span class="caption" aria-live="polite">
+            <span class="opening" id="opening">Starting position</span>
+            <span class="after" id="after">White to move</span>
+          </span>
+          <button class="step-btn" id="next" type="button" aria-label="Next move">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </figcaption>
+      </figure>
 
-        <h2 class="section"><span class="hash">##</span>stack</h2>
-        <div class="chips">
-          <span class="chip">Vue · Nuxt</span>
-          <span class="chip">TypeScript</span>
-          <span class="chip">Laravel</span>
-          <span class="chip">Jest · Cypress · Playwright</span>
-          <span class="chip">Node</span>
-          <span class="chip">Claude · Cursor · Copilot</span>
-        </div>
+      <div class="moves">
+        <h2 class="sr-only">Career, move by move</h2>
+        <ol>
 
-        <p style="margin: 22px 0 4px; color: var(--com); font-style: italic;">// "An ambitious man either wins or learns."</p>
-      </article>
-
-      <!-- ============== RESUME ============== -->
-      <article id="tab-resume" class="tab-content">
-
-        <div class="resume-top">
-          <a class="dl-cv" href="assets/RESUME_Hamitaj.pdf" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 4v12m0 0-4-4m4 4 4-4M5 20h14"/>
-            </svg>
-            Download resume.pdf
-          </a>
-
-          <div class="resume-highlights">
-            <p class="kicker">Highlights</p>
-            <div class="chips">
-              <span class="chip">Strategic planning</span>
-              <span class="chip">Problem solving</span>
-              <span class="chip">Quick learning</span>
-              <span class="chip">Communication</span>
+          <li class="move" data-step="1">
+            <span class="num">1.</span>
+            <button class="ply w" type="button" aria-label="Show position after 1. f4">f4</button>
+            <span class="ply b">d6</span>
+            <div class="note">
+              <p class="when">Kocaeli, Turkey</p>
+              <h3>Computer Engineering, Kocaeli University</h3>
+              <p class="detail">Opened with robots: autonomous mobile robots in ROS, and a published survey of ROS security in 2019.</p>
             </div>
-          </div>
+          </li>
+
+          <li class="move" data-step="2">
+            <span class="num">2.</span>
+            <button class="ply w" type="button" aria-label="Show position after 2. e3">e3</button>
+            <span class="ply b"><span class="fig">♘</span>d7</span>
+            <div class="note">
+              <p class="when">2021 – 2023, Bielefeld</p>
+              <h3>circuly GmbH</h3>
+              <p class="detail">Frontend developer to backend lead in two years.</p>
+            </div>
+          </li>
+
+          <li class="move" data-step="3">
+            <span class="num">3.</span>
+            <button class="ply w" type="button" aria-label="Show position after 3. Knight f3"><span class="fig">♘</span>f3</button>
+            <span class="ply b">b6</span>
+            <div class="note">
+              <p class="when">2023 – 2026, Tirana</p>
+              <h3>Ritech Solutions</h3>
+              <p class="detail">Joined on the frontend, led the frontend team from December 2024.</p>
+            </div>
+          </li>
+
+          <li class="move" data-step="4">
+            <span class="num">4.</span>
+            <button class="ply w" type="button" aria-label="Show position after 4. Bishop c4"><span class="fig">♗</span>c4</button>
+            <span class="ply b"><span class="fig">♗</span>b7</span>
+            <div class="note">
+              <p class="when">April 2025</p>
+              <h3>Organized the MerrBio Hackathon</h3>
+              <p class="detail">Started with €500 of my own and a LinkedIn post. Ended with 20+ teams and €1,500 in prizes.</p>
+              <a class="link" href="/hackathon" target="_blank" rel="noopener">See the hackathon</a>
+            </div>
+          </li>
+
+          <li class="move" data-step="5">
+            <span class="num">5.</span>
+            <button class="ply w" type="button" aria-label="Show position after 5. Knight g5"><span class="fig">♘</span>g5</button>
+            <span class="ply b">e6</span>
+            <div class="note">
+              <p class="when">2026</p>
+              <h3>Shipping hipzbrit.com</h3>
+              <p class="detail">Intercity transport for Albania. 848 routes, 62 cities, pay the driver on board.</p>
+              <a class="link" href="https://hipzbrit.com" target="_blank" rel="noopener">Visit hipzbrit.com</a>
+            </div>
+          </li>
+
+          <li class="move" data-step="6">
+            <span class="num">6.</span>
+            <button class="ply w" type="button" aria-label="Show position after 6. Queen h5"><span class="fig">♕</span>h5</button>
+            <span class="ply b"></span>
+            <div class="note">
+              <p class="when">Since September 2026</p>
+              <h3>Senior Software Engineer, Ritech Solutions</h3>
+              <p class="detail">The queen comes out. AI is the strongest piece on my board now.</p>
+            </div>
+          </li>
+
+          <li class="move" data-step="7">
+            <span class="num">6…</span>
+            <button class="ply w" type="button" aria-label="Show the position with Black to move"></button>
+            <span class="ply b ask" id="reply">?</span>
+            <div class="note">
+              <p class="when">Now</p>
+              <h3>Your move</h3>
+              <p class="detail">You’re Black, and f7 is under fire. Pick your reply.</p>
+              <div class="choice" role="group" aria-label="Choose Black’s reply">
+                <button type="button" data-reply="A" aria-pressed="false">…<span class="fig">♘</span>f6</button>
+                <button type="button" data-reply="B" aria-pressed="false">…g6</button>
+              </div>
+              <div class="outcome" id="outcome" aria-live="polite" hidden>
+                <p id="outcome-text"></p>
+                <button class="retry" id="retry" type="button">Try the other move</button>
+              </div>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <section class="ai" id="ai" aria-labelledby="ai-h">
+      <div class="ai-head">
+        <div>
+          <h2 class="statement" id="ai-h">We’re the last ones to write code.</h2>
+          <p class="statement-sub">The next generation will look at code the way we look at the pyramids: how were they even built?</p>
         </div>
+        <span class="queen" aria-hidden="true">♕</span>
+      </div>
+      <p class="ai-lede">AI collapsed the cost of trying things. The hard part moved from “can I write this” to “do I know what I want”, so that’s where my time goes now.</p>
+      <ol class="flow">
+        <li>
+          <h3>Spec</h3>
+          <p>Decide what we actually want. The best prompt is a clear spec, the second best is an example.</p>
+        </li>
+        <li>
+          <h3>Build</h3>
+          <p>Claude Opus 5.5 and Claude Code do the heavy lifting. Small custom agents take care of logs, tickets and reports.</p>
+        </li>
+        <li>
+          <h3>Review</h3>
+          <p>Read the diff. Always read the diff.</p>
+        </li>
+        <li>
+          <h3>Ship</h3>
+          <p>Trying is cheap now, so try more and keep what works.</p>
+        </li>
+      </ol>
+    </section>
 
-<pre class="json"><span class="punct">{</span>
-  <span class="key">"experience"</span><span class="punct">:</span> <span class="punct">[</span>
-    <span class="punct">{</span>
-      <span class="key">"role"</span><span class="punct">:</span> <span class="str">"Frontend Lead Developer"</span><span class="punct">,</span>
-      <span class="key">"company"</span><span class="punct">:</span> <span class="str">"Ritech Solutions"</span><span class="punct">,</span> <span class="key">"city"</span><span class="punct">:</span> <span class="str">"Tirana, AL"</span><span class="punct">,</span>
-      <span class="key">"from"</span><span class="punct">:</span> <span class="str">"2024-12"</span><span class="punct">,</span> <span class="key">"to"</span><span class="punct">:</span> <span class="bool">null</span><span class="punct">,</span>
-      <span class="key">"highlights"</span><span class="punct">:</span> <span class="punct">[</span>
-        <span class="str">"Lead cross-team meetings to align development goals and ensure timely delivery."</span><span class="punct">,</span>
-        <span class="str">"Initiated team-building activities and offsites to strengthen collaboration."</span>
-      <span class="punct">]</span>
-    <span class="punct">},</span>
-    <span class="punct">{</span>
-      <span class="key">"role"</span><span class="punct">:</span> <span class="str">"Frontend Developer"</span><span class="punct">,</span>
-      <span class="key">"company"</span><span class="punct">:</span> <span class="str">"Ritech Solutions"</span><span class="punct">,</span> <span class="key">"city"</span><span class="punct">:</span> <span class="str">"Tirana, AL"</span><span class="punct">,</span>
-      <span class="key">"from"</span><span class="punct">:</span> <span class="str">"2023-09"</span><span class="punct">,</span> <span class="key">"to"</span><span class="punct">:</span> <span class="str">"2024-12"</span><span class="punct">,</span>
-      <span class="key">"highlights"</span><span class="punct">:</span> <span class="punct">[</span>
-        <span class="str">"Built scalable Vue.js components for a modular, maintainable frontend."</span><span class="punct">,</span>
-        <span class="str">"Integrated APIs for business-critical workflows with focus on UX &amp; performance."</span>
-      <span class="punct">]</span>
-    <span class="punct">},</span>
-    <span class="punct">{</span>
-      <span class="key">"role"</span><span class="punct">:</span> <span class="str">"Backend Lead Developer"</span><span class="punct">,</span>
-      <span class="key">"company"</span><span class="punct">:</span> <span class="str">"circuly GmbH"</span><span class="punct">,</span> <span class="key">"city"</span><span class="punct">:</span> <span class="str">"Bielefeld, DE"</span><span class="punct">,</span>
-      <span class="key">"from"</span><span class="punct">:</span> <span class="str">"2022-12"</span><span class="punct">,</span> <span class="key">"to"</span><span class="punct">:</span> <span class="str">"2023-08"</span><span class="punct">,</span>
-      <span class="key">"highlights"</span><span class="punct">:</span> <span class="punct">[</span>
-        <span class="str">"Directed backend processes from feature scoping to production deploys."</span><span class="punct">,</span>
-        <span class="str">"Owned feature flagging via Unleash for safe, incremental rollouts."</span>
-      <span class="punct">]</span>
-    <span class="punct">},</span>
-    <span class="punct">{</span>
-      <span class="key">"role"</span><span class="punct">:</span> <span class="str">"Full Stack Developer"</span><span class="punct">,</span>
-      <span class="key">"company"</span><span class="punct">:</span> <span class="str">"circuly GmbH"</span><span class="punct">,</span> <span class="key">"city"</span><span class="punct">:</span> <span class="str">"Bielefeld, DE"</span><span class="punct">,</span>
-      <span class="key">"from"</span><span class="punct">:</span> <span class="str">"2021-10"</span><span class="punct">,</span> <span class="key">"to"</span><span class="punct">:</span> <span class="str">"2022-12"</span><span class="punct">,</span>
-      <span class="key">"highlights"</span><span class="punct">:</span> <span class="punct">[</span>
-        <span class="str">"Shipped full-stack features incl. payment workflows in PHP / Laravel."</span><span class="punct">,</span>
-        <span class="str">"Led feature-level planning for high-impact modules."</span>
-      <span class="punct">]</span>
-    <span class="punct">},</span>
-    <span class="punct">{</span>
-      <span class="key">"role"</span><span class="punct">:</span> <span class="str">"Frontend Developer"</span><span class="punct">,</span>
-      <span class="key">"company"</span><span class="punct">:</span> <span class="str">"circuly GmbH"</span><span class="punct">,</span> <span class="key">"city"</span><span class="punct">:</span> <span class="str">"Bielefeld, DE"</span><span class="punct">,</span>
-      <span class="key">"from"</span><span class="punct">:</span> <span class="str">"2021-01"</span><span class="punct">,</span> <span class="key">"to"</span><span class="punct">:</span> <span class="str">"2021-10"</span><span class="punct">,</span>
-      <span class="key">"highlights"</span><span class="punct">:</span> <span class="punct">[</span>
-        <span class="str">"Built reusable Vue.js + NuxtJS components on modern frontend standards."</span><span class="punct">,</span>
-        <span class="str">"Wrote Jest &amp; Cypress tests for reliable, regression-free releases."</span>
-      <span class="punct">]</span>
-    <span class="punct">},</span>
-    <span class="punct">{</span>
-      <span class="key">"role"</span><span class="punct">:</span> <span class="str">"AMR Developer"</span><span class="punct">,</span>
-      <span class="key">"company"</span><span class="punct">:</span> <span class="str">"Kocaeli University"</span><span class="punct">,</span> <span class="key">"city"</span><span class="punct">:</span> <span class="str">"Kocaeli, TR"</span><span class="punct">,</span>
-      <span class="key">"from"</span><span class="punct">:</span> <span class="str">"2019-08"</span><span class="punct">,</span> <span class="key">"to"</span><span class="punct">:</span> <span class="str">"2020-08"</span><span class="punct">,</span>
-      <span class="key">"highlights"</span><span class="punct">:</span> <span class="punct">[</span>
-        <span class="str">"Developed Autonomous Mobile Robots in ROS — SLAM, natural navigation."</span>
-      <span class="punct">]</span>
-    <span class="punct">}</span>
-  <span class="punct">],</span>
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Get in touch</h2>
+      <div>
+        <a class="email" href="mailto:me@shemehamitaj.com">me@shemehamitaj.com</a>
+        <p class="lede">Not freelancing, but always up for interesting work, collaborations and AI projects. Email is the fastest path, and I read everything.</p>
+        <dl class="details">
+          <dt>Phone</dt>
+          <dd><a href="tel:+355684683347">+355 68 46 833 47</a></dd>
+          <dt>Based in</dt>
+          <dd>Tirana, Albania (CET/CEST)</dd>
+          <dt>Speaks</dt>
+          <dd>Albanian, English, Turkish, Italian</dd>
+          <dt>Elsewhere</dt>
+          <dd class="links">
+            <a href="https://github.com/jajosheni" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/shemehamitaj" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.instagram.com/shhamitaj" target="_blank" rel="noopener">Instagram</a>
+          </dd>
+          <dt>Resume</dt>
+          <dd><a href="assets/RESUME_Hamitaj.pdf" download>Download PDF</a></dd>
+        </dl>
+      </div>
+    </section>
 
-  <span class="key">"education"</span><span class="punct">:</span> <span class="punct">[</span>
-    <span class="punct">{</span>
-      <span class="key">"degree"</span><span class="punct">:</span> <span class="str">"BSc, Computer Engineering"</span><span class="punct">,</span>
-      <span class="key">"school"</span><span class="punct">:</span> <span class="str">"Kocaeli University, Turkey"</span>
-    <span class="punct">}</span>
-  <span class="punct">],</span>
+    <p class="closing">“An ambitious man either wins or learns.”</p>
+  </main>
 
-  <span class="key">"awards"</span><span class="punct">:</span> <span class="punct">[</span>
-    <span class="punct">{</span> <span class="key">"name"</span><span class="punct">:</span> <span class="str">"IELTS Academic — C1"</span><span class="punct">,</span> <span class="key">"score"</span><span class="punct">:</span> <span class="num">7.5</span><span class="punct">,</span> <span class="key">"by"</span><span class="punct">:</span> <span class="str">"British Council"</span><span class="punct">,</span> <span class="key">"date"</span><span class="punct">:</span> <span class="str">"2020-07-14"</span> <span class="punct">},</span>
-    <span class="punct">{</span> <span class="key">"name"</span><span class="punct">:</span> <span class="str">"OBSS Code Master — 3rd place"</span><span class="punct">,</span> <span class="key">"by"</span><span class="punct">:</span> <span class="str">"Kocaeli University"</span><span class="punct">,</span> <span class="key">"date"</span><span class="punct">:</span> <span class="str">"2019-12-19"</span> <span class="punct">}</span>
-  <span class="punct">],</span>
-
-  <span class="key">"papers"</span><span class="punct">:</span> <span class="punct">[</span>
-    <span class="punct">{</span>
-      <span class="key">"title"</span><span class="punct">:</span> <span class="str">"A Survey of ROS Security"</span><span class="punct">,</span>
-      <span class="key">"venue"</span><span class="punct">:</span> <span class="str">"IWW 2019 — 10th Intl. Conf. on Image Processing, Wavelet &amp; Applications"</span><span class="punct">,</span>
-      <span class="key">"date"</span><span class="punct">:</span> <span class="str">"2019-07-10"</span>
-    <span class="punct">}</span>
-  <span class="punct">]</span>
-<span class="punct">}</span>
-</pre>
-
-        <h2 class="section" style="margin-top: 28px"><span class="hash">##</span>skills <span style="color: var(--com); font-weight: 400; font-size: 11px;">// rendered from resume.json</span></h2>
-
-        <div style="margin-top: 8px;">
-          <p style="color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin: 12px 0 6px;">Coding</p>
-          <div class="skill"><span class="label">Vue / Nuxt</span><span class="bar"><i style="--w:95%"></i></span><span class="pct">95</span></div>
-          <div class="skill"><span class="label">JavaScript / TS</span><span class="bar"><i style="--w:92%"></i></span><span class="pct">92</span></div>
-          <div class="skill"><span class="label">PHP / Laravel</span><span class="bar"><i style="--w:87%"></i></span><span class="pct">87</span></div>
-          <div class="skill"><span class="label">Jest · Cypress</span><span class="bar"><i style="--w:85%"></i></span><span class="pct">85</span></div>
-          <div class="skill"><span class="label">C / C++ / ROS</span><span class="bar"><i style="--w:80%"></i></span><span class="pct">80</span></div>
-
-          <p style="color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin: 18px 0 6px;">Languages</p>
-          <div class="skill"><span class="label">Albanian</span><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></span><span class="pct">native</span></div>
-          <div class="skill"><span class="label">English</span><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></span><span class="pct">C1</span></div>
-          <div class="skill"><span class="label">Turkish</span><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></span><span class="pct">excellent</span></div>
-          <div class="skill"><span class="label">Italian</span><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="pct">good</span></div>
-        </div>
-
-      </article>
-
-      <!-- ============== SERVICES ============== -->
-      <article id="tab-services" class="tab-content">
-<pre class="ts" style="margin-bottom: 14px;"><span class="kw">export const</span> <span class="fn">services</span><span class="punct">:</span> <span class="tag">Service</span><span class="punct">[]</span> <span class="punct">=</span> <span class="punct">[</span></pre>
-
-        <div class="grid2">
-          <div class="card">
-            <div class="t">⌘ Frontend engineering</div>
-            <div class="d">Vue / Nuxt apps with a clean component architecture, real performance budgets, and proper test coverage (Jest, Cypress).</div>
-          </div>
-          <div class="card">
-            <div class="t">▤ Backend &amp; APIs</div>
-            <div class="d">PHP + Laravel services, payment workflows, and pragmatic API design — including safe rollouts via feature flagging.</div>
-          </div>
-          <div class="card">
-            <div class="t">▥ Team leadership</div>
-            <div class="d">Aligning cross-team work, scoping features, mentoring engineers, and building the rituals that turn a group into a team.</div>
-          </div>
-          <div class="card">
-            <div class="t">✎ Robotics &amp; embedded</div>
-            <div class="d">ROS-based autonomous mobile robots with SLAM and natural navigation. Background, not the day job — but the muscles still work.</div>
-          </div>
-          <div class="card card-ai">
-            <div class="t" style="color: var(--ai);">✦ AI-augmented engineering <span style="color: var(--muted); font-weight: 400; font-size: 11px;">— new</span></div>
-            <div class="d">Pair-programming with LLMs, agentic workflows, and small custom tools that turn boring grunt work into one-line commands.</div>
-          </div>
-        </div>
-
-<pre class="ts" style="margin-top: 14px;"><span class="punct">]</span><span class="punct">;</span>
-
-<span class="com">// Fast and reliable. Always.</span></pre>
-      </article>
-
-      <!-- ============== CONTACT ============== -->
-      <article id="tab-contact" class="tab-content">
-<pre class="ts"><span class="kw">import</span> <span class="punct">{</span> <span class="tag">Person</span> <span class="punct">}</span> <span class="kw">from</span> <span class="str">"./types"</span><span class="punct">;</span>
-
-<span class="kw">export const</span> <span class="fn">contact</span><span class="punct">:</span> <span class="tag">Person</span><span class="punct">[</span><span class="str">"contact"</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">{</span>
-  <span class="key">email</span><span class="punct">:</span>    <span class="str">"me@shemehamitaj.com"</span><span class="punct">,</span>
-  <span class="key">tel</span><span class="punct">:</span>      <span class="str">"+355 68 46 833 47"</span><span class="punct">,</span>
-  <span class="key">location</span><span class="punct">:</span> <span class="str">"Tirana, Albania"</span><span class="punct">,</span>
-  <span class="key">timezone</span><span class="punct">:</span> <span class="str">"CET / CEST"</span><span class="punct">,</span>
-  <span class="key">role</span><span class="punct">:</span>     <span class="str">"Frontend Lead @ Ritech Solutions"</span>
-<span class="punct">}</span> <span class="kw">as const</span><span class="punct">;</span>
-</pre>
-
-        <h2 class="section" style="margin-top: 22px"><span class="hash">##</span>find me elsewhere</h2>
-
-        <div class="links">
-          <a href="https://github.com/jajosheni" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-1.97c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
-            github.com/jajosheni
-          </a>
-          <a href="https://www.linkedin.com/in/shemehamitaj" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 .01-4.12 2.06 2.06 0 0 1-.01 4.12ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.99 0 1.78-.77 1.78-1.72V1.72C24 .77 23.21 0 22.22 0Z"/></svg>
-            linkedin.com/in/shemehamitaj
-          </a>
-          <a href="https://www.instagram.com/shemehamitaj" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07Zm0 2.16c-3.14 0-3.51.01-4.75.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.26.82-.38.38-.62.75-.82 1.26-.15.39-.33.97-.38 2.04-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.07.23 1.65.38 2.04.2.51.44.88.82 1.26.38.38.75.62 1.26.82.39.15.97.33 2.04.38 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.26-.82.38-.38.62-.75.82-1.26.15-.39.33-.97.38-2.04.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.07-.23-1.65-.38-2.04a3.4 3.4 0 0 0-.82-1.26 3.4 3.4 0 0 0-1.26-.82c-.39-.15-.97-.33-2.04-.38-1.24-.06-1.61-.07-4.75-.07Zm0 3.68a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 6.6a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2Zm5.08-6.76a.93.93 0 1 1-1.86 0 .93.93 0 0 1 1.86 0Z"/></svg>
-            instagram.com/shemehamitaj
-          </a>
-          <a href="mailto:me@shemehamitaj.com">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 8.85L3.15 6h17.7L12 12.85ZM2 7.4V18h20V7.4l-10 7.7L2 7.4Z"/></svg>
-            me@shemehamitaj.com
-          </a>
-          <a href="tel:+35568468334">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.42.6 3.71.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.29.21 2.55.6 3.71a1 1 0 0 1-.24 1.05l-2.24 2.03Z"/></svg>
-            +355 68 46 833 47
-          </a>
-        </div>
-
-        <p style="margin-top: 22px; color: var(--com); font-style: italic;">// fastest path to me is email — I read everything.</p>
-      </article>
-
-      <!-- ============== AI ============== -->
-      <article id="tab-ai" class="tab-content">
-        <h1 class="line"><span class="hash">#</span><span style="color: var(--ai)">~/ai</span></h1>
-        <blockquote class="line">A short note on how I'm using AI in 2026.</blockquote>
-
-        <h2 class="section"><span class="hash">##</span>tldr</h2>
-        <p style="color: var(--dim); margin: 0 0 8px;">LLMs aren't replacing engineers — they're collapsing the cost of trying things. The bottleneck has moved from "can I write this" to "do I know what I want." Taste, judgement and verification still matter most.</p>
-
-        <h2 class="section"><span class="hash">##</span>what I use, daily</h2>
-        <ul class="tree">
-          <li><span class="arrow">→</span><span><b>Claude (Opus 4.7, mostly)</b> <span class="dim">— architecture sketches, tricky migrations, code review on small PRs</span></span></li>
-          <li><span class="arrow">→</span><span><b>Cursor / Claude Code</b> <span class="dim">— in-editor edits, refactors, "explain this file"</span></span></li>
-          <li><span class="arrow">→</span><span><b>Custom agents</b> <span class="dim">— small one-off scripts that read logs, tag tickets, format reports</span></span></li>
-        </ul>
-
-        <h2 class="section"><span class="hash">##</span>opinions, lightly held</h2>
-        <ul class="tree">
-          <li><span class="arrow">·</span><span>The best prompt is a clear spec. The second best is an example.</span></li>
-          <li><span class="arrow">·</span><span>Read the diff. Always read the diff.</span></li>
-          <li><span class="arrow">·</span><span>Tools change every quarter — fundamentals don't. Keep writing software.</span></li>
-        </ul>
-
-        <p style="margin: 26px 0 0; color: var(--com); font-style: italic;">// try the <span style="color: var(--ai)">$ ask</span> bar below — it's pre-baked, not a real model, but it's wired to my actual data.</p>
-      </article>
-
-    </div>
-  </div>
-
-  <!-- status bar -->
-  <footer class="statusbar" aria-hidden="true">
-    <div class="left">
-      <span class="live">live</span>
-      <span>main</span>
-      <span>UTF-8</span>
-      <span>LF</span>
-    </div>
-    <div class="right">
-      <span class="pp">// pair-programmed with claude</span>
-      <span>v.2026.05</span>
-    </div>
+  <footer class="foot">
+    © <span id="year">2026</span> Sheme Hamitaj. Built in Tirana with Claude.
   </footer>
 
-  <!-- ask box -->
-  <section class="ask-wrap" aria-label="Ask anything">
-    <div class="ask">
-      <span class="label">$ ask</span>
-      <input id="ask-input" type="text" autocomplete="off" placeholder="ask anything — try: projects, hipzbrit, hackathon, experience, ai" aria-label="Ask anything">
-      <button class="submit" id="ask-submit">↵</button>
-    </div>
-    <div class="ask-output" id="ask-output"></div>
-  </section>
-
-</main>
-
-<div class="pagefoot">
-  <span>© <span id="year">2026</span> Sheme Hamitaj · built in Tirana</span>
-  <span><a href="https://github.com/jajosheni/jajosheni.github.io" target="_blank" rel="noopener">view source ↗</a></span>
 </div>
 
 <script>
 (() => {
-  // ── theme ───────────────────────────────────────
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── theme ───────────────────────────────────
   const root = document.documentElement;
-  const themeBtn = document.getElementById('theme-toggle');
   const meta = document.querySelector('meta[name="theme-color"]');
   const mq = window.matchMedia('(prefers-color-scheme: light)');
-
   function applyTheme(t) {
     if (t === 'light') root.setAttribute('data-theme', 'light');
     else root.removeAttribute('data-theme');
-    if (meta) meta.setAttribute('content', t === 'light' ? '#f4f1e8' : '#0a0a0d');
+    if (meta) meta.setAttribute('content', t === 'light' ? '#e7eef0' : '#0f1d24');
   }
-
-  const stored = (() => { try { return localStorage.getItem('theme'); } catch (e) { return null; } })();
+  let stored = null;
+  try { stored = localStorage.getItem('theme'); } catch (e) {}
   applyTheme(stored || (mq.matches ? 'light' : 'dark'));
-
-  themeBtn.addEventListener('click', () => {
+  document.getElementById('theme-toggle').addEventListener('click', () => {
     const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
     applyTheme(next);
     try { localStorage.setItem('theme', next); } catch (e) {}
   });
-
-  // follow system preference if user hasn't chosen
   mq.addEventListener('change', e => {
     let s = null; try { s = localStorage.getItem('theme'); } catch (e2) {}
     if (!s) applyTheme(e.matches ? 'light' : 'dark');
   });
 
-  // ── tabs ────────────────────────────────────────
-  const tabs = document.querySelectorAll('.tabs button');
-  const contents = document.querySelectorAll('.tab-content');
-  const gutter = document.getElementById('gutter');
+  // ── the game: Bird's Opening ────────────────
+  // 1.f4 d6 2.e3 Nd7 3.Nf3 b6 4.Bc4 Bb7 5.Ng5 e6 6.Qh5, then Black chooses:
+  //   A) 6...Ngf6?? 7.Qxf7#   (the trivial win)
+  //   B) 6...g6               (the fierce battle)
+  const MAIN = [
+    ['f2','f4'], ['d7','d6'], ['e2','e3'], ['b8','d7'], ['g1','f3'], ['b7','b6'],
+    ['f1','c4'], ['c8','b7'], ['f3','g5'], ['e7','e6'], ['d1','h5']
+  ];
+  const BRANCH = { A: [['g8','f6'], ['h5','f7']], B: [['g7','g6']] };
+  const ATTACK_5 = [['g5','f7'], ['c4','f7']];
+  const ATTACK_6 = [['h5','f7'], ['g5','f7']];
+  const BIRD = 'Bird’s Opening';
 
-  function rebuildGutter() {
-    const active = document.querySelector('.tab-content.active');
-    if (!active) return;
-    // count visible "lines" — use number proportional to height
-    const h = active.scrollHeight;
-    const lineH = 22; // average line height in px
-    const n = Math.max(20, Math.ceil(h / lineH));
-    gutter.innerHTML = '';
-    for (let i = 1; i <= n; i++) {
-      const s = document.createElement('span');
-      s.textContent = i;
-      gutter.appendChild(s);
-    }
-  }
+  const STATES = [
+    { plies: MAIN.slice(0, 0),  opening: 'Starting position', after: 'White to move' },
+    { plies: MAIN.slice(0, 1),  opening: BIRD, after: 'After 1. f4' },
+    { plies: MAIN.slice(0, 3),  opening: BIRD, after: 'After 2. e3' },
+    { plies: MAIN.slice(0, 5),  opening: BIRD, after: 'After 3. ♘f3' },
+    { plies: MAIN.slice(0, 7),  opening: BIRD, after: 'After 4. ♗c4' },
+    { plies: MAIN.slice(0, 9),  opening: BIRD, after: 'After 5. ♘g5, threatening ♗xf7#', arrows: ATTACK_5 },
+    { plies: MAIN.slice(0, 11), opening: BIRD, after: 'After 6. ♕h5, threatening ♕xf7#', arrows: ATTACK_6 },
+    { plies: MAIN.slice(0, 11), opening: 'Your move', after: 'Black to play, f7 is under fire', arrows: ATTACK_6, target: 'f7' },
+    { plies: MAIN.concat(BRANCH.A), opening: 'Checkmate', after: '6… ♘f6?? 7. ♕xf7#', mate: 'e8', fallen: 'e8' },
+    { plies: MAIN.concat(BRANCH.B), opening: 'Fierce battle', after: '6… g6, and the fight moves to the middle', center: ['d4','e4','d5','e5'] }
+  ];
+  const LAST_ROW = 7;
 
-  function activate(name) {
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-    contents.forEach(c => c.classList.toggle('active', c.id === 'tab-' + name));
-    requestAnimationFrame(rebuildGutter);
-    if (history.replaceState) {
-      history.replaceState(null, '', '#' + name);
-    }
-  }
-
-  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab)));
-
-  // restore tab from hash
-  const hash = (location.hash || '').replace('#', '');
-  if (hash && document.getElementById('tab-' + hash)) activate(hash);
-  else rebuildGutter();
-  window.addEventListener('resize', rebuildGutter);
-
-  // ── ask box ─────────────────────────────────────
-  const responses = {
-    experience: () =>
-`→ Frontend Lead · Ritech Solutions, Tirana   12/2024 – now
-→ Frontend Dev  · Ritech Solutions, Tirana   09/2023 – 12/2024
-→ Backend Lead  · circuly GmbH, Bielefeld    12/2022 – 08/2023
-→ Full-stack    · circuly GmbH, Bielefeld    10/2021 – 12/2022
-→ Frontend Dev  · circuly GmbH, Bielefeld    01/2021 – 10/2021
-→ AMR Developer · Kocaeli University         08/2019 – 08/2020
-
-Full breakdown lives in the resume.json tab.`,
-    education: () =>
-`→ BSc Computer Engineering · Kocaeli University, Turkey`,
-    stack: () =>
-`Languages : JS · TS · PHP · C · C++ · Java · Python
-Frameworks: Vue + Nuxt · Laravel · Node
-Testing   : Jest · Cypress · Playwright
-Ops       : Unleash (feature flags) · Linux
-Domains   : Web · APIs · Embedded · Robotics (ROS / SLAM)
-Tools     : Claude · Cursor · Copilot · Vim`,
-    skills: () => responses.stack(),
-    highlights: () => `Strategic planning · Problem solving · Quick learning · Communication.`,
-    contact: () =>
-`email   : me@shemehamitaj.com
-tel     : +355 68 46 833 47
-location: Tirana, Albania
-role    : Frontend Lead @ Ritech Solutions
-
-I read every email. Drop one anytime.`,
-    email: () => responses.contact(),
-    hire: () =>
-`I'm not freelance — I'm Frontend Lead at Ritech Solutions in Tirana.
-But I'm always happy to chat about interesting work, collaborations,
-or AI-augmented projects. Best path:
-
-  me@shemehamitaj.com`,
-    available: () => responses.hire(),
-    ai: () =>
-`Yes — I use AI daily.
-· Claude (mostly Opus 4.7) for design, review, hard refactors.
-· Cursor / Claude Code for in-editor changes.
-· Small custom agents for boring repeat work.
-
-The taste-and-spec part is still the human's job. That's the fun part.`,
-    claude: () => responses.ai(),
-    llm: () => responses.ai(),
-    chess: () =>
-`My dad taught me at 4. I've been playing ever since.
-If you also play, queue up a game — I'm @shemehamitaj on chess.com (probably).`,
-    projects: () =>
-`→ Hip Zbrit   · hipzbrit.com         · intercity transport for Albania (building)
-→ MerrBio     · shemehamitaj.com/hackathon · hackathon I organized, April 2025
-
-Full write-ups in the projects.ts tab.`,
-    hipzbrit: () =>
-`Hip Zbrit — intercity transport for Albania, simplified.
-Search a route, book a seat, pay the driver on board.
-
-  848 routes · 62 cities · 232 operators
-  → https://hipzbrit.com`,
-    transport: () => responses.hipzbrit(),
-    hackathon: () =>
-`MerrBio Hackathon — 12–13 April 2025, Tirana.
-I organized it: 20+ teams built the MVP of MerrBio,
-a platform connecting local farmers with consumers.
-
-Started with €500 of my own and a LinkedIn post.
-Wrapped with €1500 in prizes, a laptop, internships
-and trainings — all from people who showed up.
-
-Winners: SDI · Bumeku · Lazanja.
-
-  → https://shemehamitaj.com/hackathon`,
-    merrbio: () => responses.hackathon(),
-    ritech: () => "Frontend Lead Developer at Ritech Solutions in Tirana — at Ritech since September 2023.",
-    circuly: () =>
-`Three roles at circuly GmbH (Bielefeld, Germany), 2021 – 2023:
-Frontend Dev → Full Stack → Backend Lead.
-Vue/Nuxt on the front, PHP/Laravel on the back, with Unleash for feature flags.`,
-    location: () => "Tirana, Albania. UTC+1 / UTC+2 (CET / CEST).",
-    where: () => "Tirana, Albania.",
-    languages: () =>
-`Albanian   ━━━━━ native
-English    ━━━━━ C1 (IELTS 7.5)
-Turkish    ━━━━━ excellent
-Italian    ━━━── good`,
-    name: () => "Sheme Hamitaj.",
-    age: () => `${new Date().getFullYear() - 1996}.`,
-    resume: () => "Available at /assets/RESUME_Hamitaj.pdf — or open the resume.json tab above.",
-    cv: () => responses.resume(),
-    help: () =>
-`Try one of: experience, projects, hipzbrit, hackathon, education,
-stack, contact, hire, ai, chess, ritech, circuly, languages, resume.
-
-Or just write a sentence — I'll match keywords.`,
-    "?": () => responses.help(),
-    hello: () => "Hi — I'm Sheme. Ask me anything about my work.",
-    hi: () => responses.hello(),
-    hey: () => responses.hello()
+  const OUTCOME = {
+    A: 'Checkmate, ♕xf7#. That’s the trivial win. Fancy a real game? <a href="mailto:me@shemehamitaj.com">Email me</a>.',
+    B: 'Good defence. Now it’s a fierce battle, and it moves to the middle. That’s where it gets interesting: <a href="mailto:me@shemehamitaj.com">me@shemehamitaj.com</a>'
   };
+  const REPLY = { A: '<span class="fig">♘</span>f6', B: 'g6' };
 
-  function answer(raw) {
-    const q = raw.trim().toLowerCase();
-    if (!q) return null;
+  const files = 'abcdefgh';
+  const BACK = ['R','N','B','Q','K','B','N','R'];
+  const GLYPH = { K:['♚','♔'], Q:['♛','♕'], R:['♜','♖'], B:['♝','♗'], N:['♞','♘'], P:['♟','♙'] };
 
-    // direct hit
-    if (responses[q]) return responses[q]();
-
-    // keyword match (longest first)
-    const keys = Object.keys(responses).sort((a,b) => b.length - a.length);
-    for (const k of keys) {
-      if (k.length > 1 && q.includes(k)) return responses[k]();
-    }
-    // fuzzy intents
-    if (/work|job|role|career/.test(q)) return responses.experience();
-    if (/email|reach|contact|message|write/.test(q)) return responses.contact();
-    if (/skill|tech|tool|language|framework/.test(q)) return responses.stack();
-    if (/free|hire|available|project|client/.test(q)) return responses.hire();
-    if (/who|about/.test(q)) return responses.name() + "\n\n" + responses.experience();
-
-    return `I don't have a pre-baked answer for "${raw.trim()}".
-
-I'm a small static script — try one of:
-projects · hipzbrit · hackathon · experience · stack · contact · ai
-
-…or email me@shemehamitaj.com.`;
+  // piece ids are their starting squares
+  const types = {};
+  for (let f = 0; f < 8; f++) {
+    types[files[f] + '1'] = 'w' + BACK[f];
+    types[files[f] + '2'] = 'wP';
+    types[files[f] + '7'] = 'bP';
+    types[files[f] + '8'] = 'b' + BACK[f];
   }
 
-  const input = document.getElementById('ask-input');
-  const submit = document.getElementById('ask-submit');
-  const output = document.getElementById('ask-output');
-  let typing = false;
-
-  async function run() {
-    if (typing) return;
-    const q = input.value;
-    if (!q.trim()) return;
-    const a = answer(q);
-
-    // record question
-    const you = document.createElement('div');
-    you.className = 'you';
-    you.textContent = q;
-    output.appendChild(you);
-
-    // typing answer
-    const me = document.createElement('div');
-    me.className = 'me';
-    output.appendChild(me);
-
-    const cursor = document.createElement('span');
-    cursor.className = 'typing';
-    me.appendChild(cursor);
-
-    typing = true;
-    input.value = '';
-    await typeOut(me, cursor, a);
-    cursor.remove();
-    typing = false;
-
-    // suggest next
-    if (output.children.length === 2) {
-      const chips = document.createElement('div');
-      chips.className = 'chips';
-      ['projects','hipzbrit','hackathon','experience','ai'].forEach(k => {
-        const b = document.createElement('button');
-        b.className = 'quick';
-        b.textContent = k;
-        b.onclick = () => { input.value = k; run(); };
-        chips.appendChild(b);
-      });
-      output.appendChild(chips);
-    }
-
-    output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function typeOut(host, cursor, text) {
-    return new Promise(resolve => {
-      let i = 0;
-      const text2 = text;
-      function tick() {
-        if (i >= text2.length) { resolve(); return; }
-        const ch = text2[i++];
-        cursor.insertAdjacentText('beforebegin', ch);
-        const delay = ch === '\n' ? 24 : (Math.random() * 8 + 6);
-        setTimeout(tick, delay);
+  // where every piece stands after a list of plies (captured pieces are absent)
+  function positionAfter(plies) {
+    const loc = {};
+    Object.keys(types).forEach(sq => { loc[sq] = sq; });
+    plies.forEach(p => {
+      for (let i = 0; i < p.length; i += 2) {
+        const id = loc[p[i]];
+        delete loc[p[i]];
+        loc[p[i + 1]] = id; // overwriting removes a captured piece
       }
-      tick();
     });
+    const pos = {};
+    for (const sq in loc) pos[loc[sq]] = sq;
+    return pos;
+  }
+  STATES.forEach(s => {
+    s.pos = positionAfter(s.plies);
+    s.last = s.plies.length ? s.plies[s.plies.length - 1] : null;
+  });
+
+  // squares
+  const squaresEl = document.getElementById('squares');
+  const sqEls = {};
+  for (let r = 8; r >= 1; r--) {
+    for (let f = 0; f < 8; f++) {
+      const name = files[f] + r;
+      const d = document.createElement('div');
+      d.className = 'sq' + ((f + r) % 2 === 1 ? ' dark' : '');
+      if (f === 0) d.insertAdjacentHTML('beforeend', `<span class="coord rank">${r}</span>`);
+      if (r === 1) d.insertAdjacentHTML('beforeend', `<span class="coord file">${files[f]}</span>`);
+      squaresEl.appendChild(d);
+      sqEls[name] = d;
+    }
   }
 
-  submit.addEventListener('click', run);
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') run();
-    if (e.key === 'Escape') { input.value = ''; }
+  // pieces
+  const piecesEl = document.getElementById('pieces');
+  const pcEls = {};
+  Object.keys(types).forEach(id => {
+    const [color, t] = types[id];
+    const el = document.createElement('span');
+    el.className = 'pc ' + color;
+    el.innerHTML = `<span class="fill">${GLYPH[t][0]}</span><span class="line">${GLYPH[t][1]}</span>`;
+    piecesEl.appendChild(el);
+    pcEls[id] = el;
   });
 
-  // keyboard shortcuts
+  const xy = sq => [files.indexOf(sq[0]), 8 - Number(sq[1])];
+  const place = sq => { const [x, y] = xy(sq); return `translate(${x * 100}%, ${y * 100}%)`; };
+
+  // threat arrows, drawn in board units (one square = 1)
+  const arrowsEl = document.getElementById('arrows');
+  function arrowSvg(from, to) {
+    const [x1, y1] = xy(from).map(v => v + .5);
+    const [x2, y2] = xy(to).map(v => v + .5);
+    const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy);
+    const ux = dx / len, uy = dy / len;
+    const sx = x1 + ux * .28, sy = y1 + uy * .28;
+    const tipX = x2 - ux * .24, tipY = y2 - uy * .24;
+    const bx = tipX - ux * .42, by = tipY - uy * .42;
+    const px = -uy * .26, py = ux * .26;
+    const f = n => n.toFixed(3);
+    return `<g><line x1="${f(sx)}" y1="${f(sy)}" x2="${f(bx)}" y2="${f(by)}" stroke-width=".17" stroke-linecap="round"/>` +
+      `<polygon points="${f(tipX)},${f(tipY)} ${f(bx + px)},${f(by + py)} ${f(bx - px)},${f(by - py)}" stroke="none"/></g>`;
+  }
+
+  const boardEl = document.getElementById('board');
+  const openingEl = document.getElementById('opening');
+  const afterEl = document.getElementById('after');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const rows = Array.from(document.querySelectorAll('.move'));
+  const replyEl = document.getElementById('reply');
+  const outcomeEl = document.getElementById('outcome');
+  const outcomeText = document.getElementById('outcome-text');
+  const choiceBtns = Array.from(document.querySelectorAll('.choice button'));
+  let shown = -1;      // index into STATES
+  let row = 0;         // active row, 0 = before the first move
+  let choice = null;   // 'A' | 'B' | null
+
+  const stateFor = r => (r === LAST_ROW && choice) ? (choice === 'A' ? 8 : 9) : r;
+
+  function render(i) {
+    if (i === shown) return;
+    const s = STATES[i];
+    const prev = shown >= 0 ? STATES[shown].pos : null;
+    for (const id in pcEls) {
+      const el = pcEls[id];
+      const sq = s.pos[id];
+      el.classList.toggle('moving', !!prev && !!sq && prev[id] !== sq);
+      if (sq) el.style.transform = place(sq);
+      el.classList.toggle('gone', !sq);
+      el.classList.toggle('fallen', s.fallen === id);
+    }
+    Object.values(sqEls).forEach(el => el.classList.remove('hl', 'mate', 'center'));
+    if (s.last) { sqEls[s.last[0]].classList.add('hl'); sqEls[s.last[1]].classList.add('hl'); }
+    if (s.mate) sqEls[s.mate].classList.add('mate');
+    (s.center || []).forEach(sq => sqEls[sq].classList.add('center'));
+
+    let svg = (s.arrows || []).map(a => arrowSvg(a[0], a[1])).join('');
+    if (s.target) {
+      const [tx, ty] = xy(s.target);
+      svg += `<g><circle class="ring" cx="${tx + .5}" cy="${ty + .5}" r=".44"/></g>`;
+    }
+    arrowsEl.innerHTML = svg;
+
+    openingEl.textContent = s.opening;
+    afterEl.textContent = s.after;
+    boardEl.setAttribute('aria-label', `Chess board. ${s.opening}. ${s.after}.`);
+    shown = i;
+  }
+
+  function setRow(r) {
+    row = Math.max(0, Math.min(LAST_ROW, r));
+    rows.forEach(el => {
+      const on = Number(el.dataset.step) === row;
+      el.classList.toggle('active', on);
+      if (on) el.setAttribute('aria-current', 'step'); else el.removeAttribute('aria-current');
+    });
+    prevBtn.disabled = row === 0;
+    nextBtn.disabled = row === LAST_ROW;
+    render(stateFor(row));
+  }
+
+  // ── scroll sync ─────────────────────────────
+  const boardCol = document.querySelector('.board-col');
+  const game = document.querySelector('.game');
+  const narrow = window.matchMedia('(max-width: 859px)');
+  let lockUntil = 0;
+
+  function refLine() {
+    const vh = window.innerHeight;
+    if (narrow.matches) {
+      const b = boardCol.getBoundingClientRect().bottom;
+      return Math.min(b + (vh - b) * 0.3, vh * 0.8);
+    }
+    return vh * 0.5;
+  }
+
+  function syncFromScroll() {
+    if (performance.now() < lockUntil) return;
+    const ref = refLine();
+    let r = 0;
+    for (const el of rows) if (el.getBoundingClientRect().top <= ref) r = Number(el.dataset.step);
+    if (r !== row) setRow(r);
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; syncFromScroll(); });
+  }, { passive: true });
+  window.addEventListener('resize', syncFromScroll);
+  window.addEventListener('scrollend', () => { lockUntil = 0; syncFromScroll(); });
+
+  function goTo(r) {
+    r = Math.max(0, Math.min(LAST_ROW, r));
+    setRow(r);
+    const el = rows.find(x => Number(x.dataset.step) === r);
+    const target = el
+      ? window.scrollY + el.getBoundingClientRect().top - refLine() + 4
+      : window.scrollY + game.getBoundingClientRect().top - 16;
+    if (Math.abs(target - window.scrollY) < 2) return;
+    lockUntil = performance.now() + (reduceMotion ? 50 : 900);
+    window.scrollTo({ top: Math.max(0, target), behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  rows.forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.closest('a, .choice, .retry')) return;
+      goTo(Number(el.dataset.step));
+    });
+  });
+  prevBtn.addEventListener('click', () => goTo(row - 1));
+  nextBtn.addEventListener('click', () => goTo(row + 1));
+
+  // ── your move ───────────────────────────────
+  function choose(c) {
+    choice = c;
+    choiceBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.reply === c)));
+    replyEl.innerHTML = REPLY[c];
+    outcomeText.innerHTML = OUTCOME[c];
+    outcomeEl.hidden = false;
+    // reset to the position before Black's reply, then play it
+    if (row === LAST_ROW) {
+      boardEl.classList.add('snap');
+      render(7);
+      void boardEl.offsetWidth;
+      boardEl.classList.remove('snap');
+      requestAnimationFrame(() => requestAnimationFrame(() => render(stateFor(LAST_ROW))));
+    } else goTo(LAST_ROW);
+  }
+  choiceBtns.forEach(b => b.addEventListener('click', () => choose(b.dataset.reply)));
+  document.getElementById('retry').addEventListener('click', () => choose(choice === 'A' ? 'B' : 'A'));
+
   window.addEventListener('keydown', e => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); input.focus(); }
-    if (e.key === '/' && document.activeElement !== input) { e.preventDefault(); input.focus(); }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    const g = game.getBoundingClientRect();
+    if (g.bottom < 0 || g.top > window.innerHeight) return; // only while the game is on screen
+    e.preventDefault();
+    goTo(row + (e.key === 'ArrowRight' ? 1 : -1));
   });
 
-  // year
+  // first paint: no slide, then the pieces set themselves up once
+  const pcs = Object.values(pcEls);
+  pcs.forEach(p => { p.style.transition = 'none'; });
+  setRow(0);
+  syncFromScroll();
+  requestAnimationFrame(() => requestAnimationFrame(() => pcs.forEach(p => { p.style.transition = ''; })));
+
+  if (!reduceMotion && piecesEl.animate) {
+    piecesEl.style.visibility = 'hidden';
+    const start = () => {
+      piecesEl.style.visibility = '';
+      const order = ['1','2','7','8'];
+      Object.keys(pcEls).forEach(id => {
+        const delay = 80 + order.indexOf(id[1]) * 90 + files.indexOf(id[0]) * 22;
+        pcEls[id].animate(
+          [{ opacity: 0, translate: '0 -22%' }, { opacity: 1, translate: '0 0' }],
+          { duration: 420, delay, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }
+        );
+      });
+    };
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(start);
+    setTimeout(() => { if (piecesEl.style.visibility) start(); }, 2500);
+  }
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
